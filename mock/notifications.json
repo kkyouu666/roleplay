@@ -1,0 +1,214 @@
+[
+  {
+    "id": "notification_1_1648200000000",
+    "type": "like",
+    "read": false,
+    "timestamp": "2025-04-03T10:15:30Z",
+    "data": {
+      "userId": "user_123",
+      "username": "User1",
+      "userAvatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_001",
+      "characterName": "美杜莎"
+    }
+  },
+  {
+    "id": "notification_2_1648190000000",
+    "type": "favorite",
+    "read": false,
+    "timestamp": "2025-04-02T18:45:12Z",
+    "data": {
+      "userId": "user_456",
+      "username": "User2",
+      "userAvatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_002",
+      "characterName": "赤井秀一"
+    }
+  },
+  {
+    "id": "notification_3_1648180000000",
+    "type": "comment",
+    "read": false,
+    "timestamp": "2025-04-02T12:30:45Z",
+    "data": {
+      "userId": "user_789",
+      "username": "User3",
+      "userAvatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_003",
+      "characterName": "夜神月",
+      "commentId": "comment_123",
+      "commentText": "这个角色的设计太棒了！"
+    }
+  },
+  {
+    "id": "notification_4_1648170000000",
+    "type": "reply",
+    "read": true,
+    "timestamp": "2025-04-01T22:10:33Z",
+    "data": {
+      "userId": "user_321",
+      "username": "User4",
+      "userAvatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_004",
+      "characterName": "春野樱",
+      "commentId": "comment_456",
+      "commentText": "我同意你的看法，这个角色很有深度。",
+      "replyId": "reply_789"
+    }
+  },
+  {
+    "id": "notification_5_1648160000000",
+    "type": "like",
+    "read": true,
+    "timestamp": "2025-04-01T15:20:18Z",
+    "data": {
+      "userId": "user_654",
+      "username": "User5",
+      "userAvatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_005",
+      "characterName": "雷神"
+    }
+  },
+  {
+    "id": "notification_6_1648150000000",
+    "type": "favorite",
+    "read": true,
+    "timestamp": "2025-03-31T20:05:22Z",
+    "data": {
+      "userId": "user_987",
+      "username": "User1",
+      "userAvatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_006",
+      "characterName": "龙葵"
+    }
+  },
+  {
+    "id": "notification_7_1648140000000",
+    "type": "comment",
+    "read": true,
+    "timestamp": "2025-03-31T10:40:15Z",
+    "data": {
+      "userId": "user_654",
+      "username": "User2",
+      "userAvatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_007",
+      "characterName": "英雄不问出处",
+      "commentId": "comment_789",
+      "commentText": "这个角色的背景故事很有意思，希望能看到更多互动。"
+    }
+  },
+  {
+    "id": "notification_8_1648130000000",
+    "type": "reply",
+    "read": true,
+    "timestamp": "2025-03-30T18:25:40Z",
+    "data": {
+      "userId": "user_321",
+      "username": "User3",
+      "userAvatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_008",
+      "characterName": "梅长苏",
+      "commentId": "comment_012",
+      "commentText": "角色的对话风格很符合原著特点。",
+      "replyId": "reply_345"
+    }
+  },
+  {
+    "id": "notification_9_1648120000000",
+    "type": "like",
+    "read": true,
+    "timestamp": "2025-03-30T12:15:30Z",
+    "data": {
+      "userId": "user_789",
+      "username": "User4",
+      "userAvatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_009",
+      "characterName": "艾莎"
+    }
+  },
+  {
+    "id": "notification_10_1648110000000",
+    "type": "favorite",
+    "read": true,
+    "timestamp": "2025-03-29T21:50:10Z",
+    "data": {
+      "userId": "user_123",
+      "username": "User5",
+      "userAvatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_010",
+      "characterName": "江澄"
+    }
+  },
+  {
+    "id": "notification_11_1648100000000",
+    "type": "comment",
+    "read": true,
+    "timestamp": "2025-03-29T14:30:20Z",
+    "data": {
+      "userId": "user_456",
+      "username": "User1",
+      "userAvatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_011",
+      "characterName": "薇古丽",
+      "commentId": "comment_678",
+      "commentText": "这个AI研究员角色的设定非常有未来感。"
+    }
+  },
+  {
+    "id": "notification_12_1648090000000",
+    "type": "reply",
+    "read": true,
+    "timestamp": "2025-03-28T22:10:05Z",
+    "data": {
+      "userId": "user_987",
+      "username": "User2",
+      "userAvatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_012",
+      "characterName": "阿周那",
+      "commentId": "comment_901",
+      "commentText": "这个角色的战斗风格很独特。",
+      "replyId": "reply_234"
+    }
+  },
+  {
+    "id": "notification_13_1648080000000",
+    "type": "like",
+    "read": true,
+    "timestamp": "2025-03-28T15:45:30Z",
+    "data": {
+      "userId": "user_654",
+      "username": "User3",
+      "userAvatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_013",
+      "characterName": "白素贞"
+    }
+  },
+  {
+    "id": "notification_14_1648070000000",
+    "type": "favorite",
+    "read": true,
+    "timestamp": "2025-03-27T19:20:15Z",
+    "data": {
+      "userId": "user_321",
+      "username": "User4",
+      "userAvatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_014",
+      "characterName": "夏目贵志"
+    }
+  },
+  {
+    "id": "notification_15_1648060000000",
+    "type": "comment",
+    "read": true,
+    "timestamp": "2025-03-27T10:05:50Z",
+    "data": {
+      "userId": "user_789",
+      "username": "User5",
+      "userAvatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "characterId": "char_015",
+      "characterName": "莫扎特",
+      "commentId": "comment_567",
+      "commentText": "这个角色的音乐天赋表现得很棒，希望有更多音乐相关的互动。"
+    }
+  }
+]

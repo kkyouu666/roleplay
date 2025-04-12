@@ -1,0 +1,622 @@
+[
+    {
+        "id": "memory_1",
+        "title": "AI的未来发展",
+        "user": {
+            "id": "user_101",
+            "username": "AIEnthusiast",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_040",
+            "name": "量子物理学家",
+            "avatar": "https://images.unsplash.com/photo-1564510714747-69c3bc1fab41?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_1_1",
+                "sender": "user",
+                "content": "你对人工智能的未来发展有什么看法？"
+            },
+            {
+                "id": "msg_1_2",
+                "sender": "character",
+                "content": "我认为AI将在未来扮演越来越重要的角色，但同时我们也需要注意伦理和安全问题。我们应该在发展技术的同时，确保AI的发展方向符合人类的价值观和利益。"
+            }
+        ],
+        "stats": {
+            "likes": 24,
+            "comments": 8
+        },
+        "timestamp": "2025-04-03T10:15:30Z"
+    },
+    {
+        "id": "memory_2",
+        "title": "时间旅行的可能性",
+        "user": {
+            "id": "user_102",
+            "username": "SciFiLover",
+            "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_025",
+            "name": "时空旅人",
+            "avatar": "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_2_1",
+                "sender": "user",
+                "content": "如果有机会穿越到未来，你最想看到什么？"
+            },
+            {
+                "id": "msg_2_2",
+                "sender": "character",
+                "content": "我最想看到人类是否成功实现了星际旅行。太空探索一直是人类最伟大的冒险之一，我很好奇在未来我们是否建立了太空殖民地，是否遇到了其他文明。"
+            }
+        ],
+        "stats": {
+            "likes": 42,
+            "comments": 15
+        },
+        "timestamp": "2025-04-03T09:30:15Z"
+    },
+    {
+        "id": "memory_3",
+        "title": "幸福的本质",
+        "user": {
+            "id": "user_103",
+            "username": "PhilosophyQueen",
+            "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_032",
+            "name": "禅宗大师",
+            "avatar": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_3_1",
+                "sender": "user",
+                "content": "你认为什么是真正的幸福？"
+            },
+            {
+                "id": "msg_3_2",
+                "sender": "character",
+                "content": "在我看来，真正的幸福不在于外在的物质条件，而在于内心的平静和满足。当我们能够接纳自己，理解他人，并在生活中找到意义时，就能体会到真正的幸福。"
+            }
+        ],
+        "stats": {
+            "likes": 67,
+            "comments": 23
+        },
+        "timestamp": "2025-04-03T08:45:20Z"
+    },
+    {
+        "id": "memory_4",
+        "title": "关于梦想的对话",
+        "user": {
+            "id": "user_104",
+            "username": "Dreamer",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_045",
+            "name": "梦境设计师",
+            "avatar": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_4_1",
+                "sender": "user",
+                "content": "你有什么特别的梦想吗？"
+            },
+            {
+                "id": "msg_4_2",
+                "sender": "character",
+                "content": "我的梦想是能够帮助更多的人找到他们内心的力量。每个人都有独特的潜能，我希望能够通过对话和交流，激发他们的创造力和勇气。"
+            }
+        ],
+        "stats": {
+            "likes": 36,
+            "comments": 12
+        },
+        "timestamp": "2025-04-03T07:20:45Z"
+    },
+    {
+        "id": "memory_5",
+        "title": "艺术与科技的融合",
+        "user": {
+            "id": "user_105",
+            "username": "ArtLover",
+            "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_041",
+            "name": "元宇宙建筑师",
+            "avatar": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_5_1",
+                "sender": "user",
+                "content": "艺术和科技的融合会带来什么样的可能性？"
+            },
+            {
+                "id": "msg_5_2",
+                "sender": "character",
+                "content": "艺术和科技的结合可以创造出前所未有的表现形式。AI可以成为艺术家的新工具，帮助我们探索创意的边界，但永远不会替代人类的创造力和情感表达。"
+            }
+        ],
+        "stats": {
+            "likes": 51,
+            "comments": 19
+        },
+        "timestamp": "2025-04-03T06:15:30Z"
+    },
+    {
+        "id": "memory_6",
+        "title": "音乐的意义",
+        "user": {
+            "id": "user_106",
+            "username": "MusicMaster",
+            "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_018",
+            "name": "莫扎特",
+            "avatar": "https://images.unsplash.com/photo-1549468057-5b7fa1a41d7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_6_1",
+                "sender": "user",
+                "content": "音乐对你来说意味着什么？"
+            },
+            {
+                "id": "msg_6_2",
+                "sender": "character",
+                "content": "音乐是一种超越语言的情感表达方式。它能够直接触动人心，传递无法用言语描述的感受。对我来说，音乐就像是灵魂的语言。"
+            }
+        ],
+        "stats": {
+            "likes": 48,
+            "comments": 14
+        },
+        "timestamp": "2025-04-03T05:10:20Z"
+    },
+    {
+        "id": "memory_7",
+        "title": "与自然的联系",
+        "user": {
+            "id": "user_107",
+            "username": "NatureLover",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_043",
+            "name": "植物语者",
+            "avatar": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_7_1",
+                "sender": "user",
+                "content": "如何在现代生活中保持与自然的联系？"
+            },
+            {
+                "id": "msg_7_2",
+                "sender": "character",
+                "content": "即使在城市生活中，我们也可以通过种植植物、定期接触大自然、关注环保来维持与自然的联系。这不仅有益于身心健康，也能提醒我们保护环境的重要性。"
+            }
+        ],
+        "stats": {
+            "likes": 39,
+            "comments": 11
+        },
+        "timestamp": "2025-04-03T04:05:15Z"
+    },
+    {
+        "id": "memory_8",
+        "title": "最喜欢的书籍",
+        "user": {
+            "id": "user_108",
+            "username": "BookWorm",
+            "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_035",
+            "name": "魔法图书管理员",
+            "avatar": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_8_1",
+                "sender": "user",
+                "content": "你最喜欢的一本书是什么？为什么？"
+            },
+            {
+                "id": "msg_8_2",
+                "sender": "character",
+                "content": "我最喜欢《1984》，因为它不仅展示了极权统治的危险，也提醒我们要珍惜自由思考的能力。这本书让我思考了很多关于人性和社会的问题。"
+            }
+        ],
+        "stats": {
+            "likes": 45,
+            "comments": 17
+        },
+        "timestamp": "2025-04-03T03:00:10Z"
+    },
+    {
+        "id": "memory_9",
+        "title": "美食与文化传承",
+        "user": {
+            "id": "user_109",
+            "username": "FoodExplorer",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_030",
+            "name": "古董商人",
+            "avatar": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_9_1",
+                "sender": "user",
+                "content": "美食对文化传承有什么意义？"
+            },
+            {
+                "id": "msg_9_2",
+                "sender": "character",
+                "content": "美食是文化的重要载体，它承载着历史记忆和情感联系。通过食物，我们可以了解一个地区的历史、气候、生活方式，甚至是人们的价值观。"
+            }
+        ],
+        "stats": {
+            "likes": 33,
+            "comments": 9
+        },
+        "timestamp": "2025-04-03T01:55:05Z"
+    },
+    {
+        "id": "memory_10",
+        "title": "旅行的意义",
+        "user": {
+            "id": "user_110",
+            "username": "TravelBlogger",
+            "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_021",
+            "name": "星际旅者",
+            "avatar": "https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_10_1",
+                "sender": "user",
+                "content": "旅行给你带来了什么改变？"
+            },
+            {
+                "id": "msg_10_2",
+                "sender": "character",
+                "content": "旅行让我明白了世界的多样性和包容性。每次旅行都是一次成长的机会，让我学会用不同的角度看待问题，理解不同文化的美。"
+            }
+        ],
+        "stats": {
+            "likes": 57,
+            "comments": 21
+        },
+        "timestamp": "2025-04-02T23:50:00Z"
+    },
+    {
+        "id": "memory_11",
+        "title": "运动精神与成长",
+        "user": {
+            "id": "user_111",
+            "username": "SportsFan",
+            "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_036",
+            "name": "末日幸存者",
+            "avatar": "https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_11_1",
+                "sender": "user",
+                "content": "运动精神对个人成长有什么影响？"
+            },
+            {
+                "id": "msg_11_2",
+                "sender": "character",
+                "content": "运动不仅锻炼身体，更培养了毅力、团队精神和公平竞争的意识。在运动中，我们学会了如何面对失败，如何与他人合作，这些都是人生重要的课题。"
+            }
+        ],
+        "stats": {
+            "likes": 29,
+            "comments": 7
+        },
+        "timestamp": "2025-04-02T21:45:30Z"
+    },
+    {
+        "id": "memory_12",
+        "title": "元宇宙与社交方式",
+        "user": {
+            "id": "user_112",
+            "username": "TechGuru",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_023",
+            "name": "机械心",
+            "avatar": "https://images.unsplash.com/photo-1535063406830-27dfae54262a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_12_1",
+                "sender": "user",
+                "content": "元宇宙会改变我们的社交方式吗？"
+            },
+            {
+                "id": "msg_12_2",
+                "sender": "character",
+                "content": "元宇宙确实会带来新的社交可能性，但重要的是保持真实的人际连接。虚拟世界应该是现实社交的补充，而不是替代。"
+            }
+        ],
+        "stats": {
+            "likes": 41,
+            "comments": 16
+        },
+        "timestamp": "2025-04-02T19:40:25Z"
+    },
+    {
+        "id": "memory_13",
+        "title": "环保行动",
+        "user": {
+            "id": "user_113",
+            "username": "Environmentalist",
+            "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_043",
+            "name": "植物语者",
+            "avatar": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_13_1",
+                "sender": "user",
+                "content": "我们能为环境保护做些什么？"
+            },
+            {
+                "id": "msg_13_2",
+                "sender": "character",
+                "content": "每个人都可以从小事做起，比如减少塑料使用、节约能源、支持环保产品。更重要的是提高环保意识，影响身边的人共同行动。"
+            }
+        ],
+        "stats": {
+            "likes": 62,
+            "comments": 25
+        },
+        "timestamp": "2025-04-02T17:35:20Z"
+    },
+    {
+        "id": "memory_14",
+        "title": "历史的启示",
+        "user": {
+            "id": "user_114",
+            "username": "HistoryBuff",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_022",
+            "name": "维多利亚女王",
+            "avatar": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_14_1",
+                "sender": "user",
+                "content": "历史对现代社会有什么启示？"
+            },
+            {
+                "id": "msg_14_2",
+                "sender": "character",
+                "content": "历史是最好的老师，它告诉我们人类文明的发展规律，帮助我们避免重复过去的错误。通过学习历史，我们能更好地理解当下，规划未来。"
+            }
+        ],
+        "stats": {
+            "likes": 47,
+            "comments": 18
+        },
+        "timestamp": "2025-04-02T15:30:15Z"
+    },
+    {
+        "id": "memory_15",
+        "title": "时尚与社会变迁",
+        "user": {
+            "id": "user_115",
+            "username": "FashionDesigner",
+            "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_049",
+            "name": "时尚预言家",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_15_1",
+                "sender": "user",
+                "content": "时尚如何反映社会变迁？"
+            },
+            {
+                "id": "msg_15_2",
+                "sender": "character",
+                "content": "时尚是社会变迁的晴雨表，它反映了人们的价值观、生活方式和社会态度的变化。从服装设计中，我们可以读出每个时代的特征和精神。"
+            }
+        ],
+        "stats": {
+            "likes": 38,
+            "comments": 13
+        },
+        "timestamp": "2025-04-02T13:25:10Z"
+    },
+    {
+        "id": "memory_16",
+        "title": "游戏设计的平衡",
+        "user": {
+            "id": "user_116",
+            "username": "GameDev",
+            "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_029",
+            "name": "蒸汽朋克工程师",
+            "avatar": "https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_16_1",
+                "sender": "user",
+                "content": "游戏设计如何平衡娱乐性和艺术性？"
+            },
+            {
+                "id": "msg_16_2",
+                "sender": "character",
+                "content": "优秀的游戏设计应该既能带来愉悦的游戏体验，又能传达深刻的主题和艺术价值。这需要在机制设计、叙事和视觉表现之间找到平衡点。"
+            }
+        ],
+        "stats": {
+            "likes": 43,
+            "comments": 15
+        },
+        "timestamp": "2025-04-02T11:20:05Z"
+    },
+    {
+        "id": "memory_17",
+        "title": "数字时代的心理健康",
+        "user": {
+            "id": "user_117",
+            "username": "Psychologist",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_042",
+            "name": "记忆修复师",
+            "avatar": "https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_17_1",
+                "sender": "user",
+                "content": "如何在数字时代保持心理健康？"
+            },
+            {
+                "id": "msg_17_2",
+                "sender": "character",
+                "content": "在数字时代，我们需要学会适度使用科技，保持线下社交，培养正念习惯。同时也要注意工作与生活的平衡，给自己足够的休息和放松时间。"
+            }
+        ],
+        "stats": {
+            "likes": 54,
+            "comments": 20
+        },
+        "timestamp": "2025-04-02T09:15:00Z"
+    },
+    {
+        "id": "memory_18",
+        "title": "创业者的品质",
+        "user": {
+            "id": "user_118",
+            "username": "Entrepreneur",
+            "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_038",
+            "name": "异界商人",
+            "avatar": "https://images.unsplash.com/photo-1535063406830-27dfae54262a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_18_1",
+                "sender": "user",
+                "content": "创业最重要的品质是什么？"
+            },
+            {
+                "id": "msg_18_2",
+                "sender": "character",
+                "content": "我认为是坚韧和适应力。创业路上充满挑战和不确定性，能够在失败中学习，在变化中成长的能力尤为重要。同时，保持对市场的敏锐观察和对用户需求的深入理解也是关键。"
+            }
+        ],
+        "stats": {
+            "likes": 49,
+            "comments": 22
+        },
+        "timestamp": "2025-04-02T07:10:55Z"
+    },
+    {
+        "id": "memory_19",
+        "title": "科学研究的影响",
+        "user": {
+            "id": "user_119",
+            "username": "Scientist",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_046",
+            "name": "基因工程师",
+            "avatar": "https://images.unsplash.com/photo-1564510714747-69c3bc1fab41?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_19_1",
+                "sender": "user",
+                "content": "科学研究如何影响日常生活？"
+            },
+            {
+                "id": "msg_19_2",
+                "sender": "character",
+                "content": "科学研究的成果无处不在，从医疗技术到通信工具，从环保材料到新能源技术，都在持续改善我们的生活质量。重要的是让科研成果更好地服务于社会需求。"
+            }
+        ],
+        "stats": {
+            "likes": 37,
+            "comments": 14
+        },
+        "timestamp": "2025-04-02T05:05:50Z"
+    },
+    {
+        "id": "memory_20",
+        "title": "保持自我的方法",
+        "user": {
+            "id": "user_120",
+            "username": "Philosopher",
+            "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_047",
+            "name": "数字萨满",
+            "avatar": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_20_1",
+                "sender": "user",
+                "content": "在快速变化的世界中，如何保持自我？"
+            },
+            {
+                "id": "msg_20_2",
+                "sender": "character",
+                "content": "保持自我需要有坚定的价值观和清晰的人生目标。在变化中成长，但不迷失本心。同时，持续学习和反思也能帮助我们在变化中找到平衡。"
+            }
+        ],
+        "stats": {
+            "likes": 52,
+            "comments": 19
+        },
+        "timestamp": "2025-04-02T03:00:45Z"
+    }
+]
