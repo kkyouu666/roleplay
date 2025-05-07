@@ -36,6 +36,15 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     setAuthModalVisibility(visible: boolean) {
       this.showAuthModal = visible;
+
+      // Manage body class for preventing scrolling
+      if (process.client) {
+        if (visible) {
+          document.body.classList.add('modal-open');
+        } else {
+          document.body.classList.remove('modal-open');
+        }
+      }
     },
 
     setAuthModalMode(mode: 'login' | 'register' | 'forgotPassword') {

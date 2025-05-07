@@ -23,7 +23,7 @@
     },
     "createdAt": "2023-02-15T08:30:00Z",
     "updatedAt": "2023-12-10T14:22:00Z",
-    "nsfw": false
+    "nsfw": true
   },
   {
     "id": "char_002",

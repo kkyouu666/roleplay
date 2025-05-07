@@ -52,9 +52,9 @@
       </div>
 
       <!-- User Tabs -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mb-6">
+      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden">
         <!-- Main Tabs: Characters / Memories -->
-        <div class="flex border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
+        <div class="flex border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
           <div class="flex-1 flex">
             <button v-for="tab in mainTabs" :key="tab.id" @click="mainTabActive = tab.id"
               class="px-6 py-3 text-sm font-medium text-center" :class="mainTabActive === tab.id ?
@@ -66,22 +66,21 @@
         </div>
 
         <!-- Sub Tabs: Created / Likes / Favorites -->
-        <div class="flex border-b border-gray-200 dark:border-gray-700">
-          <button v-for="tab in subTabs" :key="tab.id" @click="subTabActive = tab.id"
-            class="px-4 py-2 text-sm font-medium text-center" :class="subTabActive === tab.id ?
-              'border-b-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 dark:border-indigo-400' :
-              'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'">
-            {{ $t(tab.label) }}
-          </button>
+        <div class="p-4 flex items-center">
+          <div class="inline-flex bg-gray-100 dark:bg-gray-800 p-1 rounded-full">
+            <button v-for="tab in subTabs" :key="tab.id" @click="subTabActive = tab.id"
+              class="px-4 py-1.5 text-sm font-medium rounded-full transition-colors" :class="subTabActive === tab.id ?
+                'bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-400 shadow-sm' :
+                'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'">
+              {{ $t(tab.label) }}
+            </button>
+          </div>
         </div>
-      </div>
 
-      <!-- Content Area -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-        <div class="p-6">
+        <div class="p-4 pt-0">
           <!-- Characters - Created -->
           <div v-if="mainTabActive === 'characters' && subTabActive === 'created'"
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div v-if="isLoading" class="col-span-full flex justify-center py-12">
               <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
             </div>
@@ -95,8 +94,8 @@
             </div>
 
             <template v-else>
-              <UsersUserCharacterCard v-for="character in userCharacters" :key="character.id" :character="character"
-                @view="viewCharacter" @start-chat="startChat" />
+              <CommonCharacterCard v-for="character in userCharacters" :key="character.id" :character="character"
+                @view-character="viewCharacter" @start-chat="startChat" />
             </template>
           </div>
 
@@ -111,9 +110,9 @@
               <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noLikes') }}</p>
             </div>
 
-            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <UsersUserCharacterCard v-for="character in likedCharacters" :key="character.id" :character="character"
-                :show-creator="true" @view="viewCharacter" @start-chat="startChat" />
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <CommonCharacterCard v-for="character in likedCharacters" :key="character.id" :character="character"
+                @view-character="viewCharacter" @start-chat="startChat" />
             </div>
           </div>
 
@@ -128,9 +127,9 @@
               <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noFavorites') }}</p>
             </div>
 
-            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <UsersUserCharacterCard v-for="character in favoritedCharacters" :key="character.id"
-                :character="character" :show-creator="true" @view="viewCharacter" @start-chat="startChat" />
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <CommonCharacterCard v-for="character in favoritedCharacters" :key="character.id" :character="character"
+                @view-character="viewCharacter" @start-chat="startChat" />
             </div>
           </div>
 
@@ -146,61 +145,7 @@
             </div>
 
             <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div v-for="memory in userMemories" :key="memory.id"
-                class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                <!-- Memory Card Header with Title and Stats -->
-                <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-                  <div class="flex justify-between items-center mb-2">
-                    <h3 class="font-medium text-gray-900 dark:text-gray-100">{{ memory.title || 'Chat Memory' }}</h3>
-                    <div class="flex items-center space-x-2">
-                      <div class="flex items-center text-gray-500 dark:text-gray-400">
-                        <Icon name="heroicons:heart" class="w-4 h-4 text-pink-500 mr-1" />
-                        <span class="text-xs">{{ memory.stats?.likes || 0 }}</span>
-                      </div>
-                      <div class="flex items-center text-gray-500 dark:text-gray-400">
-                        <Icon name="heroicons:chat-bubble-left" class="w-4 h-4 text-indigo-500 mr-1" />
-                        <span class="text-xs">{{ memory.stats?.comments || 0 }}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Character Info -->
-                  <div class="flex items-center justify-end">
-                    <div class="flex items-center">
-                      <span class="text-xs text-gray-700 dark:text-gray-300 mr-1">{{ memory.character?.name }}</span>
-                      <img :src="memory.character?.avatar" :alt="memory.character?.name"
-                        class="w-6 h-6 rounded-full object-cover" />
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Memory Content -->
-                <div class="p-4 space-y-4">
-                  <!-- User Message -->
-                  <div class="flex justify-end">
-                    <div class="max-w-[80%] bg-indigo-600 text-white rounded-lg rounded-br-none px-3 py-2 text-sm">
-                      <p class="whitespace-pre-wrap break-words">
-                        {{memory.messages.find(m => m.sender === 'user')?.content}}</p>
-                    </div>
-                  </div>
-
-                  <!-- Character Message -->
-                  <div class="flex justify-start">
-                    <div
-                      class="max-w-[80%] bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-lg rounded-bl-none px-3 py-2 text-sm">
-                      <p class="whitespace-pre-wrap break-words">
-                        {{memory.messages.find(m => m.sender === 'character')?.content}}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Footer with timestamp -->
-                <div class="px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-right">
-                  <span class="text-xs text-gray-500 dark:text-gray-400">
-                    {{ formatTime(memory.timestamp) }}
-                  </span>
-                </div>
-              </div>
+              <CommonMemoryCard v-for="memory in userMemories" :key="memory.id" :memory="memory" />
             </div>
           </div>
 
@@ -216,68 +161,7 @@
             </div>
 
             <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <!-- Similar memory card structure as above -->
-              <div v-for="memory in likedMemories" :key="memory.id"
-                class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                <!-- Memory Card Header with Title and Stats -->
-                <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-                  <div class="flex justify-between items-center mb-2">
-                    <h3 class="font-medium text-gray-900 dark:text-gray-100">{{ memory.title || 'Chat Memory' }}</h3>
-                    <div class="flex items-center space-x-2">
-                      <div class="flex items-center text-gray-500 dark:text-gray-400">
-                        <Icon name="heroicons:heart" class="w-4 h-4 text-pink-500 mr-1" />
-                        <span class="text-xs">{{ memory.stats?.likes || 0 }}</span>
-                      </div>
-                      <div class="flex items-center text-gray-500 dark:text-gray-400">
-                        <Icon name="heroicons:chat-bubble-left" class="w-4 h-4 text-indigo-500 mr-1" />
-                        <span class="text-xs">{{ memory.stats?.comments || 0 }}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- User and Character Info -->
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                      <img :src="memory.user.avatar" :alt="memory.user.username"
-                        class="w-6 h-6 rounded-full object-cover" />
-                      <span class="ml-1 text-xs text-gray-700 dark:text-gray-300">{{ memory.user.username }}</span>
-                    </div>
-
-                    <div class="flex items-center">
-                      <span class="text-xs text-gray-700 dark:text-gray-300 mr-1">{{ memory.character?.name }}</span>
-                      <img :src="memory.character?.avatar" :alt="memory.character?.name"
-                        class="w-6 h-6 rounded-full object-cover" />
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Memory Content -->
-                <div class="p-4 space-y-4">
-                  <!-- User Message -->
-                  <div class="flex justify-end">
-                    <div class="max-w-[80%] bg-indigo-600 text-white rounded-lg rounded-br-none px-3 py-2 text-sm">
-                      <p class="whitespace-pre-wrap break-words">
-                        {{memory.messages.find(m => m.sender === 'user')?.content}}</p>
-                    </div>
-                  </div>
-
-                  <!-- Character Message -->
-                  <div class="flex justify-start">
-                    <div
-                      class="max-w-[80%] bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-lg rounded-bl-none px-3 py-2 text-sm">
-                      <p class="whitespace-pre-wrap break-words">
-                        {{memory.messages.find(m => m.sender === 'character')?.content}}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Footer with timestamp -->
-                <div class="px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-right">
-                  <span class="text-xs text-gray-500 dark:text-gray-400">
-                    {{ formatTime(memory.timestamp) }}
-                  </span>
-                </div>
-              </div>
+              <CommonMemoryCard v-for="memory in likedMemories" :key="memory.id" :memory="memory" />
             </div>
           </div>
 
@@ -293,68 +177,7 @@
             </div>
 
             <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <!-- Similar memory card structure as above -->
-              <div v-for="memory in favoritedMemories" :key="memory.id"
-                class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                <!-- Memory Card Header with Title and Stats -->
-                <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-                  <div class="flex justify-between items-center mb-2">
-                    <h3 class="font-medium text-gray-900 dark:text-gray-100">{{ memory.title || 'Chat Memory' }}</h3>
-                    <div class="flex items-center space-x-2">
-                      <div class="flex items-center text-gray-500 dark:text-gray-400">
-                        <Icon name="heroicons:heart" class="w-4 h-4 text-pink-500 mr-1" />
-                        <span class="text-xs">{{ memory.stats?.likes || 0 }}</span>
-                      </div>
-                      <div class="flex items-center text-gray-500 dark:text-gray-400">
-                        <Icon name="heroicons:chat-bubble-left" class="w-4 h-4 text-indigo-500 mr-1" />
-                        <span class="text-xs">{{ memory.stats?.comments || 0 }}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- User and Character Info -->
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                      <img :src="memory.user.avatar" :alt="memory.user.username"
-                        class="w-6 h-6 rounded-full object-cover" />
-                      <span class="ml-1 text-xs text-gray-700 dark:text-gray-300">{{ memory.user.username }}</span>
-                    </div>
-
-                    <div class="flex items-center">
-                      <span class="text-xs text-gray-700 dark:text-gray-300 mr-1">{{ memory.character?.name }}</span>
-                      <img :src="memory.character?.avatar" :alt="memory.character?.name"
-                        class="w-6 h-6 rounded-full object-cover" />
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Memory Content -->
-                <div class="p-4 space-y-4">
-                  <!-- User Message -->
-                  <div class="flex justify-end">
-                    <div class="max-w-[80%] bg-indigo-600 text-white rounded-lg rounded-br-none px-3 py-2 text-sm">
-                      <p class="whitespace-pre-wrap break-words">
-                        {{memory.messages.find(m => m.sender === 'user')?.content}}</p>
-                    </div>
-                  </div>
-
-                  <!-- Character Message -->
-                  <div class="flex justify-start">
-                    <div
-                      class="max-w-[80%] bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-lg rounded-bl-none px-3 py-2 text-sm">
-                      <p class="whitespace-pre-wrap break-words">
-                        {{memory.messages.find(m => m.sender === 'character')?.content}}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Footer with timestamp -->
-                <div class="px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-right">
-                  <span class="text-xs text-gray-500 dark:text-gray-400">
-                    {{ formatTime(memory.timestamp) }}
-                  </span>
-                </div>
-              </div>
+              <CommonMemoryCard v-for="memory in favoritedMemories" :key="memory.id" :memory="memory" />
             </div>
           </div>
         </div>
@@ -495,9 +318,9 @@ async function loadUserCharacters() {
       {
         id: 'char_001',
         name: '美杜莎',
-        avatar: 'https://images.unsplash.com/photo-1578632292335-df3abbb0d586?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+        avatar: 'https://pic.re/image?d=1',
         description: '来自希腊神话的蛇发女妖，对视线接触非常敏感。她有着复杂的过去和神秘的力量。',
-        category: 'fantasy',
+        category: 'original',
         tags: ['mythology', 'female', 'powerful', 'tragic'],
         creator: {
           id: authStore.user?.id || '',
@@ -515,9 +338,9 @@ async function loadUserCharacters() {
       {
         id: 'char_002',
         name: '赤井秀一',
-        avatar: 'https://images.unsplash.com/photo-1564510714747-69c3bc1fab41?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+        avatar: 'https://pic.re/image?d=2',
         description: 'FBI探员，代号"银色子弹"。冷静沉着，精通各种武器和格斗技巧，有着敏锐的观察力和推理能力。',
-        category: 'anime',
+        category: 'fanwork',
         tags: ['detective', 'male', 'cool', 'intelligent'],
         creator: {
           id: authStore.user?.id || '',
@@ -549,9 +372,9 @@ async function loadLikedCharacters() {
       {
         id: 'char_003',
         name: '夜神月',
-        avatar: 'https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+        avatar: 'https://pic.re/image?d=3',
         description: '天才高中生，偶然获得了可以杀人的笔记本，开始以"基拉"的身份清除罪犯，建立新世界秩序。',
-        category: 'anime',
+        category: 'original',
         tags: ['genius', 'male', 'dark', 'complex'],
         creator: {
           id: 'user_153',
@@ -583,9 +406,9 @@ async function loadFavoritedCharacters() {
       {
         id: 'char_004',
         name: '春野樱',
-        avatar: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+        avatar: 'https://pic.re/image?d=4',
         description: '医疗忍者，拥有超强怪力和卓越的医疗能力。勤奋刻苦，从普通少女成长为优秀的忍者。',
-        category: 'anime',
+        category: 'original',
         tags: ['ninja', 'female', 'medical', 'strong'],
         creator: {
           id: 'user_088',
@@ -668,7 +491,7 @@ async function loadFollowModalUsers() {
     followModalUsers.value = Array.from({ length: 5 }, (_, i) => ({
       id: `user_${i + 1}`,
       username: `User${i + 1}`,
-      profileImage: `https://images.unsplash.com/photo-${1500000000000 + i}?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80`,
+      profileImage: `https://pic.re/image?d=5`,
       stats: {
         characters: Math.floor(Math.random() * 10) + 1
       }
@@ -755,9 +578,5 @@ function openAuthModal() {
 <style scoped>
 .whitespace-pre-wrap {
   white-space: pre-wrap;
-}
-
-.break-words {
-  word-break: break-word;
 }
 </style>

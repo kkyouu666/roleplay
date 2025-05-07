@@ -27,15 +27,24 @@
         </div>
 
         <!-- Filter Options Component -->
-        <HomeFilterOptions :selected-category="roleplayStore.filters.category"
-          :selected-tags="roleplayStore.filters.tags" :initial-ranking="roleplayStore.filters.ranking"
+        <HomeCharacterFilterOptions v-if="activeTab === 'characters'"
+          :selected-category="roleplayStore.filters.category" :selected-tags="roleplayStore.filters.tags"
+          :initial-ranking="roleplayStore.filters.ranking" :initial-gender="roleplayStore.filters.gender"
+          :initial-show-filtered="roleplayStore.filters.showFiltered" @set-category="setCategoryFilter"
+          @toggle-tag="toggleTagFilter" @set-ranking="setRankingFilter" @set-gender="setGenderFilter"
+          @toggle-filtered="toggleFilteredView" />
+
+        <HomeMemoryFilterOptions v-else-if="activeTab === 'memories'" :initial-ranking="roleplayStore.filters.ranking"
           :initial-gender="roleplayStore.filters.gender" :initial-show-filtered="roleplayStore.filters.showFiltered"
-          @set-category="setCategoryFilter" @toggle-tag="toggleTagFilter" @set-ranking="setRankingFilter"
-          @set-gender="setGenderFilter" @toggle-filtered="toggleFilteredView" />
+          @set-ranking="setRankingFilter" @set-gender="setGenderFilter" @toggle-filtered="toggleFilteredView" />
+
+        <HomeCreatorFilterOptions v-else :selected-filter="creatorFilter"
+          :initial-show-filtered="roleplayStore.filters.showFiltered" @set-filter="setCreatorFilter"
+          @toggle-filtered="toggleFilteredView" />
       </div>
 
       <!-- Tab Content -->
-      <div>
+      <div class="min-w-0">
         <!-- Characters Tab -->
         <HomeCharacterGrid v-if="activeTab === 'characters'" :characters="roleplayStore.filteredCharacters"
           :is-loading="roleplayStore.isLoading" :has-more="roleplayStore.hasMore" :page="roleplayStore.page"
@@ -76,6 +85,7 @@ const tabs = [
   { id: 'creators', label: 'home.creators' }
 ];
 const activeTab = ref('characters');
+const creatorFilter = ref('popular');
 
 // Memories state
 const memories = ref([]);
@@ -242,6 +252,17 @@ function setGenderFilter(gender: string) {
 function toggleFilteredView(showFiltered: boolean) {
   roleplayStore.page = 1;
   roleplayStore.toggleFilteredView(showFiltered);
+}
+
+function setCreatorFilter(filter: string) {
+  creatorFilter.value = filter;
+  console.log('Creator filter set to:', filter);
+  // In a real app, you would apply this filter to the creators list
+
+  // Reset creators and load with new filter
+  creatorsPage.value = 1;
+  creators.value = [];
+  loadCreators();
 }
 
 function resetFilters() {

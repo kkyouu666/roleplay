@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-6">
+  <div class="container py-4">
     <!-- Loading State -->
     <div v-if="isLoading" class="flex justify-center py-12">
       <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
@@ -17,127 +17,88 @@
 
     <div v-else>
       <!-- User Header -->
-      <UsersUserHeader
-        :user="user"
-        :is-following="isFollowing"
-        :followers="followers"
-        :following="following"
-        :is-public-bio="isPublicBio"
-        @toggle-follow="toggleFollow"
-        @select-tab="activeTab = $event"
-        @handle-stats-click="handleStatsClick"
-      />
-      
+      <UsersUserHeader :user="user" :is-following="isFollowing" :followers="followers" :following="following"
+        :is-public-bio="isPublicBio" @toggle-follow="toggleFollow" @select-tab="activeTab = $event"
+        @handle-stats-click="handleStatsClick" />
+
       <!-- User Tabs -->
       <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-        <UsersUserTabs
-          v-model:active-tab="activeTab"
-          :tabs="tabs"
-        />
-      
+        <UsersUserTabs v-model:active-tab="activeTab" :tabs="tabs" />
+
         <!-- Tab Content -->
         <div class="p-6">
           <!-- Characters Tab -->
           <div v-if="activeTab === 'characters'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div v-if="isLoadingCharacters" class="col-span-full flex justify-center py-12">
-            <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            <div v-if="isLoadingCharacters" class="col-span-full flex justify-center py-12">
+              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            </div>
+
+            <div v-else-if="!userCharacters.length" class="col-span-full text-center py-12">
+              <Icon name="heroicons:user-circle" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noCharacters') }}</p>
+            </div>
+
+            <template v-else>
+              <CommonCharacterCard v-for="character in userCharacters" :key="character.id" :character="character"
+                @view-character="viewCharacter" @start-chat="startChat" />
+            </template>
           </div>
-          
-          <div v-else-if="!userCharacters.length" class="col-span-full text-center py-12">
-            <Icon name="heroicons:user-circle" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noCharacters') }}</p>
+
+          <!-- Likes Tab -->
+          <div v-else-if="activeTab === 'likes'">
+            <div v-if="isLoadingLikes" class="flex justify-center py-12">
+              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            </div>
+
+            <div v-else-if="!isPublicLikes" class="text-center py-12">
+              <Icon name="heroicons:lock-closed" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.likesPrivate') }}</p>
+            </div>
+
+            <div v-else-if="!likedCharacters.length" class="text-center py-12">
+              <Icon name="heroicons:heart" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noLikes') }}</p>
+            </div>
+
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <CommonCharacterCard v-for="character in likedCharacters" :key="character.id" :character="character"
+                @view-character="viewCharacter" @start-chat="startChat" />
+            </div>
           </div>
-          
-          <template v-else>
-            <UsersUserCharacterCard
-              v-for="character in userCharacters"
-              :key="character.id"
-              :character="character"
-              @view="viewCharacter"
-              @start-chat="startChat"
-            />
-          </template>
-        </div>
-        
-        <!-- Likes Tab -->
-        <div v-else-if="activeTab === 'likes'">
-          <div v-if="isLoadingLikes" class="flex justify-center py-12">
-            <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
-          </div>
-          
-          <div v-else-if="!isPublicLikes" class="text-center py-12">
-            <Icon name="heroicons:lock-closed" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p class="text-gray-500 dark:text-gray-400">{{ $t('users.likesPrivate') }}</p>
-          </div>
-          
-          <div v-else-if="!likedCharacters.length" class="text-center py-12">
-            <Icon name="heroicons:heart" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noLikes') }}</p>
-          </div>
-          
-          <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <UsersUserCharacterCard
-              v-for="character in likedCharacters"
-              :key="character.id"
-              :character="character"
-              :show-creator="true"
-              @view="viewCharacter"
-              @start-chat="startChat"
-            />
-          </div>
-        </div>
-        
-        <!-- Favorites Tab -->
-        <div v-else-if="activeTab === 'favorites'">
-          <div v-if="isLoadingFavorites" class="flex justify-center py-12">
-            <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
-          </div>
-          
-          <div v-else-if="!isPublicFavorites" class="text-center py-12">
-            <Icon name="heroicons:lock-closed" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p class="text-gray-500 dark:text-gray-400">{{ $t('users.favoritesPrivate') }}</p>
-          </div>
-          
-          <div v-else-if="!favoritedCharacters.length" class="text-center py-12">
-            <Icon name="heroicons:star" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noFavorites') }}</p>
-          </div>
-          
-          <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <UsersUserCharacterCard
-              v-for="character in favoritedCharacters"
-              :key="character.id"
-              :character="character"
-              :show-creator="true"
-              @view="viewCharacter"
-              @start-chat="startChat"
-            />
+
+          <!-- Favorites Tab -->
+          <div v-else-if="activeTab === 'favorites'">
+            <div v-if="isLoadingFavorites" class="flex justify-center py-12">
+              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            </div>
+
+            <div v-else-if="!isPublicFavorites" class="text-center py-12">
+              <Icon name="heroicons:lock-closed" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.favoritesPrivate') }}</p>
+            </div>
+
+            <div v-else-if="!favoritedCharacters.length" class="text-center py-12">
+              <Icon name="heroicons:star" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noFavorites') }}</p>
+            </div>
+
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <CommonCharacterCard v-for="character in favoritedCharacters" :key="character.id" :character="character"
+                @view-character="viewCharacter" @start-chat="startChat" />
+            </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-    
+
     <!-- Follow Modal -->
-    <UsersUserFollowModal
-      v-if="showFollowModal"
-      :mode="followModalMode"
-      :users="followModalUsers"
-      :is-loading="isLoadingFollowModal"
-      :is-current-user="isCurrentUser"
-      :following-users="followingUsers"
-      @close="closeFollowModal"
-      @follow="followUser"
-      @unfollow="unfollowUser"
-    />
-    
+    <UsersUserFollowModal v-if="showFollowModal" :mode="followModalMode" :users="followModalUsers"
+      :is-loading="isLoadingFollowModal" :is-current-user="isCurrentUser" :following-users="followingUsers"
+      @close="closeFollowModal" @follow="followUser" @unfollow="unfollowUser" />
+
     <!-- Character Modal -->
-    <CommonCharacterModal
-      v-if="selectedCharacter"
-      :character="selectedCharacter"
-      @close="closeCharacterModal"
-      @start-chat="startChat"
-    />
+    <CommonCharacterModal v-if="selectedCharacter" :character="selectedCharacter" @close="closeCharacterModal"
+      @start-chat="startChat" />
   </div>
 </template>
 
@@ -193,7 +154,7 @@ onMounted(async () => {
   try {
     // In a real app, this would be an API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     user.value = {
       id: route.params.id,
       username: 'User' + route.params.id,
@@ -206,10 +167,10 @@ onMounted(async () => {
         following: 80
       }
     };
-    
+
     followers.value = user.value.stats.followers;
     following.value = user.value.stats.following;
-    
+
     // Load characters
     loadUserCharacters();
   } catch (error) {
@@ -231,12 +192,12 @@ watch(activeTab, (newTab) => {
 // Load user's characters
 async function loadUserCharacters() {
   if (isLoadingCharacters.value) return;
-  
+
   isLoadingCharacters.value = true;
   try {
     // In a real app, this would be an API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     // Mock data
     userCharacters.value = [
       {
@@ -290,12 +251,12 @@ async function loadUserCharacters() {
 // Load liked characters
 async function loadLikedCharacters() {
   if (isLoadingLikes.value) return;
-  
+
   isLoadingLikes.value = true;
   try {
     // In a real app, this would be an API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     // Mock data
     likedCharacters.value = [
       {
@@ -329,12 +290,12 @@ async function loadLikedCharacters() {
 // Load favorited characters
 async function loadFavoritedCharacters() {
   if (isLoadingFavorites.value) return;
-  
+
   isLoadingFavorites.value = true;
   try {
     // In a real app, this would be an API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     // Mock data
     favoritedCharacters.value = [
       {
@@ -371,11 +332,11 @@ async function toggleFollow() {
     authStore?.setAuthModalVisibility(true);
     return;
   }
-  
+
   try {
     // In a real app, this would be an API call
     await new Promise(resolve => setTimeout(resolve, 500));
-    
+
     isFollowing.value = !isFollowing.value;
     if (isFollowing.value) {
       followers.value++;
@@ -397,12 +358,12 @@ function handleStatsClick(type: 'followers' | 'following') {
 // Load users for follow modal
 async function loadFollowModalUsers() {
   if (isLoadingFollowModal.value) return;
-  
+
   isLoadingFollowModal.value = true;
   try {
     // In a real app, this would be an API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     // Mock data
     followModalUsers.value = Array.from({ length: 5 }, (_, i) => ({
       id: `user_${i + 1}`,
@@ -412,7 +373,7 @@ async function loadFollowModalUsers() {
         characters: Math.floor(Math.random() * 10) + 1
       }
     }));
-    
+
     // Mock following data
     followingUsers.value = followModalUsers.value
       .filter(() => Math.random() > 0.5)
@@ -430,11 +391,11 @@ async function followUser(userId: string) {
     authStore?.setAuthModalVisibility(true);
     return;
   }
-  
+
   try {
     // In a real app, this would be an API call
     await new Promise(resolve => setTimeout(resolve, 500));
-    
+
     followingUsers.value.push(userId);
   } catch (error) {
     console.error('Error following user:', error);
@@ -446,7 +407,7 @@ async function unfollowUser(userId: string) {
   try {
     // In a real app, this would be an API call
     await new Promise(resolve => setTimeout(resolve, 500));
-    
+
     followingUsers.value = followingUsers.value.filter(id => id !== userId);
   } catch (error) {
     console.error('Error unfollowing user:', error);
@@ -476,7 +437,7 @@ function startChat(character: CharacterCard) {
     authStore?.setAuthModalVisibility(true);
     return;
   }
-  
+
   // Start chat and navigate to chat page
   roleplayStore.startChat(character);
   navigateTo('/chats');
