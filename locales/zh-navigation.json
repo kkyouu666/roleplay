@@ -1,0 +1,14 @@
+{
+    "navigation": {
+        "main": "主导航",
+        "home": "首页",
+        "chats": "聊天",
+        "create": "创建",
+        "profile": "个人资料",
+        "settings": "设置",
+        "notifications": "通知",
+        "subscription": "订阅",
+        "pricing": "价格",
+        "bonus": "奖励"
+    }
+}

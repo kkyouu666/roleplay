@@ -12,7 +12,14 @@
           ? 'bg-indigo-600 text-white rounded-br-none' 
           : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-bl-none'"
       >
-        <p class="whitespace-pre-wrap break-words">{{ message.content }}</p>
+        <p class="whitespace-pre-wrap break-words">
+          {{ message.content }}
+          <!-- 光标效果，只在流式传输时显示 -->
+          <span 
+            v-if="message.sender === 'character' && isStreamingMessage(message.id)"
+            class="inline-block w-0.5 h-4 bg-gray-500 dark:bg-gray-400 animate-pulse ml-0.5"
+          ></span>
+        </p>
         <div 
           class="text-xs mt-1 text-right" 
           :class="message.sender === 'user' ? 'text-indigo-200' : 'text-gray-500 dark:text-gray-400'"
@@ -23,7 +30,7 @@
     </div>
     
     <!-- Typing indicator when waiting for character response -->
-    <div v-if="isTyping" class="flex justify-start">
+    <div v-if="isTypingCharacter && !hasStreamingMessage" class="flex justify-start">
       <div class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-lg rounded-bl-none px-4 py-2 text-sm">
         <div class="flex space-x-1 items-center">
           <div class="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full animate-pulse"></div>
@@ -37,8 +44,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, nextTick } from 'vue';
 import { format, isToday, isYesterday } from 'date-fns';
+import { computed, nextTick, ref, watch } from 'vue';
+import { useRoleplayStore } from '~/stores/roleplay';
 import type { ChatMessage } from '~/types';
 
 const props = defineProps<{
@@ -46,10 +54,31 @@ const props = defineProps<{
   isTyping: boolean;
 }>();
 
+const roleplayStore = useRoleplayStore();
 const messagesContainer = ref<HTMLElement | null>(null);
 
-// Scroll to bottom when messages change
-watch(() => props.messages, () => {
+// 计算属性：是否有正在流式传输的消息
+const hasStreamingMessage = computed(() => {
+  return roleplayStore.streamingMessageId !== null;
+});
+
+// 计算属性：AI是否正在输入
+const isTypingCharacter = computed(() => {
+  return roleplayStore.isTypingCharacter;
+});
+
+// 检查是否是正在流式传输的消息
+function isStreamingMessage(messageId: string): boolean {
+  return roleplayStore.streamingMessageId === messageId;
+}
+
+// Scroll to bottom when messages change or when streaming
+watch(() => [props.messages, roleplayStore.streamingMessageId], () => {
+  scrollToBottom();
+}, { deep: true });
+
+// 也监听消息内容的变化（用于流式更新）
+watch(() => props.messages.map(m => m.content), () => {
   scrollToBottom();
 }, { deep: true });
 

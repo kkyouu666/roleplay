@@ -9,46 +9,86 @@
 
         <button type="button"
           class="px-4 py-2 bg-red-600 dark:bg-red-700 text-white rounded-md hover:bg-red-700 dark:hover:bg-red-600"
-          @click="showDeleteConfirm = true">
-          {{ $t('settings.deleteAccount') }}
+          @click="showDeleteConfirm = true"
+          :disabled="isDeleting">
+          <span v-if="isDeleting" class="inline-flex items-center">
+            <div class="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2"></div>
+            {{ $t('common.processing') }}
+          </span>
+          <span v-else>{{ $t('settings.deleteAccount') }}</span>
         </button>
       </div>
     </div>
 
     <!-- Delete Account Confirmation Modal -->
-    <SettingsDeleteAccountModal v-if="showDeleteConfirm" v-model="form" @delete="deleteAccount"
+    <SettingsDeleteAccountModal 
+      v-if="showDeleteConfirm" 
+      v-model="form" 
+      :is-deleting="isDeleting"
+      @delete="deleteAccount"
       @close="showDeleteConfirm = false" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { reactive, ref } from 'vue';
+import { useApi } from '~/composables/useApi';
 import { useAuthStore } from '~/stores/auth';
 
 const authStore = useAuthStore();
+const api = useApi();
 const { t } = useI18n();
-const showDeleteConfirm = ref(false);
 
-const form = reactive({
-  password: ''
+const showDeleteConfirm = ref(false);
+const isDeleting = ref(false);
+
+let form = reactive({
+  password: '',
+  confirmText: ''
 });
 
 async function deleteAccount() {
+  if (!authStore?.user?.id) return;
+  
   if (!form.password) {
     alert(t('settings.passwordRequired'));
     return;
   }
 
-  // In a real app, you would call an API to delete the user's account
-  // For now, just log out the user
-  if (authStore) {
-    authStore.logout();
+  if (form.confirmText !== 'DELETE MY ACCOUNT') {
+    alert(t('settings.confirmDeleteText'));
+    return;
   }
 
-  // Reset confirmation modal
-  showDeleteConfirm.value = false;
+  isDeleting.value = true;
+  try {
+    const response = await api.deleteAccount({
+      userId: authStore.user.id,
+      password: form.password,
+      confirmText: form.confirmText
+    });
 
-  // Redirect to home page
-  navigateTo('/');
+    if (response.success) {
+      // 显示成功消息
+      alert(response.message || t('settings.accountDeleted'));
+      
+      // 登出用户
+      if (authStore) {
+        authStore.logout();
+      }
+
+      // 重定向到首页
+      await navigateTo('/');
+    }
+  } catch (error: any) {
+    console.error('Error deleting account:', error);
+    alert(error.data?.message || t('common.error'));
+  } finally {
+    isDeleting.value = false;
+    showDeleteConfirm.value = false;
+    // 重置表单
+    form.password = '';
+    form.confirmText = '';
+  }
 }
 </script>

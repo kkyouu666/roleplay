@@ -3,7 +3,7 @@
     <div class="p-6">
       <div class="flex flex-col sm:flex-row items-center">
         <img 
-          :src="user.profileImage || '/images/avatars/default.jpg'" 
+          :src="user.avatar || '/images/avatars/default.jpg'" 
           :alt="user.username" 
           class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg"
         />
@@ -12,7 +12,7 @@
           <p v-if="user.bio && isPublicBio" class="text-gray-600 dark:text-gray-400 mt-2">{{ user.bio }}</p>
           <div class="flex items-center justify-center sm:justify-start mt-2 text-gray-500 dark:text-gray-400 text-sm">
             <Icon name="heroicons:calendar" class="w-4 h-4 mr-1" />
-            <span>{{ $t('users.joinedOn') }} {{ formatDate(user.createdAt) }}</span>
+            <span>{{ $t('users.joinedOn') }} {{ formatDate(user.joinedAt) }}</span>
           </div>
         </div>
         <div v-if="user.id !== authStore?.user?.id" class="mt-4 sm:mt-0 flex items-center space-x-2">

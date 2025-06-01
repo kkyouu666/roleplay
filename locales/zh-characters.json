@@ -1,0 +1,16 @@
+{
+    "characters": {
+        "notFound": "未找到角色",
+        "notFoundDesc": "您要查找的角色不存在或已被删除。",
+        "comments": "评论",
+        "writeComment": "写评论...",
+        "submitComment": "提交",
+        "noComments": "还没有评论。来写第一条评论吧！",
+        "creator": "创建者",
+        "charactersCreated": "个角色已创建",
+        "publicMemory": "公开记忆",
+        "noMemories": "暂无公开记忆",
+        "chats": "次对话",
+        "viewDetails": "查看详情"
+    }
+}

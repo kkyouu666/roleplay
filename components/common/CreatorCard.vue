@@ -1,7 +1,7 @@
 <template>
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+    <div class="bg-gradient-to-br from-white/90 to-indigo-100/70 dark:from-gray-900/40 dark:to-indigo-950/50 backdrop-blur-sm border border-indigo-100/40 dark:border-indigo-800/20 rounded-lg shadow-lg overflow-hidden">
         <!-- Creator Header -->
-        <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+        <div class="p-4 border-b border-indigo-200/40 dark:border-indigo-700/30 bg-gradient-to-br from-white/40 to-indigo-100/50 dark:from-gray-900/30 dark:to-indigo-900/40">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <NuxtLink :to="`/users/${creator.id}`" class="flex-shrink-0">
@@ -34,7 +34,7 @@
         </div>
 
         <!-- Creator Bio -->
-        <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+        <div class="p-4 border-b border-indigo-200/40 dark:border-indigo-700/30 bg-gradient-to-br from-white/20 to-indigo-50/30 dark:from-gray-900/20 dark:to-indigo-900/30">
             <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
                 {{ creator.bio || $t('users.noBio') }}
             </p>

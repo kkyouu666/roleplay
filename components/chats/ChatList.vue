@@ -1,7 +1,7 @@
 <template>
   <div v-if="authStore?.isAuthenticated">
     <!-- Loading state for chat list -->
-    <div v-if="roleplayStore.isLoading && !roleplayStore.chats.length" class="p-6 flex flex-col items-center justify-center space-y-4">
+    <div v-if="roleplayStore.isLoadingChats && !roleplayStore.chats.length" class="p-6 flex flex-col items-center justify-center space-y-4">
       <div class="w-10 h-10 border-t-2 border-b-2 border-indigo-500 rounded-full animate-spin"></div>
       <p class="text-sm text-gray-500 dark:text-gray-400">{{ $t('common.loading') }}</p>
     </div>
@@ -24,6 +24,7 @@
         :is-active="roleplayStore.activeChat?.id === chat.id"
         :is-loading="isLoadingChat === chat.id"
         @select="loadChat"
+        @delete="deleteChat"
       />
     </div>
   </div>
@@ -50,20 +51,34 @@ const authStore = useAuthStore();
 const roleplayStore = useRoleplayStore();
 const isLoadingChat = ref<string | null>(null);
 
-function loadChat(chatId: string) {
-  // Set the loading state for this specific chat
+async function loadChat(chatId: string) {
+  // 设置此特定聊天的加载状态
   isLoadingChat.value = chatId;
   
-  // Call the loadChat function from the store
-  roleplayStore.loadChat(chatId);
-  
-  // Simulate loading delay (in real app, this would be handled by API response)
-  setTimeout(() => {
-    // Only clear loading state if this is still the active loading chat
+  try {
+    // 调用store中的loadChat方法
+    await roleplayStore.loadChat(chatId);
+  } catch (error) {
+    console.error('Error loading chat:', error);
+  } finally {
+    // 只有当这仍然是活跃的加载聊天时才清除加载状态
     if (isLoadingChat.value === chatId) {
       isLoadingChat.value = null;
     }
-  }, 1000);
+  }
+}
+
+async function deleteChat(chatId: string) {
+  if (!confirm('确定要删除这个聊天吗？此操作无法撤销。')) {
+    return;
+  }
+
+  try {
+    await roleplayStore.deleteChat(chatId);
+  } catch (error) {
+    console.error('Error deleting chat:', error);
+    alert('删除聊天失败，请稍后重试。');
+  }
 }
 
 function openAuthModal() {

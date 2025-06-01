@@ -2,7 +2,12 @@
   <div>
     <h2 class="text-xl font-bold mb-6 text-gray-900 dark:text-gray-100">{{ $t('settings.notifications') }}</h2>
 
-    <form @submit.prevent="saveNotificationSettings">
+    <div v-if="isLoading" class="text-center py-10">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
+    </div>
+
+    <form v-else @submit.prevent="saveNotificationSettings">
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <div>
@@ -73,8 +78,12 @@
       </div>
 
       <div class="mt-6 flex justify-end">
-        <button type="submit" class="btn btn-primary">
-          {{ $t('common.save') }}
+        <button type="submit" class="btn btn-primary" :disabled="isSaving">
+          <span v-if="isSaving" class="inline-flex items-center">
+            <div class="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2"></div>
+            {{ $t('common.saving') }}
+          </span>
+          <span v-else>{{ $t('common.save') }}</span>
         </button>
       </div>
     </form>
@@ -82,13 +91,20 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
+import { useApi } from '~/composables/useApi';
+import { useAuthStore } from '~/stores/auth';
 import { useNotificationStore } from '~/stores/notifications';
 
+const authStore = useAuthStore();
+const api = useApi();
 const notificationStore = useNotificationStore();
 const { t } = useI18n();
 
-const form = reactive<any>({
+const isLoading = ref(false);
+const isSaving = ref(false);
+
+const form = reactive({
   emailEnabled: true,
   pushEnabled: true,
   messageNotifications: true,
@@ -97,11 +113,68 @@ const form = reactive<any>({
   marketingNotifications: false
 });
 
-async function saveNotificationSettings() {
-  // Update notification settings in the store
-  notificationStore.updateNotificationSettings(form);
+// 在组件挂载时加载用户设置
+onMounted(async () => {
+  await loadNotificationSettings();
+});
 
-  // Show success message
-  alert(t('settings.notificationSettingsUpdated'));
+// 加载通知设置数据
+async function loadNotificationSettings() {
+  if (!authStore?.user?.id) return;
+  
+  isLoading.value = true;
+  try {
+    const response = await api.getUserSettings(authStore.user.id);
+    if (response.success) {
+      const { notifications } = response.settings;
+      form.emailEnabled = notifications.emailEnabled;
+      form.pushEnabled = notifications.pushEnabled;
+      form.messageNotifications = notifications.messageNotifications;
+      form.mentionNotifications = notifications.mentionNotifications;
+      form.updateNotifications = notifications.updateNotifications;
+      form.marketingNotifications = notifications.marketingNotifications;
+    }
+  } catch (error) {
+    console.error('Error loading notification settings:', error);
+  } finally {
+    isLoading.value = false;
+  }
+}
+
+async function saveNotificationSettings() {
+  if (!authStore?.user?.id) return;
+
+  isSaving.value = true;
+  try {
+    const response = await api.updateNotificationSettings({
+      userId: authStore.user.id,
+      emailEnabled: form.emailEnabled,
+      pushEnabled: form.pushEnabled,
+      messageNotifications: form.messageNotifications,
+      mentionNotifications: form.mentionNotifications,
+      updateNotifications: form.updateNotifications,
+      marketingNotifications: form.marketingNotifications
+    });
+
+    if (response.success) {
+      // 更新通知store中的设置 - 映射到store期望的字段
+      notificationStore.updateNotificationSettings({
+        emailNotifications: form.emailEnabled,
+        pushNotifications: form.pushEnabled,
+        likeNotifications: form.messageNotifications,
+        favoriteNotifications: form.mentionNotifications,
+        commentNotifications: form.updateNotifications,
+        replyNotifications: form.marketingNotifications
+      });
+      
+      // 显示成功消息
+      alert(response.message || t('settings.notificationSettingsUpdated'));
+    }
+  } catch (error: any) {
+    console.error('Error saving notification settings:', error);
+    alert(error.data?.message || t('common.error'));
+  } finally {
+    isSaving.value = false;
+  }
 }
 </script>

@@ -1,0 +1,1781 @@
+[
+    {
+        "id": "user_test",
+        "username": "TestUser",
+        "email": "test@example.com",
+        "avatar": "https://pic.re/image?d=111111",
+        "bio": "这是一个测试用户账号，用于开发和测试功能。我喜欢探索各种AI角色，特别是科幻和奇幻类型的角色。",
+        "gender": "male",
+        "birthday": "1990-01-01",
+        "stats": {
+            "characters": 3,
+            "followers": 120,
+            "following": 85,
+            "totalChats": 2580,
+            "totalFavorites": 456,
+            "totalMemories": 23
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2023-10-01T10:00:00Z",
+        "lastActive": "2024-01-15T09:30:00Z",
+        "badges": [
+            "user"
+        ],
+        "following": [
+            "user_001",
+            "user_002"
+        ],
+        "followers": [
+            "user_001",
+            "user_003"
+        ],
+        "likedCharacters": [
+            "char_001",
+            "char_002",
+            "char_005"
+        ],
+        "favoritedCharacters": [
+            "char_003",
+            "char_007",
+            "char_010"
+        ],
+        "likedMemories": [
+            "mem_001",
+            "mem_004",
+            "mem_007"
+        ],
+        "favoritedMemories": [
+            "mem_002",
+            "mem_005",
+            "mem_008"
+        ],
+        "subscription": "free",
+        "points": 1500,
+        "password": "Test123456"
+    },
+    {
+        "id": "user_001",
+        "username": "AI创作大师",
+        "email": "aimaster@example.com",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "bio": "专业AI角色设计师，擅长创造具有深度和复杂性的虚拟角色。有着丰富的文学背景和心理学知识，致力于为用户带来最真实的AI对话体验。",
+        "stats": {
+            "characters": 15,
+            "followers": 2340,
+            "following": 156,
+            "totalChats": 45678,
+            "totalFavorites": 8921,
+            "totalMemories": 234
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2023-01-15T10:30:00Z",
+        "lastActive": "2024-01-10T18:45:00Z",
+        "badges": [
+            "creator",
+            "verified"
+        ],
+        "following": [
+            "user_002",
+            "user_003",
+            "user_004"
+        ],
+        "followers": [
+            "user_002",
+            "user_005",
+            "user_006",
+            "user_007",
+            "user_008"
+        ],
+        "likedCharacters": [
+            "char_003",
+            "char_008",
+            "char_015"
+        ],
+        "favoritedCharacters": [
+            "char_004",
+            "char_012",
+            "char_020"
+        ],
+        "likedMemories": [
+            "mem_003",
+            "mem_008",
+            "mem_015"
+        ],
+        "favoritedMemories": [
+            "mem_001",
+            "mem_005",
+            "mem_012"
+        ]
+    },
+    {
+        "id": "user_002",
+        "username": "幻想世界构建者",
+        "email": "fantasy@example.com",
+        "avatar": "https://images.unsplash.com/photo-1494790108755-2616b332e234?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "bio": "热爱幻想文学的创作者，专门设计奇幻世界观的角色。每个角色都有完整的背景故事和世界观设定，追求沉浸式的角色扮演体验。",
+        "stats": {
+            "characters": 8,
+            "followers": 1245,
+            "following": 89,
+            "totalChats": 23456,
+            "totalFavorites": 4567,
+            "totalMemories": 156
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": false,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2023-03-20T14:20:00Z",
+        "lastActive": "2024-01-09T22:15:00Z",
+        "badges": [
+            "creator"
+        ],
+        "following": [
+            "user_001",
+            "user_003"
+        ],
+        "followers": [
+            "user_001",
+            "user_004",
+            "user_005"
+        ],
+        "likedCharacters": [
+            "char_001",
+            "char_007",
+            "char_013"
+        ],
+        "favoritedCharacters": [
+            "char_002",
+            "char_009",
+            "char_018"
+        ],
+        "likedMemories": [
+            "mem_002",
+            "mem_007",
+            "mem_013"
+        ],
+        "favoritedMemories": [
+            "mem_003",
+            "mem_008",
+            "mem_014"
+        ]
+    },
+    {
+        "id": "user_003",
+        "username": "二次元探索者",
+        "email": "anime@example.com",
+        "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "bio": "资深动漫爱好者，专注于创作经典动漫角色的AI版本。致力于还原角色的原有性格，同时为其增添更多互动可能性。",
+        "stats": {
+            "characters": 12,
+            "followers": 890,
+            "following": 234,
+            "totalChats": 34567,
+            "totalFavorites": 6789,
+            "totalMemories": 189
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": false
+        },
+        "joinedAt": "2023-02-10T09:45:00Z",
+        "lastActive": "2024-01-08T16:30:00Z",
+        "badges": [
+            "creator",
+            "active"
+        ],
+        "following": [
+            "user_001",
+            "user_002",
+            "user_004",
+            "user_005"
+        ],
+        "followers": [
+            "user_001",
+            "user_002",
+            "user_006"
+        ],
+        "likedCharacters": [
+            "char_005",
+            "char_010",
+            "char_016"
+        ],
+        "favoritedCharacters": [
+            "char_001",
+            "char_006",
+            "char_017"
+        ],
+        "likedMemories": [
+            "mem_004",
+            "mem_009",
+            "mem_016"
+        ],
+        "favoritedMemories": [
+            "mem_002",
+            "mem_006",
+            "mem_011"
+        ]
+    },
+    {
+        "id": "user_004",
+        "username": "故事编织师",
+        "email": "storyteller@example.com",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "bio": "专业编剧出身，擅长为AI角色编写引人入胜的背景故事和对话脚本。相信好的角色需要深层的情感内核和丰富的人生经历。",
+        "stats": {
+            "characters": 6,
+            "followers": 567,
+            "following": 78,
+            "totalChats": 18234,
+            "totalFavorites": 3456,
+            "totalMemories": 98
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": false,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2023-04-05T11:15:00Z",
+        "lastActive": "2024-01-07T20:45:00Z",
+        "badges": [
+            "creator"
+        ],
+        "following": [
+            "user_001",
+            "user_003"
+        ],
+        "followers": [
+            "user_002",
+            "user_003",
+            "user_005"
+        ],
+        "likedCharacters": [
+            "char_002",
+            "char_011",
+            "char_019"
+        ],
+        "favoritedCharacters": [
+            "char_003",
+            "char_014",
+            "char_021"
+        ],
+        "likedMemories": [
+            "mem_001",
+            "mem_010",
+            "mem_017"
+        ],
+        "favoritedMemories": [
+            "mem_004",
+            "mem_009",
+            "mem_015"
+        ]
+    },
+    {
+        "id": "user_005",
+        "username": "互动体验设计师",
+        "email": "interaction@example.com",
+        "avatar": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "bio": "UX设计师转行AI角色创作，专注于优化用户与AI角色的互动体验。每个角色都经过精心的用户体验设计，确保对话流畅自然。",
+        "stats": {
+            "characters": 4,
+            "followers": 432,
+            "following": 123,
+            "totalChats": 12345,
+            "totalFavorites": 2345,
+            "totalMemories": 67
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2023-05-18T13:30:00Z",
+        "lastActive": "2024-01-06T15:20:00Z",
+        "badges": [
+            "newcomer"
+        ],
+        "following": [
+            "user_001",
+            "user_002",
+            "user_003"
+        ],
+        "followers": [
+            "user_001",
+            "user_004"
+        ],
+        "likedCharacters": [
+            "char_007",
+            "char_012",
+            "char_022"
+        ],
+        "favoritedCharacters": [
+            "char_005",
+            "char_016",
+            "char_023"
+        ],
+        "likedMemories": [
+            "mem_005",
+            "mem_011",
+            "mem_018"
+        ],
+        "favoritedMemories": [
+            "mem_007",
+            "mem_013",
+            "mem_019"
+        ]
+    },
+    {
+        "id": "user_006",
+        "username": "心理学角色分析师",
+        "email": "psychology@example.com",
+        "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "bio": "心理学博士，专门研究AI角色的性格塑造和心理特征。致力于创造心理层面真实可信的虚拟角色，让每次对话都充满深度。",
+        "stats": {
+            "characters": 9,
+            "followers": 1089,
+            "following": 67,
+            "totalChats": 28934,
+            "totalFavorites": 5234,
+            "totalMemories": 145
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": false,
+            "isPublicFavorites": false,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2023-06-22T16:45:00Z",
+        "lastActive": "2024-01-05T12:10:00Z",
+        "badges": [
+            "expert",
+            "verified"
+        ],
+        "following": [
+            "user_001",
+            "user_003"
+        ],
+        "followers": [
+            "user_001",
+            "user_003",
+            "user_007",
+            "user_008"
+        ],
+        "likedCharacters": [
+            "char_006",
+            "char_013",
+            "char_024"
+        ],
+        "favoritedCharacters": [
+            "char_008",
+            "char_015",
+            "char_025"
+        ],
+        "likedMemories": [
+            "mem_006",
+            "mem_012",
+            "mem_020"
+        ],
+        "favoritedMemories": [
+            "mem_010",
+            "mem_016",
+            "mem_021"
+        ]
+    },
+    {
+        "id": "user_007",
+        "username": "科幻世界建造者",
+        "email": "scifi@example.com",
+        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "bio": "科幻小说作家，专门创作未来世界观的AI角色。每个角色都来自精心构建的科幻宇宙，具有独特的科技背景和文明设定。",
+        "stats": {
+            "characters": 7,
+            "followers": 723,
+            "following": 45,
+            "totalChats": 19876,
+            "totalFavorites": 3987,
+            "totalMemories": 112
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2023-07-14T08:20:00Z",
+        "lastActive": "2024-01-04T19:30:00Z",
+        "badges": [
+            "creator"
+        ],
+        "following": [
+            "user_006"
+        ],
+        "followers": [
+            "user_001",
+            "user_006"
+        ],
+        "likedCharacters": [
+            "char_009",
+            "char_014",
+            "char_026"
+        ],
+        "favoritedCharacters": [
+            "char_010",
+            "char_017",
+            "char_027"
+        ],
+        "likedMemories": [
+            "mem_007",
+            "mem_013",
+            "mem_021"
+        ],
+        "favoritedMemories": [
+            "mem_011",
+            "mem_017",
+            "mem_022"
+        ]
+    },
+    {
+        "id": "user_008",
+        "username": "历史角色复活者",
+        "email": "history@example.com",
+        "avatar": "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        "bio": "历史学教授，专门将历史人物转化为AI角色。通过大量历史资料研究，力求还原历史人物的真实性格和思维方式。",
+        "stats": {
+            "characters": 11,
+            "followers": 1456,
+            "following": 98,
+            "totalChats": 32145,
+            "totalFavorites": 6543,
+            "totalMemories": 203
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": false
+        },
+        "joinedAt": "2023-08-30T12:55:00Z",
+        "lastActive": "2024-01-03T14:40:00Z",
+        "badges": [
+            "creator",
+            "expert"
+        ],
+        "following": [
+            "user_001",
+            "user_006"
+        ],
+        "followers": [
+            "user_001",
+            "user_006"
+        ],
+        "likedCharacters": [
+            "char_011",
+            "char_018",
+            "char_028"
+        ],
+        "favoritedCharacters": [
+            "char_012",
+            "char_019",
+            "char_029"
+        ],
+        "likedMemories": [
+            "mem_008",
+            "mem_014",
+            "mem_022"
+        ],
+        "favoritedMemories": [
+            "mem_012",
+            "mem_018",
+            "mem_023"
+        ]
+    },
+    {
+        "id": "user_101",
+        "username": "CharacterArtist",
+        "email": "characterartist@example.com",
+        "avatar": "https://pic.re/image?d=101",
+        "bio": "专业角色设计师，致力于创造富有个性和深度的AI角色。擅长科幻和奇幻题材，让每个角色都有独特的故事和灵魂。",
+        "stats": {
+            "characters": 25,
+            "followers": 1280,
+            "following": 45,
+            "totalChats": 15000,
+            "totalFavorites": 3200,
+            "totalMemories": 85,
+            "rating": 4.9
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-01-15T08:30:00Z",
+        "lastActive": "2024-01-16T10:00:00Z",
+        "badges": [
+            "creator",
+            "verified"
+        ],
+        "following": [
+            "user_102",
+            "user_103",
+            "user_107"
+        ],
+        "followers": [
+            "user_102",
+            "user_104",
+            "user_108",
+            "user_115"
+        ],
+        "likedCharacters": [
+            "char_001",
+            "char_015",
+            "char_023"
+        ],
+        "favoritedCharacters": [
+            "char_005",
+            "char_018",
+            "char_025"
+        ],
+        "likedMemories": [
+            "mem_002",
+            "mem_012",
+            "mem_020"
+        ],
+        "favoritedMemories": [
+            "mem_008",
+            "mem_015",
+            "mem_022"
+        ],
+        "subscription": "premium",
+        "points": 5000,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_102",
+        "username": "StoryWeaver",
+        "email": "storyweaver@example.com",
+        "avatar": "https://pic.re/image?d=102",
+        "bio": "热爱讲故事的创作者，专注于打造有深度的对话体验。每个角色都是一个独特的世界，等待被探索。",
+        "stats": {
+            "characters": 18,
+            "followers": 950,
+            "following": 32,
+            "totalChats": 12500,
+            "totalFavorites": 2100,
+            "totalMemories": 67,
+            "rating": 4.8
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-01-20T10:15:00Z",
+        "lastActive": "2024-01-16T14:30:00Z",
+        "badges": [
+            "creator"
+        ],
+        "following": [
+            "user_101",
+            "user_107",
+            "user_109"
+        ],
+        "followers": [
+            "user_101",
+            "user_103",
+            "user_105"
+        ],
+        "likedCharacters": [
+            "char_003",
+            "char_012",
+            "char_019"
+        ],
+        "favoritedCharacters": [
+            "char_007",
+            "char_014",
+            "char_021"
+        ],
+        "likedMemories": [
+            "mem_001",
+            "mem_009",
+            "mem_017"
+        ],
+        "favoritedMemories": [
+            "mem_004",
+            "mem_011",
+            "mem_019"
+        ],
+        "subscription": "pro",
+        "points": 3800,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_103",
+        "username": "AIInnovator",
+        "email": "aiinnovator@example.com",
+        "avatar": "https://pic.re/image?d=103",
+        "bio": "AI研究者和创新者，致力于将最新的AI技术应用到角色创作中。让AI角色更智能，更有温度。",
+        "stats": {
+            "characters": 15,
+            "followers": 820,
+            "following": 28,
+            "totalChats": 11200,
+            "totalFavorites": 1850,
+            "totalMemories": 52,
+            "rating": 4.7
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-01-25T14:45:00Z",
+        "lastActive": "2024-01-16T16:45:00Z",
+        "badges": [
+            "creator",
+            "expert"
+        ],
+        "following": [
+            "user_101",
+            "user_102",
+            "user_113"
+        ],
+        "followers": [
+            "user_102",
+            "user_104",
+            "user_106"
+        ],
+        "likedCharacters": [
+            "char_002",
+            "char_016",
+            "char_024"
+        ],
+        "favoritedCharacters": [
+            "char_008",
+            "char_017",
+            "char_026"
+        ],
+        "likedMemories": [
+            "mem_003",
+            "mem_010",
+            "mem_018"
+        ],
+        "favoritedMemories": [
+            "mem_006",
+            "mem_013",
+            "mem_021"
+        ],
+        "subscription": "premium",
+        "points": 4200,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_104",
+        "username": "FantasyMaster",
+        "email": "fantasymaster@example.com",
+        "avatar": "https://pic.re/image?d=104",
+        "bio": "奇幻世界的缔造者，创造出充满魔法和冒险的角色。让每次对话都是一次奇妙的旅程。",
+        "stats": {
+            "characters": 20,
+            "followers": 1100,
+            "following": 38,
+            "totalChats": 13800,
+            "totalFavorites": 2450,
+            "totalMemories": 73,
+            "rating": 4.8
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-02-01T09:20:00Z",
+        "lastActive": "2024-01-16T12:20:00Z",
+        "badges": [
+            "creator",
+            "popular"
+        ],
+        "following": [
+            "user_103",
+            "user_109",
+            "user_115"
+        ],
+        "followers": [
+            "user_101",
+            "user_105",
+            "user_107",
+            "user_111"
+        ],
+        "likedCharacters": [
+            "char_004",
+            "char_013",
+            "char_020"
+        ],
+        "favoritedCharacters": [
+            "char_009",
+            "char_015",
+            "char_027"
+        ],
+        "likedMemories": [
+            "mem_005",
+            "mem_014",
+            "mem_023"
+        ],
+        "favoritedMemories": [
+            "mem_007",
+            "mem_016",
+            "mem_024"
+        ],
+        "subscription": "premium",
+        "points": 4500,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_105",
+        "username": "SciFiCreator",
+        "email": "scificreator@example.com",
+        "avatar": "https://pic.re/image?d=105",
+        "bio": "科幻题材专家，创造未来世界的AI角色。探索人工智能、太空探索和未来科技的无限可能。",
+        "stats": {
+            "characters": 16,
+            "followers": 780,
+            "following": 25,
+            "totalChats": 10800,
+            "totalFavorites": 1720,
+            "totalMemories": 48,
+            "rating": 4.6
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-02-05T11:30:00Z",
+        "lastActive": "2024-01-16T09:15:00Z",
+        "badges": [
+            "creator"
+        ],
+        "following": [
+            "user_103",
+            "user_113",
+            "user_119"
+        ],
+        "followers": [
+            "user_102",
+            "user_104",
+            "user_108"
+        ],
+        "likedCharacters": [
+            "char_006",
+            "char_022",
+            "char_028"
+        ],
+        "favoritedCharacters": [
+            "char_010",
+            "char_019",
+            "char_029"
+        ],
+        "likedMemories": [
+            "mem_008",
+            "mem_015",
+            "mem_025"
+        ],
+        "favoritedMemories": [
+            "mem_012",
+            "mem_018",
+            "mem_026"
+        ],
+        "subscription": "pro",
+        "points": 3600,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_106",
+        "username": "HistoricalFiction",
+        "email": "historicalfiction@example.com",
+        "avatar": "https://pic.re/image?d=106",
+        "bio": "历史小说作家，专注于创造具有历史背景的角色。通过AI角色让历史变得生动有趣。",
+        "stats": {
+            "characters": 22,
+            "followers": 930,
+            "following": 34,
+            "totalChats": 12200,
+            "totalFavorites": 2080,
+            "totalMemories": 65,
+            "rating": 4.7
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-02-10T13:45:00Z",
+        "lastActive": "2024-01-16T15:30:00Z",
+        "badges": [
+            "creator",
+            "educational"
+        ],
+        "following": [
+            "user_103",
+            "user_108",
+            "user_114"
+        ],
+        "followers": [
+            "user_105",
+            "user_109",
+            "user_112"
+        ],
+        "likedCharacters": [
+            "char_011",
+            "char_018",
+            "char_030"
+        ],
+        "favoritedCharacters": [
+            "char_013",
+            "char_020",
+            "char_031"
+        ],
+        "likedMemories": [
+            "mem_009",
+            "mem_016",
+            "mem_027"
+        ],
+        "favoritedMemories": [
+            "mem_011",
+            "mem_019",
+            "mem_028"
+        ],
+        "subscription": "premium",
+        "points": 4100,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_107",
+        "username": "AnimeArtist",
+        "email": "animeartist@example.com",
+        "avatar": "https://pic.re/image?d=107",
+        "bio": "动漫角色设计师，擅长创造富有日本动漫风格的AI角色。让二次元角色栩栩如生。",
+        "stats": {
+            "characters": 30,
+            "followers": 1500,
+            "following": 52,
+            "totalChats": 18000,
+            "totalFavorites": 3600,
+            "totalMemories": 95,
+            "rating": 4.9
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-02-15T15:20:00Z",
+        "lastActive": "2024-01-16T17:45:00Z",
+        "badges": [
+            "creator",
+            "verified",
+            "popular"
+        ],
+        "following": [
+            "user_101",
+            "user_102",
+            "user_116",
+            "user_117"
+        ],
+        "followers": [
+            "user_101",
+            "user_104",
+            "user_108",
+            "user_111",
+            "user_116"
+        ],
+        "likedCharacters": [
+            "char_001",
+            "char_014",
+            "char_025"
+        ],
+        "favoritedCharacters": [
+            "char_003",
+            "char_016",
+            "char_032"
+        ],
+        "likedMemories": [
+            "mem_002",
+            "mem_013",
+            "mem_024"
+        ],
+        "favoritedMemories": [
+            "mem_005",
+            "mem_017",
+            "mem_029"
+        ],
+        "subscription": "premium",
+        "points": 6000,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_108",
+        "username": "GameDesigner",
+        "email": "gamedesigner@example.com",
+        "avatar": "https://pic.re/image?d=108",
+        "bio": "游戏设计师，将游戏角色的魅力带入AI对话。创造互动性强、个性鲜明的角色。",
+        "stats": {
+            "characters": 24,
+            "followers": 1200,
+            "following": 41,
+            "totalChats": 14400,
+            "totalFavorites": 2880,
+            "totalMemories": 78,
+            "rating": 4.8
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-02-20T16:40:00Z",
+        "lastActive": "2024-01-16T13:25:00Z",
+        "badges": [
+            "creator",
+            "gaming"
+        ],
+        "following": [
+            "user_105",
+            "user_107",
+            "user_113",
+            "user_118"
+        ],
+        "followers": [
+            "user_101",
+            "user_106",
+            "user_110",
+            "user_115"
+        ],
+        "likedCharacters": [
+            "char_007",
+            "char_017",
+            "char_026"
+        ],
+        "favoritedCharacters": [
+            "char_012",
+            "char_021",
+            "char_033"
+        ],
+        "likedMemories": [
+            "mem_006",
+            "mem_014",
+            "mem_026"
+        ],
+        "favoritedMemories": [
+            "mem_009",
+            "mem_020",
+            "mem_030"
+        ],
+        "subscription": "premium",
+        "points": 4800,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_109",
+        "username": "MythologyExpert",
+        "email": "mythologyexpert@example.com",
+        "avatar": "https://pic.re/image?d=109",
+        "bio": "神话学专家，致力于将各国神话中的人物重新诠释。让古老的神话在AI时代焕发新生。",
+        "stats": {
+            "characters": 28,
+            "followers": 1350,
+            "following": 47,
+            "totalChats": 16800,
+            "totalFavorites": 3240,
+            "totalMemories": 89,
+            "rating": 4.8
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-02-25T09:15:00Z",
+        "lastActive": "2024-01-16T11:40:00Z",
+        "badges": [
+            "creator",
+            "expert",
+            "educational"
+        ],
+        "following": [
+            "user_104",
+            "user_106",
+            "user_115",
+            "user_120"
+        ],
+        "followers": [
+            "user_102",
+            "user_110",
+            "user_114",
+            "user_120"
+        ],
+        "likedCharacters": [
+            "char_008",
+            "char_023",
+            "char_034"
+        ],
+        "favoritedCharacters": [
+            "char_015",
+            "char_024",
+            "char_035"
+        ],
+        "likedMemories": [
+            "mem_010",
+            "mem_021",
+            "mem_031"
+        ],
+        "favoritedMemories": [
+            "mem_013",
+            "mem_025",
+            "mem_032"
+        ],
+        "subscription": "premium",
+        "points": 5400,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_110",
+        "username": "RomanceWriter",
+        "email": "romancewriter@example.com",
+        "avatar": "https://pic.re/image?d=110",
+        "bio": "浪漫小说作家，创造富有情感深度的角色。让每一次对话都充满温暖和感动。",
+        "stats": {
+            "characters": 19,
+            "followers": 890,
+            "following": 33,
+            "totalChats": 11400,
+            "totalFavorites": 2136,
+            "totalMemories": 61,
+            "rating": 4.7
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-03-01T11:30:00Z",
+        "lastActive": "2024-01-16T14:15:00Z",
+        "badges": [
+            "creator",
+            "romance"
+        ],
+        "following": [
+            "user_108",
+            "user_109",
+            "user_112",
+            "user_116"
+        ],
+        "followers": [
+            "user_109",
+            "user_112",
+            "user_116"
+        ],
+        "likedCharacters": [
+            "char_009",
+            "char_019",
+            "char_027"
+        ],
+        "favoritedCharacters": [
+            "char_011",
+            "char_022",
+            "char_036"
+        ],
+        "likedMemories": [
+            "mem_007",
+            "mem_017",
+            "mem_028"
+        ],
+        "favoritedMemories": [
+            "mem_012",
+            "mem_022",
+            "mem_033"
+        ],
+        "subscription": "pro",
+        "points": 3900,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_111",
+        "username": "HorrorMaster",
+        "email": "horrormaster@example.com",
+        "avatar": "https://pic.re/image?d=111",
+        "bio": "恐怖故事创作者，擅长营造紧张氛围和心理恐怖。创造令人难忘的惊悚体验。",
+        "stats": {
+            "characters": 17,
+            "followers": 760,
+            "following": 29,
+            "totalChats": 10200,
+            "totalFavorites": 1824,
+            "totalMemories": 54,
+            "rating": 4.6
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-03-05T14:20:00Z",
+        "lastActive": "2024-01-16T18:30:00Z",
+        "badges": [
+            "creator",
+            "horror"
+        ],
+        "following": [
+            "user_104",
+            "user_107",
+            "user_119"
+        ],
+        "followers": [
+            "user_107",
+            "user_112",
+            "user_119"
+        ],
+        "likedCharacters": [
+            "char_010",
+            "char_020",
+            "char_029"
+        ],
+        "favoritedCharacters": [
+            "char_014",
+            "char_025",
+            "char_037"
+        ],
+        "likedMemories": [
+            "mem_008",
+            "mem_018",
+            "mem_029"
+        ],
+        "favoritedMemories": [
+            "mem_015",
+            "mem_023",
+            "mem_034"
+        ],
+        "subscription": "pro",
+        "points": 3400,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_112",
+        "username": "ComedyWriter",
+        "email": "comedywriter@example.com",
+        "avatar": "https://pic.re/image?d=112",
+        "bio": "喜剧角色创作者，让AI角色充满幽默感和欢乐。为用户带来轻松愉快的对话体验。",
+        "stats": {
+            "characters": 21,
+            "followers": 980,
+            "following": 36,
+            "totalChats": 12600,
+            "totalFavorites": 2352,
+            "totalMemories": 69,
+            "rating": 4.7
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-03-10T16:45:00Z",
+        "lastActive": "2024-01-16T16:20:00Z",
+        "badges": [
+            "creator",
+            "comedy"
+        ],
+        "following": [
+            "user_106",
+            "user_110",
+            "user_111",
+            "user_116"
+        ],
+        "followers": [
+            "user_110",
+            "user_111",
+            "user_113",
+            "user_116"
+        ],
+        "likedCharacters": [
+            "char_005",
+            "char_016",
+            "char_031"
+        ],
+        "favoritedCharacters": [
+            "char_018",
+            "char_026",
+            "char_038"
+        ],
+        "likedMemories": [
+            "mem_011",
+            "mem_019",
+            "mem_030"
+        ],
+        "favoritedMemories": [
+            "mem_014",
+            "mem_024",
+            "mem_035"
+        ],
+        "subscription": "premium",
+        "points": 4300,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_113",
+        "username": "CyberPunkArtist",
+        "email": "cyberpunkartist@example.com",
+        "avatar": "https://pic.re/image?d=113",
+        "bio": "赛博朋克风格的角色设计师，创造未来都市中的独特角色。融合高科技与低生活的反差美。",
+        "stats": {
+            "characters": 23,
+            "followers": 1150,
+            "following": 40,
+            "totalChats": 13800,
+            "totalFavorites": 2760,
+            "totalMemories": 76,
+            "rating": 4.8
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-03-15T10:30:00Z",
+        "lastActive": "2024-01-16T19:10:00Z",
+        "badges": [
+            "creator",
+            "cyberpunk"
+        ],
+        "following": [
+            "user_103",
+            "user_105",
+            "user_108",
+            "user_118"
+        ],
+        "followers": [
+            "user_105",
+            "user_108",
+            "user_112",
+            "user_118"
+        ],
+        "likedCharacters": [
+            "char_012",
+            "char_021",
+            "char_032"
+        ],
+        "favoritedCharacters": [
+            "char_017",
+            "char_028",
+            "char_039"
+        ],
+        "likedMemories": [
+            "mem_012",
+            "mem_020",
+            "mem_031"
+        ],
+        "favoritedMemories": [
+            "mem_016",
+            "mem_026",
+            "mem_036"
+        ],
+        "subscription": "premium",
+        "points": 4600,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_114",
+        "username": "DetectiveNovelist",
+        "email": "detectivenovelist@example.com",
+        "avatar": "https://pic.re/image?d=114",
+        "bio": "推理小说作家，创造智慧与洞察力兼具的侦探角色。让每次对话都充满悬疑和推理的乐趣。",
+        "stats": {
+            "characters": 16,
+            "followers": 850,
+            "following": 31,
+            "totalChats": 9600,
+            "totalFavorites": 1700,
+            "totalMemories": 58,
+            "rating": 4.7
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-03-20T13:15:00Z",
+        "lastActive": "2024-01-16T08:45:00Z",
+        "badges": [
+            "creator",
+            "mystery"
+        ],
+        "following": [
+            "user_106",
+            "user_109",
+            "user_111"
+        ],
+        "followers": [
+            "user_106",
+            "user_109",
+            "user_115"
+        ],
+        "likedCharacters": [
+            "char_013",
+            "char_024",
+            "char_033"
+        ],
+        "favoritedCharacters": [
+            "char_019",
+            "char_030",
+            "char_040"
+        ],
+        "likedMemories": [
+            "mem_009",
+            "mem_021",
+            "mem_032"
+        ],
+        "favoritedMemories": [
+            "mem_017",
+            "mem_027",
+            "mem_037"
+        ],
+        "subscription": "pro",
+        "points": 3700,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_115",
+        "username": "FantasyArtist",
+        "email": "fantasyartist@example.com",
+        "avatar": "https://pic.re/image?d=115",
+        "bio": "奇幻艺术家，专注于创造独特的魔法世界和角色。让想象力在AI中自由翱翔。",
+        "stats": {
+            "characters": 26,
+            "followers": 1250,
+            "following": 43,
+            "totalChats": 15600,
+            "totalFavorites": 3120,
+            "totalMemories": 82,
+            "rating": 4.8
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-03-25T15:40:00Z",
+        "lastActive": "2024-01-16T20:15:00Z",
+        "badges": [
+            "creator",
+            "fantasy",
+            "popular"
+        ],
+        "following": [
+            "user_104",
+            "user_109",
+            "user_114",
+            "user_120"
+        ],
+        "followers": [
+            "user_101",
+            "user_104",
+            "user_108",
+            "user_114",
+            "user_120"
+        ],
+        "likedCharacters": [
+            "char_015",
+            "char_025",
+            "char_034"
+        ],
+        "favoritedCharacters": [
+            "char_020",
+            "char_031",
+            "char_041"
+        ],
+        "likedMemories": [
+            "mem_013",
+            "mem_022",
+            "mem_033"
+        ],
+        "favoritedMemories": [
+            "mem_018",
+            "mem_028",
+            "mem_038"
+        ],
+        "subscription": "premium",
+        "points": 5000,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_116",
+        "username": "VirtualIdol",
+        "email": "virtualidol@example.com",
+        "avatar": "https://pic.re/image?d=116",
+        "bio": "虚拟偶像制作人，打造充满活力和个性的虚拟角色。让AI成为粉丝们的知心朋友。",
+        "stats": {
+            "characters": 18,
+            "followers": 920,
+            "following": 35,
+            "totalChats": 10800,
+            "totalFavorites": 2016,
+            "totalMemories": 63,
+            "rating": 4.7
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-03-30T11:20:00Z",
+        "lastActive": "2024-01-16T21:30:00Z",
+        "badges": [
+            "creator",
+            "idol"
+        ],
+        "following": [
+            "user_107",
+            "user_110",
+            "user_112"
+        ],
+        "followers": [
+            "user_107",
+            "user_110",
+            "user_112",
+            "user_117"
+        ],
+        "likedCharacters": [
+            "char_002",
+            "char_018",
+            "char_035"
+        ],
+        "favoritedCharacters": [
+            "char_006",
+            "char_023",
+            "char_042"
+        ],
+        "likedMemories": [
+            "mem_004",
+            "mem_016",
+            "mem_034"
+        ],
+        "favoritedMemories": [
+            "mem_010",
+            "mem_025",
+            "mem_039"
+        ],
+        "subscription": "premium",
+        "points": 4000,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_117",
+        "username": "MartialArtsWriter",
+        "email": "martialarts@example.com",
+        "avatar": "https://pic.re/image?d=117",
+        "bio": "武侠小说创作者，将传统武侠精神注入AI角色。让江湖侠义在数字世界中延续。",
+        "stats": {
+            "characters": 24,
+            "followers": 1180,
+            "following": 42,
+            "totalChats": 14400,
+            "totalFavorites": 2832,
+            "totalMemories": 79,
+            "rating": 4.8
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-04-01T14:30:00Z",
+        "lastActive": "2024-01-16T07:20:00Z",
+        "badges": [
+            "creator",
+            "martial-arts"
+        ],
+        "following": [
+            "user_107",
+            "user_116",
+            "user_118"
+        ],
+        "followers": [
+            "user_107",
+            "user_116",
+            "user_118",
+            "user_120"
+        ],
+        "likedCharacters": [
+            "char_001",
+            "char_017",
+            "char_036"
+        ],
+        "favoritedCharacters": [
+            "char_004",
+            "char_024",
+            "char_043"
+        ],
+        "likedMemories": [
+            "mem_003",
+            "mem_015",
+            "mem_035"
+        ],
+        "favoritedMemories": [
+            "mem_008",
+            "mem_026",
+            "mem_040"
+        ],
+        "subscription": "premium",
+        "points": 4700,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_118",
+        "username": "SteampunkDesigner",
+        "email": "steampunk@example.com",
+        "avatar": "https://pic.re/image?d=118",
+        "bio": "蒸汽朋克风格设计师，创造充满复古未来感的角色。融合维多利亚时代与科技元素。",
+        "stats": {
+            "characters": 20,
+            "followers": 950,
+            "following": 37,
+            "totalChats": 12000,
+            "totalFavorites": 2280,
+            "totalMemories": 66,
+            "rating": 4.7
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-04-05T16:15:00Z",
+        "lastActive": "2024-01-16T22:45:00Z",
+        "badges": [
+            "creator",
+            "steampunk"
+        ],
+        "following": [
+            "user_108",
+            "user_113",
+            "user_117"
+        ],
+        "followers": [
+            "user_108",
+            "user_113",
+            "user_117",
+            "user_119"
+        ],
+        "likedCharacters": [
+            "char_007",
+            "char_026",
+            "char_037"
+        ],
+        "favoritedCharacters": [
+            "char_013",
+            "char_029",
+            "char_044"
+        ],
+        "likedMemories": [
+            "mem_006",
+            "mem_023",
+            "mem_036"
+        ],
+        "favoritedMemories": [
+            "mem_012",
+            "mem_029",
+            "mem_041"
+        ],
+        "subscription": "pro",
+        "points": 4200,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_119",
+        "username": "PostApocalyptic",
+        "email": "postapocalyptic@example.com",
+        "avatar": "https://pic.re/image?d=119",
+        "bio": "末世题材专家，创造在废土世界中生存的独特角色。探索人性在极限环境下的表现。",
+        "stats": {
+            "characters": 19,
+            "followers": 880,
+            "following": 32,
+            "totalChats": 11400,
+            "totalFavorites": 2052,
+            "totalMemories": 62,
+            "rating": 4.6
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-04-10T10:45:00Z",
+        "lastActive": "2024-01-16T06:30:00Z",
+        "badges": [
+            "creator",
+            "apocalyptic"
+        ],
+        "following": [
+            "user_105",
+            "user_111",
+            "user_118"
+        ],
+        "followers": [
+            "user_111",
+            "user_118",
+            "user_120"
+        ],
+        "likedCharacters": [
+            "char_003",
+            "char_019",
+            "char_038"
+        ],
+        "favoritedCharacters": [
+            "char_008",
+            "char_027",
+            "char_045"
+        ],
+        "likedMemories": [
+            "mem_005",
+            "mem_020",
+            "mem_037"
+        ],
+        "favoritedMemories": [
+            "mem_011",
+            "mem_030",
+            "mem_042"
+        ],
+        "subscription": "pro",
+        "points": 3800,
+        "password": "Creator123456"
+    },
+    {
+        "id": "user_120",
+        "username": "MythicalBeings",
+        "email": "mythical@example.com",
+        "avatar": "https://pic.re/image?d=120",
+        "bio": "神话生物设计师，将世界各地的神话传说转化为生动的AI角色。让古老的传说焕发新生。",
+        "stats": {
+            "characters": 27,
+            "followers": 1320,
+            "following": 45,
+            "totalChats": 16200,
+            "totalFavorites": 3168,
+            "totalMemories": 87,
+            "rating": 4.8
+        },
+        "settings": {
+            "isPublicProfile": true,
+            "isPublicBio": true,
+            "isPublicLikes": true,
+            "isPublicFavorites": true,
+            "isPublicMemories": true
+        },
+        "joinedAt": "2024-04-15T13:20:00Z",
+        "lastActive": "2024-01-16T23:15:00Z",
+        "badges": [
+            "creator",
+            "mythology",
+            "popular"
+        ],
+        "following": [
+            "user_109",
+            "user_115",
+            "user_117",
+            "user_119"
+        ],
+        "followers": [
+            "user_109",
+            "user_115",
+            "user_117",
+            "user_119"
+        ],
+        "likedCharacters": [
+            "char_009",
+            "char_022",
+            "char_039"
+        ],
+        "favoritedCharacters": [
+            "char_016",
+            "char_032",
+            "char_046"
+        ],
+        "likedMemories": [
+            "mem_007",
+            "mem_024",
+            "mem_038"
+        ],
+        "favoritedMemories": [
+            "mem_013",
+            "mem_031",
+            "mem_043"
+        ],
+        "subscription": "premium",
+        "points": 5300,
+        "password": "Creator123456"
+    }
+]

@@ -1,36 +1,106 @@
 <template>
-  <div class="container py-4">
-    <!-- Loading State -->
-    <div v-if="isLoading" class="flex justify-center py-12">
-      <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
-    </div>
-
+  <div class="container py-6">
     <!-- Error State -->
-    <div v-else-if="!user && !isLoading" class="text-center py-12">
-      <Icon name="heroicons:exclamation-circle" class="w-16 h-16 mx-auto text-gray-400 mb-4" />
-      <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">{{ $t('users.notFound') }}</h2>
-      <p class="text-gray-600 dark:text-gray-400 mb-6">{{ $t('users.notFoundDesc') }}</p>
-      <NuxtLink to="/" class="btn btn-primary">
-        {{ $t('common.back') }}
-      </NuxtLink>
+    <div v-if="!user && !isLoading && loadAttempted" class="text-center py-12">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 max-w-md mx-auto">
+        <Icon name="heroicons:exclamation-circle" class="w-16 h-16 mx-auto text-gray-400 mb-4" />
+        <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">{{ $t('users.notFound') }}</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">{{ $t('users.notFoundDesc') }}</p>
+        <NuxtLink to="/" class="btn btn-primary">
+          {{ $t('common.back') }}
+        </NuxtLink>
+      </div>
     </div>
 
     <div v-else>
       <!-- User Header -->
-      <UsersUserHeader :user="user" :is-following="isFollowing" :followers="followers" :following="following"
-        :is-public-bio="isPublicBio" @toggle-follow="toggleFollow" @select-tab="activeTab = $event"
-        @handle-stats-click="handleStatsClick" />
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mb-6">
+        <div v-if="!user && isLoading" class="p-6 text-center py-10">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+          <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
+        </div>
+        <div v-else-if="user" class="p-6">
+          <div class="flex flex-col sm:flex-row items-center">
+            <img :src="user?.avatar || '/images/avatars/default.jpg'" :alt="user?.username || ''"
+              class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg" />
+            <div class="mt-4 sm:mt-0 sm:ml-6 text-center sm:text-left flex-1">
+              <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ user?.username || '' }}</h1>
+              <p v-if="user?.bio && isPublicBio" class="text-gray-600 dark:text-gray-400 mt-2">{{ user.bio }}</p>
+              <div
+                class="flex items-center justify-center sm:justify-start mt-2 text-gray-500 dark:text-gray-400 text-sm">
+                <div class="flex items-center space-x-4">
+                  <div class="flex items-center cursor-pointer" @click="mainTabActive = 'characters'; subTabActive = 'created'">
+                    <span class="font-medium text-gray-700 dark:text-gray-300">{{ userStats.characters }}</span>
+                    <span class="ml-1 text-gray-500 dark:text-gray-400">{{ $t('users.characters') }}</span>
+                  </div>
+                  <div class="flex items-center cursor-pointer" @click="handleStatsClick('followers')">
+                    <span class="font-medium text-gray-700 dark:text-gray-300">{{ userStats.followers }}</span>
+                    <span class="ml-1 text-gray-500 dark:text-gray-400">{{ $t('users.followers') }}</span>
+                  </div>
+                  <div class="flex items-center cursor-pointer" @click="handleStatsClick('following')">
+                    <span class="font-medium text-gray-700 dark:text-gray-300">{{ userStats.following }}</span>
+                    <span class="ml-1 text-gray-500 dark:text-gray-400">{{ $t('users.following') }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-if="!isCurrentUser" class="mt-4 sm:mt-0 flex items-center space-x-2">
+              <button 
+                @click="toggleFollow"
+                class="px-4 py-2 rounded-md border text-sm font-medium"
+                :class="isFollowing ? 
+                  'bg-indigo-50 dark:bg-indigo-900 border-indigo-300 dark:border-indigo-700 text-indigo-700 dark:text-indigo-300' : 
+                  'bg-indigo-600 dark:bg-indigo-700 border-indigo-600 dark:border-indigo-700 text-white hover:bg-indigo-700 dark:hover:bg-indigo-600'"
+              >
+                <span v-if="isFollowing">{{ $t('users.following') }}</span>
+                <span v-else>{{ $t('users.follow') }}</span>
+              </button>
+              <button @click="showReportModal = true" class="p-2 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-md">
+                <Icon name="heroicons:flag" class="w-5 h-5" />
+              </button>
+            </div>
+            <div v-else class="mt-4 sm:mt-0">
+              <NuxtLink to="/profile" class="btn btn-primary">
+                {{ $t('users.editProfile') }}
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- User Tabs -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-        <UsersUserTabs v-model:active-tab="activeTab" :tabs="tabs" />
+      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden">
+        <!-- Main Tabs: Characters / Memories -->
+        <div class="flex border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+          <div class="flex-1 flex">
+            <button v-for="tab in mainTabs" :key="tab.id" @click="mainTabActive = tab.id"
+              class="px-6 py-3 text-sm font-medium text-center" :class="mainTabActive === tab.id ?
+                'border-b-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 dark:border-indigo-400 bg-white dark:bg-gray-800' :
+                'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'">
+              {{ $t(tab.label) }}
+            </button>
+          </div>
+        </div>
 
-        <!-- Tab Content -->
-        <div class="p-6">
-          <!-- Characters Tab -->
-          <div v-if="activeTab === 'characters'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div v-if="isLoadingCharacters" class="col-span-full flex justify-center py-12">
-              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+        <!-- Sub Tabs: Created / Likes / Favorites -->
+        <div class="p-4 flex items-center">
+          <div class="inline-flex bg-gray-100 dark:bg-gray-800 p-1 rounded-full">
+            <button v-for="tab in subTabs" :key="tab.id" @click="subTabActive = tab.id"
+              class="px-4 py-1.5 text-sm font-medium rounded-full transition-colors" :class="subTabActive === tab.id ?
+                'bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-400 shadow-sm' :
+                'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'">
+              {{ $t(tab.label) }}
+            </button>
+          </div>
+        </div>
+
+        <div class="p-4 pt-0">
+          <!-- Characters - Created -->
+          <div v-if="mainTabActive === 'characters' && subTabActive === 'created'"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div v-if="isContentLoading" class="col-span-full text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
             </div>
 
             <div v-else-if="!userCharacters.length" class="col-span-full text-center py-12">
@@ -44,10 +114,11 @@
             </template>
           </div>
 
-          <!-- Likes Tab -->
-          <div v-else-if="activeTab === 'likes'">
-            <div v-if="isLoadingLikes" class="flex justify-center py-12">
-              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+          <!-- Characters - Likes -->
+          <div v-else-if="mainTabActive === 'characters' && subTabActive === 'likes'">
+            <div v-if="isContentLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
             </div>
 
             <div v-else-if="!isPublicLikes" class="text-center py-12">
@@ -60,16 +131,17 @@
               <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noLikes') }}</p>
             </div>
 
-            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <CommonCharacterCard v-for="character in likedCharacters" :key="character.id" :character="character"
                 @view-character="viewCharacter" @start-chat="startChat" />
             </div>
           </div>
 
-          <!-- Favorites Tab -->
-          <div v-else-if="activeTab === 'favorites'">
-            <div v-if="isLoadingFavorites" class="flex justify-center py-12">
-              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+          <!-- Characters - Favorites -->
+          <div v-else-if="mainTabActive === 'characters' && subTabActive === 'favorites'">
+            <div v-if="isContentLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
             </div>
 
             <div v-else-if="!isPublicFavorites" class="text-center py-12">
@@ -82,9 +154,75 @@
               <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noFavorites') }}</p>
             </div>
 
-            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <CommonCharacterCard v-for="character in favoritedCharacters" :key="character.id" :character="character"
                 @view-character="viewCharacter" @start-chat="startChat" />
+            </div>
+          </div>
+
+          <!-- Memories - Created -->
+          <div v-else-if="mainTabActive === 'memories' && subTabActive === 'created'">
+            <div v-if="isContentLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
+            </div>
+
+            <div v-else-if="!isPublicMemories" class="text-center py-12">
+              <Icon name="heroicons:lock-closed" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.memoriesPrivate') }}</p>
+            </div>
+
+            <div v-else-if="!userMemories.length" class="text-center py-12">
+              <Icon name="heroicons:clock" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('characters.noMemories') }}</p>
+            </div>
+
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <CommonMemoryCard v-for="memory in userMemories" :key="memory.id" :memory="memory" />
+            </div>
+          </div>
+
+          <!-- Memories - Likes -->
+          <div v-else-if="mainTabActive === 'memories' && subTabActive === 'likes'">
+            <div v-if="isContentLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
+            </div>
+
+            <div v-else-if="!isPublicLikes" class="text-center py-12">
+              <Icon name="heroicons:lock-closed" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.likesPrivate') }}</p>
+            </div>
+
+            <div v-else-if="!likedMemories.length" class="text-center py-12">
+              <Icon name="heroicons:heart" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noLikes') }}</p>
+            </div>
+
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <CommonMemoryCard v-for="memory in likedMemories" :key="memory.id" :memory="memory" />
+            </div>
+          </div>
+
+          <!-- Memories - Favorites -->
+          <div v-else-if="mainTabActive === 'memories' && subTabActive === 'favorites'">
+            <div v-if="isContentLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
+            </div>
+
+            <div v-else-if="!isPublicFavorites" class="text-center py-12">
+              <Icon name="heroicons:lock-closed" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.favoritesPrivate') }}</p>
+            </div>
+
+            <div v-else-if="!favoritedMemories.length" class="text-center py-12">
+              <Icon name="heroicons:star" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <p class="text-gray-500 dark:text-gray-400">{{ $t('users.noFavorites') }}</p>
+            </div>
+
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <CommonMemoryCard v-for="memory in favoritedMemories" :key="memory.id" :memory="memory" />
             </div>
           </div>
         </div>
@@ -99,11 +237,46 @@
     <!-- Character Modal -->
     <CommonCharacterModal v-if="selectedCharacter" :character="selectedCharacter" @close="closeCharacterModal"
       @start-chat="startChat" />
+
+    <!-- Report Modal -->
+    <div v-if="showReportModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 max-w-md w-full mx-4">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">{{ $t('users.reportUser') }}</h3>
+          <button @click="showReportModal = false" class="text-gray-400 hover:text-gray-500">
+            <Icon name="heroicons:x-mark" class="w-5 h-5" />
+          </button>
+        </div>
+        
+        <p class="text-gray-600 dark:text-gray-400 mb-4">{{ $t('users.reportReason') }}</p>
+        
+        <div class="space-y-2 mb-4">
+          <label v-for="reason in reportReasons" :key="reason.id" class="flex items-center">
+            <input type="radio" :value="reason.id" v-model="selectedReportReason" 
+                   class="mr-2 text-indigo-600">
+            <span class="text-sm text-gray-700 dark:text-gray-300">{{ $t(reason.label) }}</span>
+          </label>
+        </div>
+        
+        <div class="flex justify-end space-x-2">
+          <button @click="showReportModal = false" 
+                  class="px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+            {{ $t('common.cancel') }}
+          </button>
+          <button @click="submitReport" 
+                  class="px-4 py-2 bg-red-600 text-white text-sm rounded-md hover:bg-red-700"
+                  :disabled="!selectedReportReason">
+            {{ $t('users.submit') }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import { useApi, type User } from '~/composables/useApi';
 import { useAuthStore } from '~/stores/auth';
 import { useRoleplayStore } from '~/stores/roleplay';
 import type { CharacterCard } from '~/types';
@@ -111,218 +284,257 @@ import type { CharacterCard } from '~/types';
 const route = useRoute();
 const authStore = useAuthStore();
 const roleplayStore = useRoleplayStore();
+const api = useApi();
 
-// State
-const isLoading = ref(true);
-const isLoadingCharacters = ref(false);
-const isLoadingLikes = ref(false);
-const isLoadingFavorites = ref(false);
-const isLoadingFollowModal = ref(false);
-const user = ref<any>(null);
+// Loading states
+const isLoading = ref(false);
+const isContentLoading = ref(false);
+const loadAttempted = ref(false);
+
+// Content data
+const user = ref<User | null>(null);
 const userCharacters = ref<CharacterCard[]>([]);
 const likedCharacters = ref<CharacterCard[]>([]);
 const favoritedCharacters = ref<CharacterCard[]>([]);
+const userMemories = ref<any[]>([]);
+const likedMemories = ref<any[]>([]);
+const favoritedMemories = ref<any[]>([]);
+
+// Modal states
 const selectedCharacter = ref<CharacterCard | null>(null);
-const activeTab = ref('characters');
-const isFollowing = ref(false);
-const followers = ref(0);
-const following = ref(0);
 const followingUsers = ref<string[]>([]);
 const showFollowModal = ref(false);
 const followModalMode = ref<'followers' | 'following'>('followers');
 const followModalUsers = ref<any[]>([]);
+const isLoadingFollowModal = ref(false);
+const showReportModal = ref(false);
+
+// Tab states
+const mainTabActive = ref('characters');
+const subTabActive = ref('created');
+
+// Follow states
+const isFollowing = ref(false);
 
 // Privacy settings
 const isPublicBio = ref(true);
 const isPublicLikes = ref(true);
 const isPublicFavorites = ref(true);
+const isPublicMemories = ref(true);
 
-// Computed
+// Report functionality
+const selectedReportReason = ref('');
+const reportReasons = [
+  { id: 'spam', label: 'users.reportSpam' },
+  { id: 'harassment', label: 'users.reportHarassment' },
+  { id: 'inappropriate', label: 'users.reportInappropriate' },
+  { id: 'other', label: 'users.reportOther' }
+];
+
+// User stats
+const userStats = computed(() => {
+  return {
+    characters: user.value?.stats?.characters || 0,
+    followers: user.value?.stats?.followers || 0,
+    following: user.value?.stats?.following || 0
+  };
+});
+
+// Check if viewing current user
 const isCurrentUser = computed(() => {
   return authStore?.user?.id === user.value?.id;
 });
 
-// Available tabs
-const tabs = [
-  { id: 'characters', label: 'users.characters' },
+// Main tabs (Characters/Memories)
+const mainTabs = [
+  { id: 'characters', label: 'home.characters' },
+  { id: 'memories', label: 'home.memories' }
+];
+
+// Sub tabs (Created/Likes/Favorites)
+const subTabs = [
+  { id: 'created', label: 'profile.created' },
   { id: 'likes', label: 'users.likes' },
   { id: 'favorites', label: 'users.favorites' }
 ];
 
 // Load user data
 onMounted(async () => {
+  await loadUserContent();
+});
+
+// Watch for tab changes and load appropriate content
+watch([mainTabActive, subTabActive], async () => {
+  if (!user.value) return;
+  
+  // 检查是否需要加载数据
+  let needsLoading = false;
+  if (mainTabActive.value === 'characters') {
+    needsLoading = (subTabActive.value === 'created' && userCharacters.value.length === 0) ||
+                   (subTabActive.value === 'likes' && likedCharacters.value.length === 0) ||
+                   (subTabActive.value === 'favorites' && favoritedCharacters.value.length === 0);
+  } else if (mainTabActive.value === 'memories') {
+    needsLoading = (subTabActive.value === 'created' && userMemories.value.length === 0) ||
+                   (subTabActive.value === 'likes' && likedMemories.value.length === 0) ||
+                   (subTabActive.value === 'favorites' && favoritedMemories.value.length === 0);
+  }
+  
+  if (needsLoading) {
+    isContentLoading.value = true;
+  }
+  
+  // 只加载当前tab还没有数据的内容
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    user.value = {
-      id: route.params.id,
-      username: 'User' + route.params.id,
-      profileImage: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
-      bio: 'This is a sample user bio.',
-      createdAt: '2023-01-01T00:00:00Z',
-      stats: {
-        characters: 5,
-        followers: 120,
-        following: 80
+    if (mainTabActive.value === 'characters') {
+      if (subTabActive.value === 'created' && userCharacters.value.length === 0) {
+        await loadUserCharacters();
+      } else if (subTabActive.value === 'likes' && likedCharacters.value.length === 0) {
+        await loadLikedCharacters();
+      } else if (subTabActive.value === 'favorites' && favoritedCharacters.value.length === 0) {
+        await loadFavoritedCharacters();
       }
-    };
-
-    followers.value = user.value.stats.followers;
-    following.value = user.value.stats.following;
-
-    // Load characters
-    loadUserCharacters();
+    } else if (mainTabActive.value === 'memories') {
+      if (subTabActive.value === 'created' && userMemories.value.length === 0) {
+        await loadUserMemories();
+      } else if (subTabActive.value === 'likes' && likedMemories.value.length === 0) {
+        await loadLikedMemories();
+      } else if (subTabActive.value === 'favorites' && favoritedMemories.value.length === 0) {
+        await loadFavoritedMemories();
+      }
+    }
   } catch (error) {
-    console.error('Error loading user:', error);
+    console.error('Error loading content on tab change:', error);
+  } finally {
+    if (needsLoading) {
+      isContentLoading.value = false;
+    }
+  }
+});
+
+// Load user content based on active tabs
+async function loadUserContent() {
+  isLoading.value = true;
+  loadAttempted.value = true;
+
+  try {
+    // Load user basic info
+    const userData = await api.getUser(route.params.id as string);
+    user.value = userData;
+    
+    // Update privacy settings
+    isPublicBio.value = userData.settings.isPublicBio;
+    isPublicLikes.value = userData.settings.isPublicLikes;
+    isPublicFavorites.value = userData.settings.isPublicFavorites;
+    isPublicMemories.value = userData.settings.isPublicMemories;
+
+    // Load content based on active tabs
+    isContentLoading.value = true;
+    if (mainTabActive.value === 'characters') {
+      if (subTabActive.value === 'created') {
+        await loadUserCharacters();
+      } else if (subTabActive.value === 'likes') {
+        await loadLikedCharacters();
+      } else if (subTabActive.value === 'favorites') {
+        await loadFavoritedCharacters();
+      }
+    } else if (mainTabActive.value === 'memories') {
+      if (subTabActive.value === 'created') {
+        await loadUserMemories();
+      } else if (subTabActive.value === 'likes') {
+        await loadLikedMemories();
+      } else if (subTabActive.value === 'favorites') {
+        await loadFavoritedMemories();
+      }
+    }
+
+  } catch (error) {
+    console.error('Error loading user content:', error);
   } finally {
     isLoading.value = false;
+    isContentLoading.value = false;
   }
-});
-
-// Watch for tab changes
-watch(activeTab, (newTab) => {
-  if (newTab === 'likes' && likedCharacters.value.length === 0) {
-    loadLikedCharacters();
-  } else if (newTab === 'favorites' && favoritedCharacters.value.length === 0) {
-    loadFavoritedCharacters();
-  }
-});
+}
 
 // Load user's characters
 async function loadUserCharacters() {
-  if (isLoadingCharacters.value) return;
-
-  isLoadingCharacters.value = true;
+  if (!user.value?.id) return;
+  
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Mock data
-    userCharacters.value = [
-      {
-        id: 'char_001',
-        name: '美杜莎',
-        avatar: 'https://images.unsplash.com/photo-1578632292335-df3abbb0d586?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
-        description: '来自希腊神话的蛇发女妖，对视线接触非常敏感。她有着复杂的过去和神秘的力量。',
-        category: 'fantasy',
-        tags: ['mythology', 'female', 'powerful', 'tragic'],
-        creator: {
-          id: user.value.id,
-          username: user.value.username
-        },
-        stats: {
-          rating: 4.8,
-          chats: 3250,
-          favorites: 1890
-        },
-        createdAt: '2023-02-15T08:30:00Z',
-        updatedAt: '2023-12-10T14:22:00Z',
-        nsfw: false
-      },
-      {
-        id: 'char_002',
-        name: '赤井秀一',
-        avatar: 'https://images.unsplash.com/photo-1564510714747-69c3bc1fab41?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
-        description: 'FBI探员，代号"银色子弹"。冷静沉着，精通各种武器和格斗技巧，有着敏锐的观察力和推理能力。',
-        category: 'anime',
-        tags: ['detective', 'male', 'cool', 'intelligent'],
-        creator: {
-          id: user.value.id,
-          username: user.value.username
-        },
-        stats: {
-          rating: 4.9,
-          chats: 5680,
-          favorites: 3450
-        },
-        createdAt: '2023-03-24T12:45:00Z',
-        updatedAt: '2023-11-18T09:33:00Z',
-        nsfw: false
-      }
-    ];
+    const response = await api.getUserCharacters(user.value.id);
+    userCharacters.value = response.characters;
   } catch (error) {
     console.error('Error loading characters:', error);
-  } finally {
-    isLoadingCharacters.value = false;
   }
 }
 
 // Load liked characters
 async function loadLikedCharacters() {
-  if (isLoadingLikes.value) return;
-
-  isLoadingLikes.value = true;
+  if (!user.value?.id) return;
+  
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Mock data
-    likedCharacters.value = [
-      {
-        id: 'char_003',
-        name: '夜神月',
-        avatar: 'https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
-        description: '天才高中生，偶然获得了可以杀人的笔记本，开始以"基拉"的身份清除罪犯，建立新世界秩序。',
-        category: 'anime',
-        tags: ['genius', 'male', 'dark', 'complex'],
-        creator: {
-          id: 'user_153',
-          username: 'AnimeGuru'
-        },
-        stats: {
-          rating: 4.7,
-          chats: 7890,
-          favorites: 4560
-        },
-        createdAt: '2023-01-10T15:20:00Z',
-        updatedAt: '2023-10-25T11:45:00Z',
-        nsfw: false
-      }
-    ];
+    const response = await api.getUserLikedCharacters(user.value.id);
+    likedCharacters.value = response.characters;
+    
+    // Update privacy status if private
+    if (response.isPrivate) {
+      isPublicLikes.value = false;
+    }
   } catch (error) {
     console.error('Error loading liked characters:', error);
-  } finally {
-    isLoadingLikes.value = false;
   }
 }
 
 // Load favorited characters
 async function loadFavoritedCharacters() {
-  if (isLoadingFavorites.value) return;
-
-  isLoadingFavorites.value = true;
+  if (!user.value?.id) return;
+  
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Mock data
-    favoritedCharacters.value = [
-      {
-        id: 'char_004',
-        name: '春野樱',
-        avatar: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
-        description: '医疗忍者，拥有超强怪力和卓越的医疗能力。勤奋刻苦，从普通少女成长为优秀的忍者。',
-        category: 'anime',
-        tags: ['ninja', 'female', 'medical', 'strong'],
-        creator: {
-          id: 'user_088',
-          username: 'NinjaWorld'
-        },
-        stats: {
-          rating: 4.5,
-          chats: 4230,
-          favorites: 2340
-        },
-        createdAt: '2023-04-05T09:15:00Z',
-        updatedAt: '2023-12-01T16:20:00Z',
-        nsfw: false
-      }
-    ];
+    const response = await api.getUserFavoritedCharacters(user.value.id);
+    favoritedCharacters.value = response.characters;
+    
+    // Update privacy status if private
+    if (response.isPrivate) {
+      isPublicFavorites.value = false;
+    }
   } catch (error) {
     console.error('Error loading favorited characters:', error);
-  } finally {
-    isLoadingFavorites.value = false;
+  }
+}
+
+// Load user memories
+async function loadUserMemories() {
+  if (!user.value?.id) return;
+  
+  try {
+    const response = await api.getUserMemories(user.value.id);
+    userMemories.value = response.memories;
+    
+    // Update privacy status if private
+    if (response.isPrivate) {
+      isPublicMemories.value = false;
+    }
+  } catch (error) {
+    console.error('Error loading user memories:', error);
+  }
+}
+
+// Load liked memories - 使用通用的memories API模拟
+async function loadLikedMemories() {
+  try {
+    const response = await api.getMemories({ page: 2, pageSize: 3 });
+    likedMemories.value = response.memories;
+  } catch (error) {
+    console.error('Error loading liked memories:', error);
+  }
+}
+
+// Load favorited memories - 使用通用的memories API模拟
+async function loadFavoritedMemories() {
+  try {
+    const response = await api.getMemories({ page: 3, pageSize: 3 });
+    favoritedMemories.value = response.memories;
+  } catch (error) {
+    console.error('Error loading favorited memories:', error);
   }
 }
 
@@ -338,10 +550,12 @@ async function toggleFollow() {
     await new Promise(resolve => setTimeout(resolve, 500));
 
     isFollowing.value = !isFollowing.value;
-    if (isFollowing.value) {
-      followers.value++;
-    } else {
-      followers.value--;
+    if (user.value) {
+      if (isFollowing.value) {
+        user.value.stats.followers++;
+      } else {
+        user.value.stats.followers--;
+      }
     }
   } catch (error) {
     console.error('Error toggling follow:', error);
@@ -350,6 +564,8 @@ async function toggleFollow() {
 
 // Handle stats click (followers/following)
 function handleStatsClick(type: 'followers' | 'following') {
+  if (!user.value?.id) return;
+  
   followModalMode.value = type;
   showFollowModal.value = true;
   loadFollowModalUsers();
@@ -357,24 +573,20 @@ function handleStatsClick(type: 'followers' | 'following') {
 
 // Load users for follow modal
 async function loadFollowModalUsers() {
-  if (isLoadingFollowModal.value) return;
+  if (isLoadingFollowModal.value || !user.value) return;
 
   isLoadingFollowModal.value = true;
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    let response;
+    if (followModalMode.value === 'followers') {
+      response = await api.getUserFollowers(user.value.id);
+      followModalUsers.value = response.followers;
+    } else {
+      response = await api.getUserFollowing(user.value.id);
+      followModalUsers.value = response.following;
+    }
 
-    // Mock data
-    followModalUsers.value = Array.from({ length: 5 }, (_, i) => ({
-      id: `user_${i + 1}`,
-      username: `User${i + 1}`,
-      profileImage: `https://images.unsplash.com/photo-${1500000000000 + i}?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80`,
-      stats: {
-        characters: Math.floor(Math.random() * 10) + 1
-      }
-    }));
-
-    // Mock following data
+    // Mock following data - 在真实应用中应该从当前用户的关注列表获取
     followingUsers.value = followModalUsers.value
       .filter(() => Math.random() > 0.5)
       .map(user => user.id);
@@ -387,11 +599,6 @@ async function loadFollowModalUsers() {
 
 // Follow user
 async function followUser(userId: string) {
-  if (!authStore?.isAuthenticated) {
-    authStore?.setAuthModalVisibility(true);
-    return;
-  }
-
   try {
     // In a real app, this would be an API call
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -420,6 +627,25 @@ function closeFollowModal() {
   followModalUsers.value = [];
 }
 
+// Submit report
+async function submitReport() {
+  if (!selectedReportReason.value || !user.value) return;
+
+  try {
+    // In a real app, this would be an API call
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Show success message
+    // In a real app, you might want to show a toast notification
+    console.log(`Reported user ${user.value.username} for ${selectedReportReason.value}`);
+    
+    showReportModal.value = false;
+    selectedReportReason.value = '';
+  } catch (error) {
+    console.error('Error submitting report:', error);
+  }
+}
+
 // View character
 function viewCharacter(character: CharacterCard) {
   selectedCharacter.value = character;
@@ -443,3 +669,9 @@ function startChat(character: CharacterCard) {
   navigateTo('/chats');
 }
 </script>
+
+<style scoped>
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
+}
+</style>

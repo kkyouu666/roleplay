@@ -19,6 +19,24 @@ export interface CharacterCard {
   createdAt: string;
   updatedAt: string;
   nsfw: boolean;
+  age?: string;
+  gender?: string;
+  fullname?: string;
+  personality?: string;
+  appearance?: string;
+  behavior?: string;
+  raceCharacteristics?: string;
+  abilities?: string;
+  r18Settings?: string;
+  detailedDescription?: string;
+  metaHints?: string;
+  dialogueExample?: string;
+  selfIntroduction?: string;
+  initialStatus?: string;
+  statusUpdateRules?: string;
+  statusDisplayTemplate?: string;
+  enableStatusBar?: boolean;
+  freeFormDetails?: string;
 }
 
 // Chat message interface
@@ -27,43 +45,4 @@ export interface ChatMessage {
   sender: 'user' | 'character' | 'system';
   content: string;
   timestamp: string;
-}
-
-// User profile interface
-export interface UserProfile {
-  id: string;
-  username: string;
-  email: string;
-  profileImage?: string;
-  bio?: string;
-  createdAt: string;
-  stats: {
-    characters: number;
-    chats: number;
-    favorites: number;
-  };
-  settings: {
-    theme: 'light' | 'dark' | 'system';
-    language: string;
-    notifications: boolean;
-  };
-}
-
-// Subscription plan interface
-export interface SubscriptionPlan {
-  id: string;
-  name: string;
-  price: {
-    monthly: number;
-    yearly: number;
-    lifetime?: number;
-  };
-  features: {
-    messageLimit: number | 'unlimited';
-    historyDays: number | 'unlimited';
-    advancedFeatures: boolean;
-    customCharacters: number | 'unlimited';
-    priority: boolean;
-    noAds: boolean;
-  };
 }

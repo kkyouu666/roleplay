@@ -1,3 +1,22 @@
+function getLocaleFiles(locale: string) {
+  return [
+    `${locale}-common.json`,
+    `${locale}-navigation.json`,
+    `${locale}-auth.json`,
+    `${locale}-roleplay.json`,
+    `${locale}-home.json`,
+    `${locale}-create.json`,
+    `${locale}-subscription.json`,
+    `${locale}-settings.json`,
+    `${locale}-notifications.json`,
+    `${locale}-languages.json`,
+    `${locale}-bonus.json`,
+    `${locale}-users.json`,
+    `${locale}-profile.json`,
+    `${locale}-characters.json`
+  ]
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
@@ -17,9 +36,21 @@ export default defineNuxtConfig({
     langDir: 'locales',
     defaultLocale: 'ja',
     locales: [
-      { code: 'zh', file: 'zh.json', name: '简体中文' },
-      { code: 'en', file: 'en.json', name: 'English' },
-      { code: 'ja', file: 'ja.json', name: '日本語' }
+      {
+        code: 'zh',
+        files: getLocaleFiles('zh'),
+        name: '简体中文'
+      },
+      {
+        code: 'en',
+        files: getLocaleFiles('en'),
+        name: 'English'
+      },
+      {
+        code: 'ja',
+        files: getLocaleFiles('ja'),
+        name: '日本語'
+      }
     ],
     strategy: 'no_prefix',
     detectBrowserLanguage: false, // Disable auto-detection, we'll handle it manually

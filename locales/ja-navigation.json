@@ -1,0 +1,14 @@
+{
+    "navigation": {
+        "main": "メインナビゲーション",
+        "home": "ホーム",
+        "chats": "チャット",
+        "create": "作成",
+        "profile": "プロフィール",
+        "settings": "設定",
+        "notifications": "通知",
+        "subscription": "サブスクリプション",
+        "pricing": "料金",
+        "bonus": "ボーナス"
+    }
+}

@@ -1,0 +1,97 @@
+{
+    "roleplay": {
+        "categories": {
+            "all": "全部",
+            "original": "原创",
+            "fanwork": "同人"
+        },
+        "tags": {
+            "popular": "热门",
+            "new": "最新",
+            "trending": "趋势",
+            "nsfw": "成人内容",
+            "sfw": "全年龄"
+        },
+        "characterInfo": {
+            "created": "创建于",
+            "creator": "创建者",
+            "category": "分类",
+            "rating": "评分",
+            "chats": "聊天次数",
+            "title": "角色信息",
+            "stats": "统计数据",
+            "favorites": "收藏数",
+            "startChat": "开始聊天",
+            "edit": "编辑角色",
+            "delete": "删除角色",
+            "share": "分享",
+            "report": "举报",
+            "illustrator": "插画家",
+            "scriptwriter": "剧本家",
+            "voiceActor": "声优",
+            "series": "系列",
+            "comments": "评论",
+            "viewMore": "查看更多",
+            "noComments": "暂无评论",
+            "memories": "记忆",
+            "noMemories": "暂无记忆",
+            "following": "已关注",
+            "follow": "关注",
+            "viewDetails": "查看详情",
+            "creatorInfo": {
+                "title": "创作者",
+                "characters": "角色",
+                "followers": "粉丝",
+                "bio": "这是一位充满创造力的角色设计师，擅长打造有深度的AI角色。热爱探索人物性格的多样性，致力于创造能引起共鸣的角色体验。"
+            }
+        },
+        "chat": {
+            "placeholder": "输入消息...",
+            "send": "发送",
+            "typing": "正在输入...",
+            "thinking": "正在思考...",
+            "generating": "正在生成回复...",
+            "reconnect": "重新连接",
+            "loadMore": "加载更多",
+            "newChat": "新聊天",
+            "settings": "聊天设置",
+            "clear": "清除聊天",
+            "streamingError": "消息流传输出错",
+            "retryMessage": "重试发送"
+        },
+        "noResults": "没有找到匹配的角色",
+        "resetFilters": "重置筛选条件",
+        "noChatsYet": "您还没有开始任何聊天",
+        "filters": {
+            "ranking": {
+                "default": "默认排序",
+                "rating": "评分最高",
+                "chats": "聊天最多",
+                "newest": "最新发布"
+            },
+            "gender": {
+                "all": "所有性别",
+                "female": "女性",
+                "male": "男性",
+                "other": "其他"
+            },
+            "showFiltered": "显示过滤",
+            "toggle": "切换筛选"
+        },
+        "exploreCharacters": "去探索角色",
+        "selectChat": "选择一个聊天",
+        "selectChatDescription": "从左侧列表中选择一个聊天，或者在首页找到新的角色开始聊天",
+        "chatWith": "与 {name} 聊天",
+        "startNewChat": "开始新的聊天",
+        "deleteChat": "删除聊天",
+        "deleteChatConfirm": "确定要删除这个聊天吗？此操作无法撤销。",
+        "chatDeleted": "聊天已删除",
+        "messageSent": "消息已发送",
+        "sendMessage": "发送消息",
+        "messageEmpty": "消息不能为空",
+        "chatCreated": "聊天创建成功",
+        "chatLoadError": "加载聊天失败",
+        "sendError": "发送消息失败",
+        "streamError": "消息流传输失败"
+    }
+}

@@ -1,0 +1,97 @@
+{
+    "roleplay": {
+        "categories": {
+            "all": "すべて",
+            "original": "オリジナル",
+            "fanwork": "二次創作"
+        },
+        "tags": {
+            "popular": "人気",
+            "new": "新着",
+            "trending": "トレンド",
+            "nsfw": "成人向け",
+            "sfw": "全年齢"
+        },
+        "characterInfo": {
+            "created": "作成日",
+            "creator": "作成者",
+            "category": "カテゴリ",
+            "rating": "評価",
+            "chats": "チャット数",
+            "title": "キャラクター情報",
+            "stats": "統計情報",
+            "favorites": "お気に入り",
+            "startChat": "チャットを始める",
+            "edit": "キャラクター編集",
+            "delete": "キャラクター削除",
+            "share": "共有",
+            "report": "報告",
+            "illustrator": "イラストレーター",
+            "scriptwriter": "シナリオライター",
+            "voiceActor": "声優",
+            "series": "シリーズ",
+            "comments": "コメント",
+            "viewMore": "もっと見る",
+            "noComments": "コメントはありません",
+            "memories": "思い出",
+            "noMemories": "思い出はありません",
+            "following": "フォロー中",
+            "follow": "フォロー",
+            "viewDetails": "詳細を見る",
+            "creatorInfo": {
+                "title": "クリエイター",
+                "characters": "キャラクター",
+                "followers": "フォロワー",
+                "bio": "深みのあるAIキャラクターの制作を得意とするクリエイティブなキャラクターデザイナーです。多様な性格の探求に情熱を持ち、共感できるキャラクター体験の創造に取り組んでいます。"
+            }
+        },
+        "chat": {
+            "placeholder": "メッセージを入力...",
+            "send": "送信",
+            "typing": "入力中...",
+            "thinking": "思考中...",
+            "generating": "応答を生成中...",
+            "reconnect": "再接続",
+            "loadMore": "もっと読み込む",
+            "newChat": "新しいチャット",
+            "settings": "チャット設定",
+            "clear": "チャットをクリア",
+            "streamingError": "メッセージストリーミングエラー",
+            "retryMessage": "再送信"
+        },
+        "noResults": "一致するキャラクターが見つかりません",
+        "resetFilters": "フィルターをリセット",
+        "noChatsYet": "まだチャットがありません",
+        "filters": {
+            "ranking": {
+                "default": "デフォルト",
+                "rating": "評価が高い順",
+                "chats": "チャット数順",
+                "newest": "新着順"
+            },
+            "gender": {
+                "all": "すべての性別",
+                "female": "女性",
+                "male": "男性",
+                "other": "その他"
+            },
+            "showFiltered": "フィルター表示",
+            "toggle": "フィルター切替"
+        },
+        "exploreCharacters": "キャラクターを探す",
+        "selectChat": "チャットを選択",
+        "selectChatDescription": "左側のリストからチャットを選択するか、ホームページで新しいキャラクターを見つけてチャットを開始してください",
+        "chatWith": "{name}とチャット",
+        "startNewChat": "新しいチャットを開始",
+        "deleteChat": "チャットを削除",
+        "deleteChatConfirm": "このチャットを削除してもよろしいですか？この操作は元に戻せません。",
+        "chatDeleted": "チャットが削除されました",
+        "messageSent": "メッセージを送信しました",
+        "sendMessage": "メッセージを送信",
+        "messageEmpty": "メッセージを入力してください",
+        "chatCreated": "チャットが作成されました",
+        "chatLoadError": "チャットの読み込みに失敗しました",
+        "sendError": "メッセージの送信に失敗しました",
+        "streamError": "メッセージストリーミングに失敗しました"
+    }
+}

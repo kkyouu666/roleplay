@@ -1,0 +1,146 @@
+[
+    {
+        "id": "comment_1",
+        "characterId": "char_001",
+        "user": {
+            "id": "user_201",
+            "username": "MythologyFan",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "美杜莎的角色设计非常棒！既有神话的神秘感，又有人性的复杂性。",
+        "rating": 5,
+        "createdAt": "2024-01-15T10:30:00Z"
+    },
+    {
+        "id": "comment_2",
+        "characterId": "char_001",
+        "user": {
+            "id": "user_202",
+            "username": "RPGPlayer",
+            "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "对话很有代入感，仿佛真的在和传说中的美杜莎交流。",
+        "rating": 5,
+        "createdAt": "2024-01-14T16:45:00Z"
+    },
+    {
+        "id": "comment_3",
+        "characterId": "char_002",
+        "user": {
+            "id": "user_203",
+            "username": "DetectiveFan",
+            "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "赤井秀一的推理能力表现得很真实，完全符合原作设定。",
+        "rating": 5,
+        "createdAt": "2024-01-12T09:20:00Z"
+    },
+    {
+        "id": "comment_4",
+        "characterId": "char_002",
+        "user": {
+            "id": "user_204",
+            "username": "ConanLover",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "冷静沉着的性格刻画得很到位，对话中透露出的专业素养让人印象深刻。",
+        "rating": 4,
+        "createdAt": "2024-01-11T14:30:00Z"
+    },
+    {
+        "id": "comment_5",
+        "characterId": "char_003",
+        "user": {
+            "id": "user_205",
+            "username": "AnimeWatcher",
+            "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "夜神月的复杂心理描写得很好，让人既敬畏又害怕。",
+        "rating": 5,
+        "createdAt": "2024-01-10T11:15:00Z"
+    },
+    {
+        "id": "comment_6",
+        "characterId": "char_018",
+        "user": {
+            "id": "user_206",
+            "username": "MusicLover",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "莫扎特的音乐天赋和跳跃的性格都表现得很生动！",
+        "rating": 5,
+        "createdAt": "2024-01-09T15:45:00Z"
+    },
+    {
+        "id": "comment_7",
+        "characterId": "char_018",
+        "user": {
+            "id": "user_207",
+            "username": "ClassicalFan",
+            "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "和莫扎特聊音乐真是太棒了，感觉学到了很多。",
+        "rating": 5,
+        "createdAt": "2024-01-08T12:20:00Z"
+    },
+    {
+        "id": "comment_8",
+        "characterId": "char_020",
+        "user": {
+            "id": "user_208",
+            "username": "SherlockFan",
+            "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "福尔摩斯的推理过程太精彩了，每次对话都有新的发现。",
+        "rating": 5,
+        "createdAt": "2024-01-07T08:30:00Z"
+    },
+    {
+        "id": "comment_9",
+        "characterId": "char_025",
+        "user": {
+            "id": "user_209",
+            "username": "SciFiEnthusiast",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "时空旅人的未来见解让人深思，对话内容很有启发性。",
+        "rating": 4,
+        "createdAt": "2024-01-06T17:10:00Z"
+    },
+    {
+        "id": "comment_10",
+        "characterId": "char_032",
+        "user": {
+            "id": "user_210",
+            "username": "ZenSeeker",
+            "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "禅宗大师的智慧话语很治愈，每次对话都能获得内心的平静。",
+        "rating": 5,
+        "createdAt": "2024-01-05T13:25:00Z"
+    },
+    {
+        "id": "comment_11",
+        "characterId": "char_040",
+        "user": {
+            "id": "user_211",
+            "username": "PhysicsStudent",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "量子物理学家用简单的语言解释复杂概念，太棒了！",
+        "rating": 5,
+        "createdAt": "2024-01-04T10:15:00Z"
+    },
+    {
+        "id": "comment_12",
+        "characterId": "char_043",
+        "user": {
+            "id": "user_212",
+            "username": "EcoWarrior",
+            "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "content": "植物语者的环保理念很有感染力，让我更关注自然保护。",
+        "rating": 4,
+        "createdAt": "2024-01-03T14:40:00Z"
+    }
+]

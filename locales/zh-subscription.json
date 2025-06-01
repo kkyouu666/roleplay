@@ -1,0 +1,56 @@
+{
+    "subscription": {
+        "plans": {
+            "free": "免费计划",
+            "standard": "标准计划",
+            "premium": "高级计划"
+        },
+        "features": {
+            "messageLimit": "消息限制",
+            "historyAccess": "历史记录访问",
+            "historyAccessDate": "天",
+            "advancedChat": "高级聊天功能",
+            "customCharacters": "自定义角色",
+            "priority": "优先支持",
+            "adsRemoval": "无广告"
+        },
+        "pricing": {
+            "monthly": "月付",
+            "yearly": "年付",
+            "lifetime": "终身",
+            "perMonth": "每月",
+            "perYear": "每年",
+            "oneTime": "一次性付款",
+            "save": "节省"
+        },
+        "action": {
+            "subscribe": "订阅",
+            "upgrade": "升级",
+            "manage": "管理订阅",
+            "cancel": "取消订阅",
+            "current": "当前计划"
+        },
+        "faq": {
+            "planDifferences": {
+                "question": "订阅计划之间有什么区别？",
+                "answer": "各个订阅计划提供不同级别的功能和限制。免费计划提供基本功能，标准计划增加了消息限制和历史记录访问，高级计划提供无限制的功能和优先支持。"
+            },
+            "cancellation": {
+                "question": "我可以随时取消订阅吗？",
+                "answer": "是的，您可以随时取消订阅。取消后，您的高级功能将持续到当前计费周期结束。"
+            },
+            "changePlan": {
+                "question": "如何更改我的订阅计划？",
+                "answer": "您可以在个人资料页面的订阅部分管理您的订阅计划。您可以随时升级，降级选项将在当前计费周期结束后生效。"
+            },
+            "paymentMethods": {
+                "question": "您接受哪些支付方式？",
+                "answer": "我们接受所有主要的信用卡和借记卡，包括Visa、Mastercard、American Express和Discover。我们还支持PayPal支付。"
+            },
+            "autoRenewal": {
+                "question": "订阅是否会自动续费？",
+                "answer": "是的，所有订阅都会自动续费，除非您在下个计费周期开始前取消。您可以在账户设置中管理自动续费选项。"
+            }
+        }
+    }
+}

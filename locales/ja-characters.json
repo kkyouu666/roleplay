@@ -1,0 +1,16 @@
+{
+    "characters": {
+        "notFound": "キャラクターが見つかりません",
+        "notFoundDesc": "お探しのキャラクターは存在しないか、削除されました。",
+        "comments": "コメント",
+        "writeComment": "コメントを書く...",
+        "submitComment": "送信",
+        "noComments": "まだコメントはありません。最初のコメントを書いてみましょう！",
+        "creator": "作成者",
+        "charactersCreated": "個のキャラクターを作成",
+        "publicMemory": "公開メモリー",
+        "noMemories": "まだ公開メモリーはありません",
+        "chats": "チャット",
+        "viewDetails": "詳細を見る"
+    }
+}

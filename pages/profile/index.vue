@@ -17,9 +17,13 @@
     <div v-else>
       <!-- User Header -->
       <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mb-6">
-        <div class="p-6">
+        <div v-if="!authStore.user && authStore.isAuthenticated" class="p-6 text-center py-10">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+          <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
+        </div>
+        <div v-else class="p-6">
           <div class="flex flex-col sm:flex-row items-center">
-            <img :src="authStore.user?.profileImage || '/images/avatars/default.jpg'" :alt="authStore.user?.username"
+            <img :src="authStore.user?.avatar || '/images/avatars/default.jpg'" :alt="authStore.user?.username"
               class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg" />
             <div class="mt-4 sm:mt-0 sm:ml-6 text-center sm:text-left flex-1">
               <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ authStore.user?.username }}</h1>
@@ -27,7 +31,7 @@
               <div
                 class="flex items-center justify-center sm:justify-start mt-2 text-gray-500 dark:text-gray-400 text-sm">
                 <div class="flex items-center space-x-4">
-                  <div class="flex items-center cursor-pointer" @click="activeTab = 'characters'">
+                  <div class="flex items-center cursor-pointer" @click="mainTabActive = 'characters'; subTabActive = 'created'">
                     <span class="font-medium text-gray-700 dark:text-gray-300">{{ userStats.characters }}</span>
                     <span class="ml-1 text-gray-500 dark:text-gray-400">{{ $t('users.characters') }}</span>
                   </div>
@@ -81,8 +85,9 @@
           <!-- Characters - Created -->
           <div v-if="mainTabActive === 'characters' && subTabActive === 'created'"
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div v-if="isLoading" class="col-span-full flex justify-center py-12">
-              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            <div v-if="isLoading" class="col-span-full text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
             </div>
 
             <div v-else-if="!userCharacters.length" class="col-span-full text-center py-12">
@@ -101,8 +106,9 @@
 
           <!-- Characters - Likes -->
           <div v-else-if="mainTabActive === 'characters' && subTabActive === 'likes'">
-            <div v-if="isLoading" class="flex justify-center py-12">
-              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            <div v-if="isLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
             </div>
 
             <div v-else-if="!likedCharacters.length" class="text-center py-12">
@@ -118,8 +124,9 @@
 
           <!-- Characters - Favorites -->
           <div v-else-if="mainTabActive === 'characters' && subTabActive === 'favorites'">
-            <div v-if="isLoading" class="flex justify-center py-12">
-              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            <div v-if="isLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
             </div>
 
             <div v-else-if="!favoritedCharacters.length" class="text-center py-12">
@@ -135,8 +142,9 @@
 
           <!-- Memories - Created -->
           <div v-else-if="mainTabActive === 'memories' && subTabActive === 'created'">
-            <div v-if="isLoading" class="flex justify-center py-12">
-              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            <div v-if="isLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
             </div>
 
             <div v-else-if="!userMemories.length" class="text-center py-12">
@@ -151,8 +159,9 @@
 
           <!-- Memories - Likes -->
           <div v-else-if="mainTabActive === 'memories' && subTabActive === 'likes'">
-            <div v-if="isLoading" class="flex justify-center py-12">
-              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            <div v-if="isLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
             </div>
 
             <div v-else-if="!likedMemories.length" class="text-center py-12">
@@ -167,8 +176,9 @@
 
           <!-- Memories - Favorites -->
           <div v-else-if="mainTabActive === 'memories' && subTabActive === 'favorites'">
-            <div v-if="isLoading" class="flex justify-center py-12">
-              <div class="w-8 h-8 border-t-2 border-b-2 border-indigo-600 rounded-full animate-spin"></div>
+            <div v-if="isLoading" class="text-center py-10">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+              <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
             </div>
 
             <div v-else-if="!favoritedMemories.length" class="text-center py-12">
@@ -196,14 +206,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
 import { format } from 'date-fns';
+import { computed, onMounted, ref, watch } from 'vue';
+import { useApi } from '~/composables/useApi';
 import { useAuthStore } from '~/stores/auth';
 import { useRoleplayStore } from '~/stores/roleplay';
 import type { CharacterCard } from '~/types';
 
 const authStore = useAuthStore();
 const roleplayStore = useRoleplayStore();
+const api = useApi();
 
 // Loading states
 const isLoading = ref(false);
@@ -231,9 +243,9 @@ const subTabActive = ref('created');
 // User stats
 const userStats = computed(() => {
   return {
-    characters: userCharacters.value.length,
-    followers: authStore.user?.stats?.followers || 120,
-    following: authStore.user?.stats?.following || 85
+    characters: authStore.user?.stats?.characters || userCharacters.value.length,
+    followers: authStore.user?.stats?.followers || 0,
+    following: authStore.user?.stats?.following || 0
   };
 });
 
@@ -250,12 +262,85 @@ const subTabs = [
   { id: 'favorites', label: 'users.favorites' }
 ];
 
-// Determine what content to load based on active tabs
-
 // Load user data
 onMounted(async () => {
   if (authStore?.isAuthenticated) {
     await loadUserContent();
+  }
+});
+
+// Watch for authentication state changes
+watch(() => authStore?.isAuthenticated, async (newValue, oldValue) => {
+  console.log('Profile: Auth state changed', { newValue, oldValue, userId: authStore?.user?.id });
+  
+  // 当用户从未认证状态变为已认证状态时，重新加载数据
+  if (newValue && !oldValue && authStore?.user?.id) {
+    console.log('Profile: Loading user content after login');
+    
+    // 确保关闭模态框相关样式
+    if (process.client) {
+      document.body.classList.remove('modal-open');
+    }
+    
+    // 清空之前的数据
+    userCharacters.value = [];
+    likedCharacters.value = [];
+    favoritedCharacters.value = [];
+    userMemories.value = [];
+    likedMemories.value = [];
+    favoritedMemories.value = [];
+    
+    // 重新加载用户内容
+    await loadUserContent();
+  }
+}, { immediate: true });
+
+// Watch for tab changes and load appropriate content
+watch([mainTabActive, subTabActive], async () => {
+  // 只有在认证状态下才加载内容
+  if (!authStore?.isAuthenticated) return;
+  
+  // 检查是否需要加载数据
+  let needsLoading = false;
+  if (mainTabActive.value === 'characters') {
+    needsLoading = (subTabActive.value === 'created' && userCharacters.value.length === 0) ||
+                   (subTabActive.value === 'likes' && likedCharacters.value.length === 0) ||
+                   (subTabActive.value === 'favorites' && favoritedCharacters.value.length === 0);
+  } else if (mainTabActive.value === 'memories') {
+    needsLoading = (subTabActive.value === 'created' && userMemories.value.length === 0) ||
+                   (subTabActive.value === 'likes' && likedMemories.value.length === 0) ||
+                   (subTabActive.value === 'favorites' && favoritedMemories.value.length === 0);
+  }
+  
+  if (needsLoading) {
+    isLoading.value = true;
+  }
+  
+  // 只加载当前tab还没有数据的内容
+  try {
+    if (mainTabActive.value === 'characters') {
+      if (subTabActive.value === 'created' && userCharacters.value.length === 0) {
+        await loadUserCharacters();
+      } else if (subTabActive.value === 'likes' && likedCharacters.value.length === 0) {
+        await loadLikedCharacters();
+      } else if (subTabActive.value === 'favorites' && favoritedCharacters.value.length === 0) {
+        await loadFavoritedCharacters();
+      }
+    } else if (mainTabActive.value === 'memories') {
+      if (subTabActive.value === 'created' && userMemories.value.length === 0) {
+        await loadUserMemories();
+      } else if (subTabActive.value === 'likes' && likedMemories.value.length === 0) {
+        await loadLikedMemories();
+      } else if (subTabActive.value === 'favorites' && favoritedMemories.value.length === 0) {
+        await loadFavoritedMemories();
+      }
+    }
+  } catch (error) {
+    console.error('Error loading content on tab change:', error);
+  } finally {
+    if (needsLoading) {
+      isLoading.value = false;
+    }
   }
 });
 
@@ -266,13 +351,21 @@ async function loadUserContent() {
   try {
     // Load content based on active tabs
     if (mainTabActive.value === 'characters') {
-      if (subTabActive.value === 'created') await loadUserCharacters();
-      else if (subTabActive.value === 'likes') await loadLikedCharacters();
-      else if (subTabActive.value === 'favorites') await loadFavoritedCharacters();
+      if (subTabActive.value === 'created') {
+        await loadUserCharacters();
+      } else if (subTabActive.value === 'likes') {
+        await loadLikedCharacters();
+      } else if (subTabActive.value === 'favorites') {
+        await loadFavoritedCharacters();
+      }
     } else if (mainTabActive.value === 'memories') {
-      if (subTabActive.value === 'created') await loadUserMemories();
-      else if (subTabActive.value === 'likes') await loadLikedMemories();
-      else if (subTabActive.value === 'favorites') await loadFavoritedMemories();
+      if (subTabActive.value === 'created') {
+        await loadUserMemories();
+      } else if (subTabActive.value === 'likes') {
+        await loadLikedMemories();
+      } else if (subTabActive.value === 'favorites') {
+        await loadFavoritedMemories();
+      }
     }
 
   } catch (error) {
@@ -282,80 +375,13 @@ async function loadUserContent() {
   }
 }
 
-// Watch for tab changes and load appropriate content
-watch([mainTabActive, subTabActive], () => {
-  // Reset loading state
-  isLoading.value = false;
-
-  // Load content based on current tabs
-  if (mainTabActive.value === 'characters') {
-    if (subTabActive.value === 'created' && userCharacters.value.length === 0) {
-      loadUserCharacters();
-    } else if (subTabActive.value === 'likes' && likedCharacters.value.length === 0) {
-      loadLikedCharacters();
-    } else if (subTabActive.value === 'favorites' && favoritedCharacters.value.length === 0) {
-      loadFavoritedCharacters();
-    }
-  } else if (mainTabActive.value === 'memories') {
-    if (subTabActive.value === 'created' && userMemories.value.length === 0) {
-      loadUserMemories();
-    } else if (subTabActive.value === 'likes' && likedMemories.value.length === 0) {
-      loadLikedMemories();
-    } else if (subTabActive.value === 'favorites' && favoritedMemories.value.length === 0) {
-      loadFavoritedMemories();
-    }
-  }
-});
-
 // Load user's characters
 async function loadUserCharacters() {
+  if (!authStore?.user?.id) return;
+  
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Mock data
-    userCharacters.value = [
-      {
-        id: 'char_001',
-        name: '美杜莎',
-        avatar: 'https://pic.re/image?d=1',
-        description: '来自希腊神话的蛇发女妖，对视线接触非常敏感。她有着复杂的过去和神秘的力量。',
-        category: 'original',
-        tags: ['mythology', 'female', 'powerful', 'tragic'],
-        creator: {
-          id: authStore.user?.id || '',
-          username: authStore.user?.username || ''
-        },
-        stats: {
-          rating: 4.8,
-          chats: 3250,
-          favorites: 1890
-        },
-        createdAt: '2023-02-15T08:30:00Z',
-        updatedAt: '2023-12-10T14:22:00Z',
-        nsfw: false
-      },
-      {
-        id: 'char_002',
-        name: '赤井秀一',
-        avatar: 'https://pic.re/image?d=2',
-        description: 'FBI探员，代号"银色子弹"。冷静沉着，精通各种武器和格斗技巧，有着敏锐的观察力和推理能力。',
-        category: 'fanwork',
-        tags: ['detective', 'male', 'cool', 'intelligent'],
-        creator: {
-          id: authStore.user?.id || '',
-          username: authStore.user?.username || ''
-        },
-        stats: {
-          rating: 4.9,
-          chats: 5680,
-          favorites: 3450
-        },
-        createdAt: '2023-03-24T12:45:00Z',
-        updatedAt: '2023-11-18T09:33:00Z',
-        nsfw: false
-      }
-    ];
+    const response = await api.getUserCharacters(authStore.user.id);
+    userCharacters.value = response.characters;
   } catch (error) {
     console.error('Error loading characters:', error);
   }
@@ -363,33 +389,11 @@ async function loadUserCharacters() {
 
 // Load liked characters
 async function loadLikedCharacters() {
+  if (!authStore?.user?.id) return;
+  
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Mock data
-    likedCharacters.value = [
-      {
-        id: 'char_003',
-        name: '夜神月',
-        avatar: 'https://pic.re/image?d=3',
-        description: '天才高中生，偶然获得了可以杀人的笔记本，开始以"基拉"的身份清除罪犯，建立新世界秩序。',
-        category: 'original',
-        tags: ['genius', 'male', 'dark', 'complex'],
-        creator: {
-          id: 'user_153',
-          username: 'AnimeGuru'
-        },
-        stats: {
-          rating: 4.7,
-          chats: 7890,
-          favorites: 4560
-        },
-        createdAt: '2023-01-10T15:20:00Z',
-        updatedAt: '2023-10-25T11:45:00Z',
-        nsfw: false
-      }
-    ];
+    const response = await api.getUserLikedCharacters(authStore.user.id);
+    likedCharacters.value = response.characters;
   } catch (error) {
     console.error('Error loading liked characters:', error);
   }
@@ -397,33 +401,11 @@ async function loadLikedCharacters() {
 
 // Load favorited characters
 async function loadFavoritedCharacters() {
+  if (!authStore?.user?.id) return;
+  
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Mock data
-    favoritedCharacters.value = [
-      {
-        id: 'char_004',
-        name: '春野樱',
-        avatar: 'https://pic.re/image?d=4',
-        description: '医疗忍者，拥有超强怪力和卓越的医疗能力。勤奋刻苦，从普通少女成长为优秀的忍者。',
-        category: 'original',
-        tags: ['ninja', 'female', 'medical', 'strong'],
-        creator: {
-          id: 'user_088',
-          username: 'NinjaWorld'
-        },
-        stats: {
-          rating: 4.5,
-          chats: 4230,
-          favorites: 2340
-        },
-        createdAt: '2023-04-05T09:15:00Z',
-        updatedAt: '2023-12-01T16:20:00Z',
-        nsfw: false
-      }
-    ];
+    const response = await api.getUserFavoritedCharacters(authStore.user.id);
+    favoritedCharacters.value = response.characters;
   } catch (error) {
     console.error('Error loading favorited characters:', error);
   }
@@ -431,41 +413,31 @@ async function loadFavoritedCharacters() {
 
 // Load user memories
 async function loadUserMemories() {
-  try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+  if (!authStore?.user?.id) return;
 
-    // Load mock data
-    const response = await import('~/mock/memories.json');
-    userMemories.value = response.default.slice(0, 3);
+  try {
+    const response = await api.getUserMemories(authStore.user.id);
+    userMemories.value = response.memories;
   } catch (error) {
     console.error('Error loading user memories:', error);
   }
 }
 
-// Load liked memories
+// Load liked memories - 使用通用的memories API模拟
 async function loadLikedMemories() {
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Load mock data
-    const response = await import('~/mock/memories.json');
-    likedMemories.value = response.default.slice(3, 6);
+    const response = await api.getMemories({ page: 2, pageSize: 3 });
+    likedMemories.value = response.memories;
   } catch (error) {
     console.error('Error loading liked memories:', error);
   }
 }
 
-// Load favorited memories
+// Load favorited memories - 使用通用的memories API模拟
 async function loadFavoritedMemories() {
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Load mock data
-    const response = await import('~/mock/memories.json');
-    favoritedMemories.value = response.default.slice(6, 9);
+    const response = await api.getMemories({ page: 3, pageSize: 3 });
+    favoritedMemories.value = response.memories;
   } catch (error) {
     console.error('Error loading favorited memories:', error);
   }
@@ -473,6 +445,8 @@ async function loadFavoritedMemories() {
 
 // Handle stats click (followers/following)
 function handleStatsClick(type: 'followers' | 'following') {
+  if (!authStore?.user?.id) return;
+  
   followModalMode.value = type;
   showFollowModal.value = true;
   loadFollowModalUsers();
@@ -480,24 +454,20 @@ function handleStatsClick(type: 'followers' | 'following') {
 
 // Load users for follow modal
 async function loadFollowModalUsers() {
-  if (isLoadingFollowModal.value) return;
+  if (isLoadingFollowModal.value || !authStore?.user?.id) return;
 
   isLoadingFollowModal.value = true;
   try {
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    let response;
+    if (followModalMode.value === 'followers') {
+      response = await api.getUserFollowers(authStore.user.id);
+      followModalUsers.value = response.followers;
+    } else {
+      response = await api.getUserFollowing(authStore.user.id);
+      followModalUsers.value = response.following;
+    }
 
-    // Mock data
-    followModalUsers.value = Array.from({ length: 5 }, (_, i) => ({
-      id: `user_${i + 1}`,
-      username: `User${i + 1}`,
-      profileImage: `https://pic.re/image?d=5`,
-      stats: {
-        characters: Math.floor(Math.random() * 10) + 1
-      }
-    }));
-
-    // Mock following data
+    // Mock following data - 在真实应用中应该从当前用户的关注列表获取
     followingUsers.value = followModalUsers.value
       .filter(() => Math.random() > 0.5)
       .map(user => user.id);

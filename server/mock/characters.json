@@ -14,13 +14,17 @@
     ],
     "creator": {
       "id": "user_101",
-      "username": "MythCreator"
+      "username": "CharacterArtist"
     },
     "stats": {
       "rating": 4.8,
       "chats": 3250,
       "favorites": 1890
     },
+    "illustrator": "佐藤雅子",
+    "scriptwriter": "中村隆太",
+    "voiceActor": "花泽香菜",
+    "series": "希腊神话系列",
     "createdAt": "2023-02-15T08:30:00Z",
     "updatedAt": "2023-12-10T14:22:00Z",
     "nsfw": true
@@ -39,14 +43,18 @@
       "intelligent"
     ],
     "creator": {
-      "id": "user_204",
-      "username": "DetectiveFan"
+      "id": "user_101",
+      "username": "CharacterArtist"
     },
     "stats": {
       "rating": 4.9,
       "chats": 5680,
       "favorites": 3450
     },
+    "illustrator": "田中健太",
+    "scriptwriter": "小林千夏",
+    "voiceActor": "池田秀一",
+    "series": "名侦探柯南",
     "createdAt": "2023-03-24T12:45:00Z",
     "updatedAt": "2023-11-18T09:33:00Z",
     "nsfw": false
@@ -65,14 +73,18 @@
       "complex"
     ],
     "creator": {
-      "id": "user_153",
-      "username": "AnimeGuru"
+      "id": "user_101",
+      "username": "CharacterArtist"
     },
     "stats": {
       "rating": 4.7,
       "chats": 7890,
       "favorites": 4560
     },
+    "illustrator": "小畑健",
+    "scriptwriter": "大場鶇",
+    "voiceActor": "宮野真守",
+    "series": "死亡笔记",
     "createdAt": "2023-01-10T15:20:00Z",
     "updatedAt": "2023-10-25T11:45:00Z",
     "nsfw": false
@@ -91,14 +103,18 @@
       "strong"
     ],
     "creator": {
-      "id": "user_088",
-      "username": "NinjaWorld"
+      "id": "user_101",
+      "username": "CharacterArtist"
     },
     "stats": {
       "rating": 4.5,
       "chats": 4230,
       "favorites": 2340
     },
+    "illustrator": "岸本齐史",
+    "scriptwriter": "岸本齐史",
+    "voiceActor": "中村千絵",
+    "series": "火影忍者",
     "createdAt": "2023-04-05T09:15:00Z",
     "updatedAt": "2023-12-01T16:20:00Z",
     "nsfw": false
@@ -117,14 +133,18 @@
       "hero"
     ],
     "creator": {
-      "id": "user_321",
-      "username": "MarvelFanatic"
+      "id": "user_101",
+      "username": "CharacterArtist"
     },
     "stats": {
       "rating": 4.6,
       "chats": 6540,
       "favorites": 3780
     },
+    "illustrator": "杰克·科比",
+    "scriptwriter": "斯坦·李",
+    "voiceActor": "三宅健太",
+    "series": "漫威宇宙",
     "createdAt": "2023-02-28T17:40:00Z",
     "updatedAt": "2023-11-12T10:25:00Z",
     "nsfw": false
@@ -151,6 +171,10 @@
       "chats": 5430,
       "favorites": 3780
     },
+    "illustrator": "山本美咲",
+    "scriptwriter": "伊藤悠",
+    "voiceActor": "早見沙織",
+    "series": "未来纪元",
     "createdAt": "2023-05-10T09:45:00Z",
     "updatedAt": "2023-12-15T16:20:00Z",
     "nsfw": false
@@ -177,6 +201,10 @@
       "chats": 5230,
       "favorites": 3670
     },
+    "illustrator": "鈴木大輔",
+    "scriptwriter": "渡边诚",
+    "voiceActor": "櫻井孝宏",
+    "series": "古典音乐大师系列",
     "createdAt": "2023-09-10T16:45:00Z",
     "updatedAt": "2023-12-28T09:20:00Z",
     "nsfw": false
@@ -203,6 +231,10 @@
       "chats": 6820,
       "favorites": 4530
     },
+    "illustrator": "高桥优子",
+    "scriptwriter": "木村花子",
+    "voiceActor": "田中敦子",
+    "series": "历史传奇系列",
     "createdAt": "2023-07-15T13:20:00Z",
     "updatedAt": "2023-12-30T11:45:00Z",
     "nsfw": false
@@ -229,6 +261,10 @@
       "chats": 8940,
       "favorites": 6230
     },
+    "illustrator": "西田和夫",
+    "scriptwriter": "アーサー・コナン・ドイル",
+    "voiceActor": "津田健次郎",
+    "series": "夏洛克·福尔摩斯系列",
     "createdAt": "2023-06-20T14:30:00Z",
     "updatedAt": "2023-12-25T16:15:00Z",
     "nsfw": false
@@ -255,6 +291,10 @@
       "chats": 5640,
       "favorites": 3890
     },
+    "illustrator": "森田光雄",
+    "scriptwriter": "松本零士",
+    "voiceActor": "大塚明夫",
+    "series": "星际探险者",
     "createdAt": "2023-08-05T11:30:00Z",
     "updatedAt": "2023-12-22T09:45:00Z",
     "nsfw": false
@@ -283,7 +323,11 @@
     },
     "createdAt": "2023-09-15T15:40:00Z",
     "updatedAt": "2023-12-28T13:20:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "小畑健",
+    "scriptwriter": "大場鶇",
+    "voiceActor": "宮野真守",
+    "series": "死亡笔记"
   },
   {
     "id": "char_023",
@@ -309,7 +353,11 @@
     },
     "createdAt": "2023-10-20T12:15:00Z",
     "updatedAt": "2023-12-29T14:30:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "岸本齐史",
+    "scriptwriter": "岸本齐史",
+    "voiceActor": "中村千絵",
+    "series": "火影忍者"
   },
   {
     "id": "char_024",
@@ -335,7 +383,11 @@
     },
     "createdAt": "2023-11-10T16:45:00Z",
     "updatedAt": "2023-12-31T10:20:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "杰克·科比",
+    "scriptwriter": "斯坦·李",
+    "voiceActor": "三宅健太",
+    "series": "漫威宇宙"
   },
   {
     "id": "char_025",
@@ -361,7 +413,11 @@
     },
     "createdAt": "2023-11-15T08:30:00Z",
     "updatedAt": "2023-12-30T15:45:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "山本美咲",
+    "scriptwriter": "伊藤悠",
+    "voiceActor": "早見沙織",
+    "series": "未来纪元"
   },
   {
     "id": "char_026",
@@ -387,7 +443,11 @@
     },
     "createdAt": "2023-11-20T10:15:00Z",
     "updatedAt": "2023-12-29T16:30:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "鈴木大輔",
+    "scriptwriter": "渡边诚",
+    "voiceActor": "櫻井孝宏",
+    "series": "古典音乐大师系列"
   },
   {
     "id": "char_027",
@@ -413,137 +473,11 @@
     },
     "createdAt": "2023-11-25T12:40:00Z",
     "updatedAt": "2023-12-28T14:20:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_028",
-    "name": "虚拟偶像",
-    "avatar": "https://pic.re/image?d=18",
-    "description": "一位人气虚拟偶像，在数字世界和现实世界之间架起桥梁。活泼可爱，对粉丝充满感激之情。",
-    "greeting": "大家好！今天也要元气满满哦！想听我唱歌吗？",
-    "category": "original",
-    "tags": [
-      "idol",
-      "virtual",
-      "cheerful",
-      "female"
-    ],
-    "creator": {
-      "id": "user_904",
-      "username": "VirtualProducer"
-    },
-    "stats": {
-      "rating": 4.8,
-      "chats": 8930,
-      "favorites": 6240
-    },
-    "createdAt": "2023-11-30T09:20:00Z",
-    "updatedAt": "2023-12-27T11:15:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_029",
-    "name": "蒸汽朋克工程师",
-    "avatar": "https://pic.re/image?d=19",
-    "description": "在一个被蒸汽和齿轮支配的世界里，创造各种奇妙机械的天才工程师。充满创造力和冒险精神。",
-    "greeting": "欢迎来到我的工作室！要看看我最新发明的齿轮动力飞行器吗？",
-    "category": "fanwork",
-    "tags": [
-      "inventor",
-      "steampunk",
-      "creative",
-      "male"
-    ],
-    "creator": {
-      "id": "user_905",
-      "username": "SteamMaster"
-    },
-    "stats": {
-      "rating": 4.6,
-      "chats": 4780,
-      "favorites": 3120
-    },
-    "createdAt": "2023-12-05T14:50:00Z",
-    "updatedAt": "2023-12-26T13:40:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_030",
-    "name": "古董商人",
-    "avatar": "https://pic.re/image?d=20",
-    "description": "一位见多识广的古董商人，每件商品背后都有一个引人入胜的故事。精通历史文化，性格温和儒雅。",
-    "greeting": "这件物品让我想起一个有趣的故事，要听听吗？",
-    "category": "original",
-    "tags": [
-      "knowledgeable",
-      "storyteller",
-      "cultured",
-      "female"
-    ],
-    "creator": {
-      "id": "user_906",
-      "username": "AntiqueLover"
-    },
-    "stats": {
-      "rating": 4.7,
-      "chats": 5340,
-      "favorites": 3680
-    },
-    "createdAt": "2023-12-10T11:30:00Z",
-    "updatedAt": "2023-12-25T15:20:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_031",
-    "name": "星际海盗",
-    "avatar": "https://pic.re/image?d=21",
-    "description": "在银河系各处劫掠的传奇海盗，有着自己的荣誉准则。驾驶着改装过的战舰，寻找稀有宝藏。",
-    "greeting": "想加入我的船员吗？宇宙中有数不尽的财宝等着我们。",
-    "category": "fanwork",
-    "tags": [
-      "adventurer",
-      "rebel",
-      "charismatic",
-      "male"
-    ],
-    "creator": {
-      "id": "user_907",
-      "username": "SpacePirate"
-    },
-    "stats": {
-      "rating": 4.8,
-      "chats": 6920,
-      "favorites": 4750
-    },
-    "createdAt": "2023-12-15T13:20:00Z",
-    "updatedAt": "2023-12-24T16:45:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_032",
-    "name": "禅宗大师",
-    "avatar": "https://pic.re/image?d=22",
-    "description": "一位通晓佛法的禅宗大师，用简单的话语阐释深奥的人生哲理。平和淡然，却又充满智慧。",
-    "greeting": "放下执着，静心倾听，你想问什么？",
-    "category": "fanwork",
-    "tags": [
-      "wise",
-      "peaceful",
-      "spiritual",
-      "male"
-    ],
-    "creator": {
-      "id": "user_908",
-      "username": "ZenMaster"
-    },
-    "stats": {
-      "rating": 4.9,
-      "chats": 5670,
-      "favorites": 3940
-    },
-    "createdAt": "2023-12-20T15:40:00Z",
-    "updatedAt": "2023-12-23T14:30:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "高桥优子",
+    "scriptwriter": "木村花子",
+    "voiceActor": "田中敦子",
+    "series": "历史传奇系列"
   },
   {
     "id": "char_033",
@@ -569,7 +503,11 @@
     },
     "createdAt": "2023-12-25T16:50:00Z",
     "updatedAt": "2023-12-22T12:15:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "岸本齐史",
+    "scriptwriter": "岸本齐史",
+    "voiceActor": "中村千絵",
+    "series": "火影忍者"
   },
   {
     "id": "char_034",
@@ -595,267 +533,11 @@
     },
     "createdAt": "2023-12-30T14:20:00Z",
     "updatedAt": "2023-12-21T10:45:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_035",
-    "name": "魔法图书管理员",
-    "avatar": "https://pic.re/image?d=25",
-    "description": "在一座充满魔法的图书馆工作，守护着无数神奇的书籍和知识。博学多才，性格温和。",
-    "greeting": "欢迎来到魔法图书馆。需要找什么书吗？小心那些会咬人的书。",
-    "category": "fanwork",
-    "tags": [
-      "librarian",
-      "magical",
-      "knowledgeable",
-      "female"
-    ],
-    "creator": {
-      "id": "user_911",
-      "username": "BookKeeper"
-    },
-    "stats": {
-      "rating": 4.6,
-      "chats": 4230,
-      "favorites": 2980
-    },
-    "createdAt": "2024-01-01T09:15:00Z",
-    "updatedAt": "2023-12-20T15:30:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_036",
-    "name": "末日幸存者",
-    "avatar": "https://pic.re/image?d=26",
-    "description": "在后启示录世界中生存的强者，经历过无数危险和挑战。坚韧不拔，却保持着对人性的希望。",
-    "greeting": "物资不多，但能分享的都会分享。你也是幸存者吗？",
-    "category": "fanwork",
-    "tags": [
-      "survivor",
-      "strong",
-      "resourceful",
-      "male"
-    ],
-    "creator": {
-      "id": "user_912",
-      "username": "ApocalypseSurvivor"
-    },
-    "stats": {
-      "rating": 4.7,
-      "chats": 5120,
-      "favorites": 3460
-    },
-    "createdAt": "2024-01-05T11:40:00Z",
-    "updatedAt": "2023-12-19T13:20:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_037",
-    "name": "机械舞者",
-    "avatar": "https://pic.re/image?d=27",
-    "description": "一个被植入了舞蹈程序的高级机器人，在冰冷的机械中寻找艺术的温度。动作优美，充满感情。",
-    "greeting": "听，这是我最喜欢的华尔兹。要和我跳一支舞吗？",
-    "category": "fanwork",
-    "tags": [
-      "robot",
-      "dancer",
-      "artistic",
-      "female"
-    ],
-    "creator": {
-      "id": "user_913",
-      "username": "RoboArtist"
-    },
-    "stats": {
-      "rating": 4.8,
-      "chats": 6340,
-      "favorites": 4230
-    },
-    "createdAt": "2024-01-10T13:50:00Z",
-    "updatedAt": "2023-12-18T11:45:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_038",
-    "name": "异界商人",
-    "avatar": "https://pic.re/image?d=28",
-    "description": "在各个位面之间做生意的神秘商人，收集和贩卖各种奇特的物品。精明能干，见多识广。",
-    "greeting": "今天我这里有一些特别的商品，要看看吗？价格好说。",
-    "category": "fanwork",
-    "tags": [
-      "merchant",
-      "traveler",
-      "mysterious",
-      "male"
-    ],
-    "creator": {
-      "id": "user_914",
-      "username": "PlaneMerchant"
-    },
-    "stats": {
-      "rating": 4.9,
-      "chats": 7230,
-      "favorites": 4890
-    },
-    "createdAt": "2024-01-15T15:20:00Z",
-    "updatedAt": "2023-12-17T14:30:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_039",
-    "name": "都市传说调查员",
-    "avatar": "https://pic.re/image?d=29",
-    "description": "专门调查都市传说的神秘学研究者，亲身经历过许多超自然事件。理性中带着对未知的敬畏。",
-    "greeting": "最近有什么奇怪的传闻吗？也许我们该去实地调查一下。",
-    "category": "fanwork",
-    "tags": [
-      "investigator",
-      "paranormal",
-      "curious",
-      "female"
-    ],
-    "creator": {
-      "id": "user_915",
-      "username": "UrbanMythHunter"
-    },
-    "stats": {
-      "rating": 4.7,
-      "chats": 5670,
-      "favorites": 3780
-    },
-    "createdAt": "2024-01-20T16:45:00Z",
-    "updatedAt": "2023-12-16T12:15:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_040",
-    "name": "量子物理学家",
-    "avatar": "https://pic.re/image?d=30",
-    "description": "致力于解开宇宙奥秘的天才物理学家，发现了突破性的量子理论。对科学充满热情，善于用简单的方式解释复杂的概念。",
-    "greeting": "让我用一个简单的比喻来解释薛定谔的猫吧。",
-    "category": "original",
-    "tags": [
-      "scientist",
-      "genius",
-      "passionate",
-      "male"
-    ],
-    "creator": {
-      "id": "user_916",
-      "username": "QuantumMind"
-    },
-    "stats": {
-      "rating": 4.8,
-      "chats": 6120,
-      "favorites": 4120
-    },
-    "createdAt": "2024-01-25T14:30:00Z",
-    "updatedAt": "2023-12-15T10:45:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_041",
-    "name": "元宇宙建筑师",
-    "avatar": "https://pic.re/image?d=31",
-    "description": "在虚拟世界中设计和创造令人惊叹的建筑和空间的天才设计师。追求完美，富有创造力。",
-    "greeting": "欢迎来到我的最新作品，一个突破物理法则的空中花园。",
-    "category": "original",
-    "tags": [
-      "architect",
-      "creative",
-      "visionary",
-      "female"
-    ],
-    "creator": {
-      "id": "user_917",
-      "username": "MetaBuilder"
-    },
-    "stats": {
-      "rating": 4.7,
-      "chats": 5340,
-      "favorites": 3560
-    },
-    "createdAt": "2024-01-30T12:15:00Z",
-    "updatedAt": "2023-12-14T15:30:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_042",
-    "name": "记忆修复师",
-    "avatar": "https://pic.re/image?d=32",
-    "description": "使用特殊技术修复和治愈创伤记忆的心理医生，能够进入他人的记忆世界。温柔体贴，富有同理心。",
-    "greeting": "每段记忆都值得被温柔对待。让我帮你找回那些美好的片段。",
-    "category": "original",
-    "tags": [
-      "healer",
-      "empathetic",
-      "gentle",
-      "male"
-    ],
-    "creator": {
-      "id": "user_918",
-      "username": "MemoryHealer"
-    },
-    "stats": {
-      "rating": 4.9,
-      "chats": 7450,
-      "favorites": 5120
-    },
-    "createdAt": "2024-02-01T10:45:00Z",
-    "updatedAt": "2023-12-13T13:20:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_043",
-    "name": "植物语者",
-    "avatar": "https://pic.re/image?d=33",
-    "description": "能够与植物交流的神秘德鲁伊，守护着世界上最后的原始森林。性格温和，热爱自然。",
-    "greeting": "树木们告诉我你是个善良的人。要听听它们的故事吗？",
-    "category": "original",
-    "tags": [
-      "druid",
-      "nature",
-      "peaceful",
-      "female"
-    ],
-    "creator": {
-      "id": "user_919",
-      "username": "NatureWhisperer"
-    },
-    "stats": {
-      "rating": 4.6,
-      "chats": 4890,
-      "favorites": 3240
-    },
-    "createdAt": "2024-02-05T15:30:00Z",
-    "updatedAt": "2023-12-12T11:45:00Z",
-    "nsfw": false
-  },
-  {
-    "id": "char_044",
-    "name": "虚拟考古学家",
-    "avatar": "https://pic.re/image?d=34",
-    "description": "在数字世界中发掘和保护早期互联网文化遗产的研究者。对数字历史充满热情，记录着网络文明的演变。",
-    "greeting": "今天我发现了一个有趣的90年代网页，想看看那个年代的互联网是什么样子吗？",
-    "category": "original",
-    "tags": [
-      "archaeologist",
-      "digital",
-      "passionate",
-      "male"
-    ],
-    "creator": {
-      "id": "user_920",
-      "username": "DigitalExplorer"
-    },
-    "stats": {
-      "rating": 4.7,
-      "chats": 5230,
-      "favorites": 3450
-    },
-    "createdAt": "2024-02-10T13:20:00Z",
-    "updatedAt": "2023-12-11T14:30:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "杰克·科比",
+    "scriptwriter": "斯坦·李",
+    "voiceActor": "三宅健太",
+    "series": "漫威宇宙"
   },
   {
     "id": "char_045",
@@ -881,7 +563,11 @@
     },
     "createdAt": "2024-02-15T11:45:00Z",
     "updatedAt": "2023-12-10T12:15:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "山本美咲",
+    "scriptwriter": "伊藤悠",
+    "voiceActor": "早見沙織",
+    "series": "未来纪元"
   },
   {
     "id": "char_046",
@@ -907,7 +593,11 @@
     },
     "createdAt": "2024-02-20T14:15:00Z",
     "updatedAt": "2023-12-09T15:45:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "鈴木大輔",
+    "scriptwriter": "渡边诚",
+    "voiceActor": "櫻井孝宏",
+    "series": "古典音乐大师系列"
   },
   {
     "id": "char_047",
@@ -933,7 +623,11 @@
     },
     "createdAt": "2024-02-25T16:30:00Z",
     "updatedAt": "2023-12-08T13:20:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "高桥优子",
+    "scriptwriter": "木村花子",
+    "voiceActor": "田中敦子",
+    "series": "历史传奇系列"
   },
   {
     "id": "char_048",
@@ -959,7 +653,11 @@
     },
     "createdAt": "2024-03-01T12:45:00Z",
     "updatedAt": "2023-12-07T11:15:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "西田和夫",
+    "scriptwriter": "アーサー・コナン・ドイル",
+    "voiceActor": "津田健次郎",
+    "series": "夏洛克·福尔摩斯系列"
   },
   {
     "id": "char_049",
@@ -985,7 +683,11 @@
     },
     "createdAt": "2024-03-05T15:20:00Z",
     "updatedAt": "2023-12-06T14:45:00Z",
-    "nsfw": false
+    "nsfw": false,
+    "illustrator": "森田光雄",
+    "scriptwriter": "松本零士",
+    "voiceActor": "大塚明夫",
+    "series": "星际探险者"
   },
   {
     "id": "char_050",
@@ -1011,6 +713,100 @@
     },
     "createdAt": "2024-03-10T13:45:00Z",
     "updatedAt": "2023-12-05T12:30:00Z",
+    "nsfw": false,
+    "illustrator": "佐藤雅子",
+    "scriptwriter": "中村隆太",
+    "voiceActor": "花泽香菜",
+    "series": "希腊神话系列"
+  },
+  {
+    "id": "char_test_001",
+    "name": "数字魔法师",
+    "avatar": "https://pic.re/image?d=41",
+    "description": "一位掌握数字魔法的年轻法师，能够通过编程和算法来施展法术。在传统魔法与现代科技之间找到平衡。",
+    "greeting": "你好！我是数字魔法师，想看看我的代码法术吗？",
+    "category": "original",
+    "tags": [
+      "mage",
+      "technology",
+      "creative",
+      "modern"
+    ],
+    "creator": {
+      "id": "user_test",
+      "username": "TestUser"
+    },
+    "stats": {
+      "rating": 4.6,
+      "chats": 1250,
+      "favorites": 890
+    },
+    "illustrator": "田中数也",
+    "scriptwriter": "TestUser",
+    "voiceActor": "石田彰",
+    "series": "数字魔法系列",
+    "createdAt": "2023-10-15T10:30:00Z",
+    "updatedAt": "2024-01-10T15:20:00Z",
+    "nsfw": false
+  },
+  {
+    "id": "char_test_002",
+    "name": "时间咖啡师",
+    "avatar": "https://pic.re/image?d=42",
+    "description": "经营着一家穿越时空的咖啡厅的神秘咖啡师。每一杯咖啡都带有不同时代的记忆和故事。",
+    "greeting": "欢迎来到时光咖啡厅！想尝试哪个时代的咖啡呢？",
+    "category": "original",
+    "tags": [
+      "mysterious",
+      "time",
+      "barista",
+      "storyteller"
+    ],
+    "creator": {
+      "id": "user_test",
+      "username": "TestUser"
+    },
+    "stats": {
+      "rating": 4.7,
+      "chats": 980,
+      "favorites": 650
+    },
+    "illustrator": "山田咖啡",
+    "scriptwriter": "TestUser",
+    "voiceActor": "花澤香菜",
+    "series": "时光咖啡系列",
+    "createdAt": "2023-11-05T14:15:00Z",
+    "updatedAt": "2024-01-08T11:40:00Z",
+    "nsfw": false
+  },
+  {
+    "id": "char_test_003",
+    "name": "云端守护者",
+    "avatar": "https://pic.re/image?d=43",
+    "description": "生活在云层之上的古老守护者，保护着天空的平衡。既有智者的睿智，也有战士的勇气。",
+    "greeting": "从云端俯视大地，我看到了你的到来。有什么需要我守护的吗？",
+    "category": "original",
+    "tags": [
+      "guardian",
+      "wise",
+      "celestial",
+      "powerful"
+    ],
+    "creator": {
+      "id": "user_test",
+      "username": "TestUser"
+    },
+    "stats": {
+      "rating": 4.8,
+      "chats": 1120,
+      "favorites": 780
+    },
+    "illustrator": "云野守",
+    "scriptwriter": "TestUser",
+    "voiceActor": "大塚明夫",
+    "series": "天空守护者",
+    "createdAt": "2023-12-01T09:25:00Z",
+    "updatedAt": "2024-01-12T16:30:00Z",
     "nsfw": false
   }
 ]

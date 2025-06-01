@@ -1,5 +1,98 @@
 [
     {
+        "id": "memory_medusa_1",
+        "title": "关于诅咒与救赎的对话",
+        "user": {
+            "id": "user_301",
+            "username": "MythologyLover",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_001",
+            "name": "美杜莎",
+            "avatar": "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_medusa_1_1",
+                "sender": "user",
+                "content": "作为被诅咒的戈尔贡，你如何看待命运的安排？"
+            },
+            {
+                "id": "msg_medusa_1_2",
+                "sender": "character",
+                "content": "命运往往残酷，但我学会了在痛苦中寻找意义。被诅咒并不意味着失去希望，而是要在绝望中找到属于自己的光。每一次凝视镜中的自己，我都在思考什么是真正的美丽。"
+            }
+        ],
+        "stats": {
+            "likes": 128,
+            "comments": 34
+        },
+        "timestamp": "2025-04-04T15:30:00Z"
+    },
+    {
+        "id": "memory_medusa_2",
+        "title": "古代智慧与现代思考",
+        "user": {
+            "id": "user_302",
+            "username": "PhilosophyStudent",
+            "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_001",
+            "name": "美杜莎",
+            "avatar": "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_medusa_2_1",
+                "sender": "user",
+                "content": "你见证了古代文明的兴衰，对现代世界有什么看法？"
+            },
+            {
+                "id": "msg_medusa_2_2",
+                "sender": "character",
+                "content": "时代在变，但人性中的光明与黑暗却是永恒的。古代的人们敬畏神明，现代的人们崇拜科技，本质上都在寻求超越自身的力量。真正的智慧不在于掌握力量，而在于理解如何正确使用它。"
+            }
+        ],
+        "stats": {
+            "likes": 95,
+            "comments": 28
+        },
+        "timestamp": "2025-04-04T12:15:00Z"
+    },
+    {
+        "id": "memory_medusa_3",
+        "title": "美与恐惧的辩证",
+        "user": {
+            "id": "user_303",
+            "username": "ArtCritic",
+            "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "character": {
+            "id": "char_001",
+            "name": "美杜莎",
+            "avatar": "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+        },
+        "messages": [
+            {
+                "id": "msg_medusa_3_1",
+                "sender": "user",
+                "content": "你的美丽曾经倾城，如今却让人化为石像。美与恐惧为何如此相近？"
+            },
+            {
+                "id": "msg_medusa_3_2",
+                "sender": "character",
+                "content": "美与恐惧都是强烈的情感体验，它们都能瞬间改变人的内心。我的外表变了，但我对美的理解却更深了。真正的美不在于外在的形式，而在于触动灵魂的力量。有时候，最深刻的美正隐藏在人们最恐惧的地方。"
+            }
+        ],
+        "stats": {
+            "likes": 156,
+            "comments": 42
+        },
+        "timestamp": "2025-04-04T09:45:00Z"
+    },
+    {
         "id": "memory_1",
         "title": "AI的未来发展",
         "user": {

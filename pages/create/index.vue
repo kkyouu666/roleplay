@@ -218,7 +218,25 @@ const defaultCharacter = {
   },
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
-  nsfw: false
+  nsfw: false,
+  age: '',
+  gender: '',
+  fullname: '',
+  personality: '',
+  appearance: '',
+  behavior: '',
+  raceCharacteristics: '',
+  abilities: '',
+  r18Settings: '',
+  detailedDescription: '',
+  metaHints: '',
+  dialogueExample: '',
+  selfIntroduction: '',
+  initialStatus: '',
+  statusUpdateRules: '',
+  statusDisplayTemplate: '',
+  enableStatusBar: false,
+  freeFormDetails: ''
 };
 
 const editingCharacter = ref<Partial<CharacterCard>>({ ...defaultCharacter });

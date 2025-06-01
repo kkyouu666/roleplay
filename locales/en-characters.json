@@ -1,0 +1,16 @@
+{
+    "characters": {
+        "notFound": "Character Not Found",
+        "notFoundDesc": "The character you're looking for doesn't exist or has been removed.",
+        "comments": "Comments",
+        "writeComment": "Write a comment...",
+        "submitComment": "Submit",
+        "noComments": "No comments yet. Be the first to comment!",
+        "creator": "Creator",
+        "charactersCreated": "characters created",
+        "publicMemory": "Public Memory",
+        "noMemories": "No public memories yet",
+        "chats": "chats",
+        "viewDetails": "View Details"
+    }
+}

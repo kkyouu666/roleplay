@@ -26,6 +26,12 @@
           <span>{{ character.stats?.rating || 0 }}</span>
         </div>
       </div>
+
+      <!-- Additional character info -->
+      <div v-if="character.age || character.gender" class="flex items-center justify-center text-sm text-gray-500 dark:text-gray-400 mb-4 space-x-4">
+        <span v-if="character.age">{{ $t('create.editor.age') }}: {{ character.age }}</span>
+        <span v-if="character.gender">{{ $t('create.editor.gender') }}: {{ getGenderDisplay(character.gender) }}</span>
+      </div>
     </div>
 
     <div class="space-y-6">
@@ -104,7 +110,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, nextTick, onMounted } from 'vue';
+import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { CharacterCard } from '~/types';
 
@@ -210,6 +216,17 @@ function scrollToBottom() {
       messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
     }
   });
+}
+
+// Get gender display
+function getGenderDisplay(gender: string | undefined): string {
+  if (!gender) return '';
+
+  try {
+    return t(`create.editor.${gender}`);
+  } catch {
+    return gender;
+  }
 }
 </script>
 

@@ -105,7 +105,7 @@
         
         <div class="divide-y divide-gray-200 dark:divide-gray-700">
           <!-- Loading state -->
-          <div v-if="notificationStore.isLoading" class="py-16 text-center">
+          <div v-if="notificationStore.isLoading && notificationStore.notifications.length === 0" class="py-16 text-center">
             <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
             <p class="mt-4 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
           </div>
@@ -201,6 +201,18 @@
               </div>
             </div>
           </div>
+
+          <!-- Load more button -->
+          <div v-if="notificationStore.hasMore && filteredNotifications.length > 0" class="p-6 text-center border-t border-gray-200 dark:border-gray-700">
+            <span 
+              @click="loadMoreNotifications"
+              :disabled="notificationStore.isLoading"
+              class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 cursor-pointer"
+            >
+              <div v-if="notificationStore.isLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-indigo-600 mr-2"></div>
+              {{ notificationStore.isLoading ? $t('common.loading') : $t('common.loadMore') }}
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -232,9 +244,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { useNotificationStore, type Notification } from '~/stores/notifications';
+import { computed, ref } from 'vue';
 import { useAuthStore } from '~/stores/auth';
+import { useNotificationStore, type Notification } from '~/stores/notifications';
 
 const notificationStore = useNotificationStore();
 const authStore = useAuthStore();
@@ -245,7 +257,7 @@ const showDeleteAllConfirm = ref(false);
 // Load notifications when component is mounted
 onMounted(() => {
   if (authStore?.isAuthenticated) {
-    notificationStore.loadNotifications();
+    notificationStore.loadNotifications(true); // Reset and load from first page
   }
 });
 
@@ -266,11 +278,22 @@ const filteredNotifications = computed(() => {
   return filtered;
 });
 
+// Load more notifications
+function loadMoreNotifications() {
+  notificationStore.loadMoreNotifications();
+}
+
 // Toggle delete confirmation dialog
 function toggleDeleteConfirm() {
   if (notificationStore.notifications.length > 0) {
     showDeleteAllConfirm.value = true;
   }
+}
+
+// Delete all notifications
+async function deleteAllNotifications() {
+  await notificationStore.deleteAllNotifications();
+  showDeleteAllConfirm.value = false;
 }
 
 function getNotificationText(notification: Notification): string {
@@ -311,16 +334,6 @@ function viewComment(notification: Notification) {
   // In a real app, navigate to the comment
   // For now, just display a message
   alert(`Viewing ${notification.type}: ${notification.data.commentText}`);
-}
-
-function deleteAllNotifications() {
-  // Delete all notifications that match the current filters
-  filteredNotifications.value.forEach(notification => {
-    notificationStore.deleteNotification(notification.id);
-  });
-  
-  // Close confirmation dialog
-  showDeleteAllConfirm.value = false;
 }
 
 function openAuthModal() {

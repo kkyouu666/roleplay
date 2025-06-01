@@ -2,7 +2,12 @@
   <div>
     <h2 class="text-xl font-bold mb-6 text-gray-900 dark:text-gray-100">{{ $t('settings.privacy') }}</h2>
 
-    <form @submit.prevent="savePrivacySettings">
+    <div v-if="isLoading" class="text-center py-10">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-600"></div>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">{{ $t('common.loading') }}</p>
+    </div>
+
+    <form v-else @submit.prevent="savePrivacySettings">
       <div class="space-y-6">
         <!-- Profile Information Visibility -->
         <div>
@@ -104,8 +109,12 @@
       </div>
 
       <div class="mt-6 flex justify-end">
-        <button type="submit" class="btn btn-primary">
-          {{ $t('common.save') }}
+        <button type="submit" class="btn btn-primary" :disabled="isSaving">
+          <span v-if="isSaving" class="inline-flex items-center">
+            <div class="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2"></div>
+            {{ $t('common.saving') }}
+          </span>
+          <span v-else>{{ $t('common.save') }}</span>
         </button>
       </div>
     </form>
@@ -113,9 +122,16 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
+import { useApi } from '~/composables/useApi';
+import { useAuthStore } from '~/stores/auth';
 
+const authStore = useAuthStore();
+const api = useApi();
 const { t } = useI18n();
+
+const isLoading = ref(false);
+const isSaving = ref(false);
 
 const form = reactive({
   genderVisibility: 'public',
@@ -127,9 +143,60 @@ const form = reactive({
   allowAnalytics: true
 });
 
+// 在组件挂载时加载用户设置
+onMounted(async () => {
+  await loadPrivacySettings();
+});
+
+// 加载隐私设置数据
+async function loadPrivacySettings() {
+  if (!authStore?.user?.id) return;
+  
+  isLoading.value = true;
+  try {
+    const response = await api.getUserSettings(authStore.user.id);
+    if (response.success) {
+      const { privacy } = response.settings;
+      form.genderVisibility = privacy.genderVisibility;
+      form.birthdayVisibility = privacy.birthdayVisibility;
+      form.bioVisibility = privacy.bioVisibility;
+      form.favoritesVisibility = privacy.favoritesVisibility;
+      form.likesVisibility = privacy.likesVisibility;
+      form.allowPersonalization = privacy.allowPersonalization;
+      form.allowAnalytics = privacy.allowAnalytics;
+    }
+  } catch (error) {
+    console.error('Error loading privacy settings:', error);
+  } finally {
+    isLoading.value = false;
+  }
+}
+
 async function savePrivacySettings() {
-  // In a real app, you would call an API to update the user's privacy settings
-  // For now, just show a success message
-  alert(t('settings.privacySettingsUpdated'));
+  if (!authStore?.user?.id) return;
+
+  isSaving.value = true;
+  try {
+    const response = await api.updatePrivacySettings({
+      userId: authStore.user.id,
+      genderVisibility: form.genderVisibility,
+      birthdayVisibility: form.birthdayVisibility,
+      bioVisibility: form.bioVisibility,
+      favoritesVisibility: form.favoritesVisibility,
+      likesVisibility: form.likesVisibility,
+      allowPersonalization: form.allowPersonalization,
+      allowAnalytics: form.allowAnalytics
+    });
+
+    if (response.success) {
+      // 显示成功消息
+      alert(response.message || t('settings.privacySettingsUpdated'));
+    }
+  } catch (error: any) {
+    console.error('Error saving privacy settings:', error);
+    alert(error.data?.message || t('common.error'));
+  } finally {
+    isSaving.value = false;
+  }
 }
 </script>

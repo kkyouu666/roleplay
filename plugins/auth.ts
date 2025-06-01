@@ -13,7 +13,7 @@ export default defineNuxtPlugin({
                 const authModule = await import('~/stores/auth');
                 const authStore = authModule.useAuthStore();
                 if (authStore) {
-                  authStore.checkAuth();
+                  await authStore.checkAuth();
                 }
               }
             } catch (error) {

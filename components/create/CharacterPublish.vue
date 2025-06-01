@@ -9,42 +9,53 @@
     </div>
     
     <!-- Character Preview Card -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden max-w-md mx-auto">
-      <div class="relative">
-        <img 
-          :src="character.avatar" 
-          :alt="character.name" 
-          class="w-full h-48 object-cover"
-        />
-        <div v-if="character.nsfw" class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full">
-          NSFW
+    <div class="relative overflow-hidden rounded-lg shadow-md max-w-xs mx-auto group">
+      <!-- Character Image -->
+      <img 
+        :src="character.avatar" 
+        :alt="character.name" 
+        class="w-full aspect-[3/4] object-cover"
+      />
+
+      <!-- Info Section (Bottom) -->
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-3 max-h-[75%] flex flex-col min-w-0">
+        <!-- Character Name -->
+        <h3 class="text-lg sm:text-xl font-semibold text-white line-clamp-1 text-shadow mb-1">{{ character.name }}</h3>
+
+        <!-- Category -->
+        <div class="flex justify-between items-center mb-2 min-w-0">
+          <span class="text-sm text-white/80 truncate">{{ $t(`roleplay.categories.${character.category}`) }}</span>
         </div>
-      </div>
-      
-      <div class="p-4">
-        <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">{{ character.name }}</h3>
-        
-        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
-          <span>{{ $t(`roleplay.categories.${character.category}`) }}</span>
-        </div>
-        
-        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2">
+
+        <!-- Description -->
+        <p class="text-sm text-white/80 line-clamp-2 mb-2">
           {{ character.description }}
         </p>
-        
-        <div class="flex flex-wrap gap-1 mb-3">
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-1 mb-2 overflow-hidden">
+          <!-- NSFW Tag -->
           <span 
-            v-for="tag in character.tags?.slice(0, 3)" 
+            v-if="character.nsfw"
+            class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-red-400/70 text-white"
+          >
+            <Icon name="heroicons:eye-slash" class="w-3 h-3 mr-1" />
+            <span>NSFW</span>
+          </span>
+
+          <!-- Regular Tags -->
+          <span 
+            v-for="(tag, index) in character.tags?.slice(0, 2)" 
             :key="tag"
-            class="inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs"
+            class="inline-block px-2 py-1 bg-black/50 text-white rounded-full text-xs whitespace-nowrap"
           >
             #{{ tag }}
           </span>
           <span
-            v-if="character.tags && character.tags.length > 3"
-            class="inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-full text-xs"
+            v-if="character.tags && character.tags.length > 2"
+            class="inline-block px-2 py-1 bg-black/50 text-white rounded-full text-xs whitespace-nowrap"
           >
-            +{{ character.tags.length - 3 }}
+            +{{ character.tags.length - 2 }}
           </span>
         </div>
       </div>
@@ -116,7 +127,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import type { CharacterCard } from '~/types';
 
 const props = defineProps<{
@@ -130,9 +140,37 @@ const emit = defineEmits(['publish', 'back', 'view-character', 'create-another']
 
 <style scoped>
 .line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  max-height: 2.5rem;
+  line-height: 1.25;
+}
+
+.line-clamp-1 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  max-height: 1.5rem !important;
+  line-height: 1.2 !important;
+}
+
+.truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.text-shadow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Ensure the card maintains proper sizing */
+@media (min-width: 640px) {
+  .line-clamp-1 {
+    max-height: 1.75rem !important;
+  }
 }
 </style>

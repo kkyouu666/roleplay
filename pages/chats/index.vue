@@ -25,16 +25,8 @@
         <ChatsEmptyState />
       </div>
       
-      <!-- Loading state for initial chat loading -->
-      <div v-else-if="roleplayStore.isLoading && !roleplayStore.activeChat.messages.length" class="flex-1 flex items-center justify-center">
-        <div class="text-center">
-          <div class="w-12 h-12 border-t-2 border-b-2 border-indigo-500 rounded-full animate-spin mx-auto mb-4"></div>
-          <p class="text-gray-500 dark:text-gray-400">{{ $t('common.loading') }}</p>
-        </div>
-      </div>
-      
-      <!-- Loading state when switching between existing chats -->
-      <div v-else-if="isLoadingChat === roleplayStore.activeChat.id" class="flex-1 flex items-center justify-center bg-white dark:bg-gray-800">
+      <!-- Loading state for chat messages -->
+      <div v-else-if="roleplayStore.isLoadingMessages" class="flex-1 flex items-center justify-center">
         <div class="text-center">
           <div class="w-12 h-12 border-t-2 border-b-2 border-indigo-500 rounded-full animate-spin mx-auto mb-4"></div>
           <p class="text-gray-500 dark:text-gray-400">{{ $t('common.loading') }}</p>
@@ -45,10 +37,10 @@
         <ChatsChatHeader :character="roleplayStore.activeChat.character" />
         <ChatsChatMessages 
           :messages="roleplayStore.activeChat.messages"
-          :is-typing="isWaitingForResponse"
+          :is-typing="roleplayStore.isSendingMessage || roleplayStore.isTypingCharacter"
         />
         <ChatsChatInput 
-          :is-typing="isWaitingForResponse"
+          :is-typing="roleplayStore.isSendingMessage"
           @send="sendMessage"
         />
       </div>
@@ -64,27 +56,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted } from 'vue';
 import { useAuthStore } from '~/stores/auth';
 import { useRoleplayStore } from '~/stores/roleplay';
 
 const authStore = useAuthStore();
 const roleplayStore = useRoleplayStore();
-const isWaitingForResponse = ref(false);
-const isLoadingChat = ref<string | null>(null);
 
-function sendMessage(content: string) {
-  if (!roleplayStore.activeChat || isWaitingForResponse.value) return;
+// 在页面挂载时加载聊天列表
+onMounted(async () => {
+  if (authStore?.isAuthenticated) {
+    await roleplayStore.loadChats();
+  }
+});
+
+// 监听认证状态变化
+watch(() => authStore?.isAuthenticated, async (isAuthenticated) => {
+  if (isAuthenticated) {
+    await roleplayStore.loadChats();
+  } else {
+    roleplayStore.clearChats();
+  }
+});
+
+async function sendMessage(content: string) {
+  if (!roleplayStore.activeChat || roleplayStore.isSendingMessage) return;
   
-  // Set waiting state
-  isWaitingForResponse.value = true;
-  
-  roleplayStore.sendMessage(content);
-  
-  // Simulate waiting for character response
-  setTimeout(() => {
-    isWaitingForResponse.value = false;
-  }, 1000); // This should match the delay in the roleplay store
+  await roleplayStore.sendMessage(content);
 }
 
 function openAuthModal() {

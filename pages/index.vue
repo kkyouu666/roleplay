@@ -38,8 +38,8 @@
           :initial-gender="roleplayStore.filters.gender" :initial-show-filtered="roleplayStore.filters.showFiltered"
           @set-ranking="setRankingFilter" @set-gender="setGenderFilter" @toggle-filtered="toggleFilteredView" />
 
-        <HomeCreatorFilterOptions v-else :selected-filter="creatorFilter"
-          :initial-show-filtered="roleplayStore.filters.showFiltered" @set-filter="setCreatorFilter"
+        <HomeCreatorFilterOptions v-else :selected-filter="roleplayStore.creatorsSort"
+          :initial-show-filtered="roleplayStore.filters.showFiltered" @set-filter="handleCreatorFilter"
           @toggle-filtered="toggleFilteredView" />
       </div>
 
@@ -51,14 +51,14 @@
           @view-character="viewCharacter" @start-chat="startChat" @reset-filters="resetFilters" @load-more="loadMore" />
 
         <!-- Memories Tab -->
-        <HomeMemoryGrid v-else-if="activeTab === 'memories'" :memories="memories" :is-loading="isLoadingMemories"
-          :has-more="hasMoreMemories" :page="memoriesPage" @reset-filters="resetFilters"
-          @load-more="loadMoreMemories" />
+        <HomeMemoryGrid v-else-if="activeTab === 'memories'" :memories="roleplayStore.memories" 
+          :is-loading="roleplayStore.isLoadingMemories" :has-more="roleplayStore.hasMoreMemories" 
+          :page="roleplayStore.memoriesPage" @reset-filters="resetFilters" @load-more="loadMoreMemories" />
 
         <!-- Creators Tab -->
-        <HomeCreatorGrid v-else :creators="creators" :is-loading="isLoadingCreators" :has-more="hasMoreCreators"
-          :page="creatorsPage" @reset-filters="resetFilters" @load-more="loadMoreCreators"
-          @view-profile="viewCreatorProfile" />
+        <HomeCreatorGrid v-else :creators="roleplayStore.creators" :is-loading="roleplayStore.isLoadingCreators" 
+          :has-more="roleplayStore.hasMoreCreators" :page="roleplayStore.creatorsPage" @reset-filters="resetFilters" 
+          @load-more="loadMoreCreators" @view-profile="viewCreatorProfile" />
       </div>
 
       <!-- Character Modal -->
@@ -69,9 +69,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, computed, watch } from 'vue';
-import { useRoleplayStore } from '~/stores/roleplay';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useAuthStore } from '~/stores/auth';
+import { useRoleplayStore } from '~/stores/roleplay';
 import type { CharacterCard } from '~/types';
 
 const roleplayStore = useRoleplayStore();
@@ -85,19 +85,6 @@ const tabs = [
   { id: 'creators', label: 'home.creators' }
 ];
 const activeTab = ref('characters');
-const creatorFilter = ref('popular');
-
-// Memories state
-const memories = ref([]);
-const isLoadingMemories = ref(false);
-const hasMoreMemories = ref(true);
-const memoriesPage = ref(1);
-
-// Creators state
-const creators = ref([]);
-const isLoadingCreators = ref(false);
-const hasMoreCreators = ref(true);
-const creatorsPage = ref(1);
 
 // Featured characters - select multiple characters for the banner
 const featuredCharacters = computed(() => {
@@ -129,89 +116,23 @@ onMounted(async () => {
 
   // Load memories if memories tab is active
   if (activeTab.value === 'memories') {
-    loadMemories();
+    roleplayStore.loadMemories();
   }
 
   // Load creators if creators tab is active
   if (activeTab.value === 'creators') {
-    loadCreators();
+    roleplayStore.loadCreators();
   }
 });
 
 // Watch for tab changes
 watch(activeTab, (newTab) => {
-  if (newTab === 'memories' && memories.value.length === 0) {
-    loadMemories();
-  } else if (newTab === 'creators' && creators.value.length === 0) {
-    loadCreators();
+  if (newTab === 'memories' && roleplayStore.memories.length === 0) {
+    roleplayStore.loadMemories();
+  } else if (newTab === 'creators' && roleplayStore.creators.length === 0) {
+    roleplayStore.loadCreators();
   }
 });
-
-// Load memories from mock data
-async function loadMemories() {
-  if (isLoadingMemories.value) return;
-
-  isLoadingMemories.value = true;
-  try {
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Load mock data
-    const response = await import('~/mock/memories.json');
-    const allMemories = response.default;
-
-    // Calculate pagination
-    const pageSize = 6;
-    const start = (memoriesPage.value - 1) * pageSize;
-    const end = start + pageSize;
-    const newMemories = allMemories.slice(start, end);
-
-    // Update state
-    memories.value = memoriesPage.value === 1
-      ? newMemories
-      : [...memories.value, ...newMemories];
-
-    hasMoreMemories.value = end < allMemories.length;
-    memoriesPage.value++;
-  } catch (error) {
-    console.error('Error loading memories:', error);
-  } finally {
-    isLoadingMemories.value = false;
-  }
-}
-
-// Load creators from mock data
-async function loadCreators() {
-  if (isLoadingCreators.value) return;
-
-  isLoadingCreators.value = true;
-  try {
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Load mock data
-    const response = await import('~/mock/creators.json');
-    const allCreators = response.default;
-
-    // Calculate pagination
-    const pageSize = 8;
-    const start = (creatorsPage.value - 1) * pageSize;
-    const end = start + pageSize;
-    const newCreators = allCreators.slice(start, end);
-
-    // Update state
-    creators.value = creatorsPage.value === 1
-      ? newCreators
-      : [...creators.value, ...newCreators];
-
-    hasMoreCreators.value = end < allCreators.length;
-    creatorsPage.value++;
-  } catch (error) {
-    console.error('Error loading creators:', error);
-  } finally {
-    isLoadingCreators.value = false;
-  }
-}
 
 // Load more data based on active tab
 function loadMore() {
@@ -221,11 +142,11 @@ function loadMore() {
 }
 
 function loadMoreMemories() {
-  loadMemories();
+  roleplayStore.loadMemories();
 }
 
 function loadMoreCreators() {
-  loadCreators();
+  roleplayStore.loadCreators();
 }
 
 // Filter methods
@@ -254,15 +175,8 @@ function toggleFilteredView(showFiltered: boolean) {
   roleplayStore.toggleFilteredView(showFiltered);
 }
 
-function setCreatorFilter(filter: string) {
-  creatorFilter.value = filter;
-  console.log('Creator filter set to:', filter);
-  // In a real app, you would apply this filter to the creators list
-
-  // Reset creators and load with new filter
-  creatorsPage.value = 1;
-  creators.value = [];
-  loadCreators();
+function handleCreatorFilter(filter: string) {
+  roleplayStore.setCreatorsSort(filter);
 }
 
 function resetFilters() {

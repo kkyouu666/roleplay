@@ -1,0 +1,56 @@
+{
+    "subscription": {
+        "plans": {
+            "free": "Free Plan",
+            "standard": "Standard Plan",
+            "premium": "Premium Plan"
+        },
+        "features": {
+            "messageLimit": "Message Limit",
+            "historyAccess": "History Access",
+            "historyAccessDate": "days",
+            "advancedChat": "Advanced Chat Features",
+            "customCharacters": "Custom Characters",
+            "priority": "Priority Support",
+            "adsRemoval": "No Advertisements"
+        },
+        "pricing": {
+            "monthly": "Monthly",
+            "yearly": "Yearly",
+            "lifetime": "Lifetime",
+            "perMonth": "per month",
+            "perYear": "per year",
+            "oneTime": "one-time payment",
+            "save": "Save"
+        },
+        "action": {
+            "subscribe": "Subscribe",
+            "upgrade": "Upgrade",
+            "manage": "Manage Subscription",
+            "cancel": "Cancel Subscription",
+            "current": "Current Plan"
+        },
+        "faq": {
+            "planDifferences": {
+                "question": "What are the differences between subscription plans?",
+                "answer": "Each subscription plan offers different levels of features and limits. The free plan provides basic functionality, the standard plan increases message limits and history access, and the premium plan offers unlimited features and priority support."
+            },
+            "cancellation": {
+                "question": "Can I cancel my subscription at any time?",
+                "answer": "Yes, you can cancel your subscription at any time. After cancellation, your premium features will continue until the end of your current billing cycle."
+            },
+            "changePlan": {
+                "question": "How do I change my subscription plan?",
+                "answer": "You can manage your subscription plan in the 'Subscription' section of your profile. You can upgrade at any time, and downgrade options will take effect at the end of your current billing cycle."
+            },
+            "paymentMethods": {
+                "question": "What payment methods do you accept?",
+                "answer": "We accept all major credit and debit cards, including Visa, Mastercard, American Express, and Discover. We also support PayPal payments."
+            },
+            "autoRenewal": {
+                "question": "Does the subscription automatically renew?",
+                "answer": "Yes, all subscriptions automatically renew unless you cancel before the next billing cycle begins. You can manage auto-renewal options in your account settings."
+            }
+        }
+    }
+}

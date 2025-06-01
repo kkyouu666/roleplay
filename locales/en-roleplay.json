@@ -1,0 +1,97 @@
+{
+    "roleplay": {
+        "categories": {
+            "all": "All",
+            "original": "Original",
+            "fanwork": "Fanwork"
+        },
+        "tags": {
+            "popular": "Popular",
+            "new": "New",
+            "trending": "Trending",
+            "nsfw": "NSFW",
+            "sfw": "SFW"
+        },
+        "characterInfo": {
+            "created": "Created",
+            "creator": "Creator",
+            "category": "Category",
+            "rating": "Rating",
+            "chats": "Chats",
+            "title": "Character Info",
+            "stats": "Statistics",
+            "favorites": "Favorites",
+            "startChat": "Start Chat",
+            "edit": "Edit Character",
+            "delete": "Delete Character",
+            "share": "Share",
+            "report": "Report",
+            "illustrator": "Illustrator",
+            "scriptwriter": "Scriptwriter",
+            "voiceActor": "Voice Actor",
+            "series": "Series",
+            "comments": "Comments",
+            "viewMore": "View More",
+            "noComments": "No Comments",
+            "memories": "Memories",
+            "noMemories": "No Memories",
+            "following": "Following",
+            "follow": "Follow",
+            "viewDetails": "View Details",
+            "creatorInfo": {
+                "title": "Creator",
+                "characters": "Characters",
+                "followers": "Followers",
+                "bio": "A creative character designer who excels at crafting deep AI characters. Passionate about exploring diverse personalities and dedicated to creating relatable character experiences."
+            }
+        },
+        "chat": {
+            "placeholder": "Type a message...",
+            "send": "Send",
+            "typing": "Typing...",
+            "thinking": "Thinking...",
+            "generating": "Generating response...",
+            "reconnect": "Reconnect",
+            "loadMore": "Load More",
+            "newChat": "New Chat",
+            "settings": "Chat Settings",
+            "clear": "Clear Chat",
+            "streamingError": "Message streaming error",
+            "retryMessage": "Retry sending"
+        },
+        "noResults": "No matching characters found",
+        "resetFilters": "Reset filters",
+        "noChatsYet": "No chats yet",
+        "filters": {
+            "ranking": {
+                "default": "Default",
+                "rating": "Highest Rated",
+                "chats": "Most Chats",
+                "newest": "Newest First"
+            },
+            "gender": {
+                "all": "All Genders",
+                "female": "Female",
+                "male": "Male",
+                "other": "Other"
+            },
+            "showFiltered": "Show Filtered",
+            "toggle": "Toggle Filters"
+        },
+        "exploreCharacters": "Explore characters",
+        "selectChat": "Select a chat",
+        "selectChatDescription": "Select a chat from the list on the left or find a new character on the home page to start chatting",
+        "chatWith": "Chat with {name}",
+        "startNewChat": "Start new chat",
+        "deleteChat": "Delete chat",
+        "deleteChatConfirm": "Are you sure you want to delete this chat? This action cannot be undone.",
+        "chatDeleted": "Chat deleted",
+        "messageSent": "Message sent",
+        "sendMessage": "Send message",
+        "messageEmpty": "Message cannot be empty",
+        "chatCreated": "Chat created successfully",
+        "chatLoadError": "Failed to load chat",
+        "sendError": "Failed to send message",
+        "streamError": "Message streaming failed"
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "subscription": {
+        "plans": {
+            "free": "無料プラン",
+            "standard": "スタンダードプラン",
+            "premium": "プレミアムプラン"
+        },
+        "features": {
+            "messageLimit": "メッセージ制限",
+            "historyAccess": "履歴アクセス",
+            "historyAccessDate": "日",
+            "advancedChat": "高度なチャット機能",
+            "customCharacters": "カスタムキャラクター",
+            "priority": "優先サポート",
+            "adsRemoval": "広告なし"
+        },
+        "pricing": {
+            "monthly": "月額",
+            "yearly": "年額",
+            "lifetime": "生涯",
+            "perMonth": "月あたり",
+            "perYear": "年あたり",
+            "oneTime": "一括払い",
+            "save": "節約"
+        },
+        "action": {
+            "subscribe": "登録",
+            "upgrade": "アップグレード",
+            "manage": "プラン管理",
+            "cancel": "プランをキャンセル",
+            "current": "現在のプラン"
+        },
+        "faq": {
+            "planDifferences": {
+                "question": "各プランの違いは何ですか？",
+                "answer": "各サブスクリプションプランは異なるレベルの機能と制限を提供しています。無料プランは基本機能を提供し、スタンダードプランはメッセージ制限と履歴アクセスを増やし、プレミアムプランは無制限の機能と優先サポートを提供します。"
+            },
+            "cancellation": {
+                "question": "いつでもサブスクリプションをキャンセルできますか？",
+                "answer": "はい、いつでもサブスクリプションをキャンセルできます。キャンセル後、プレミアム機能は現在の課金サイクルの終わりまで継続します。"
+            },
+            "changePlan": {
+                "question": "プランの変更方法は？",
+                "answer": "プロフィールページの「サブスクリプション」セクションでプランを管理できます。アップグレードはいつでも可能で、ダウングレードは現在の課金サイクル終了時に適用されます。"
+            },
+            "paymentMethods": {
+                "question": "どの支払い方法が利用できますか？",
+                "answer": "Visa、Mastercard、American Express、Discoverなどの主要なクレジットカードとデビットカードに対応しています。PayPalでの支払いもサポートしています。"
+            },
+            "autoRenewal": {
+                "question": "サブスクリプションは自動更新されますか？",
+                "answer": "はい、次の課金サイクルが始まる前にキャンセルしない限り、すべてのサブスクリプションは自動更新されます。アカウント設定で自動更新オプションを管理できます。"
+            }
+        }
+    }
+}

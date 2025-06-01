@@ -1,0 +1,14 @@
+{
+    "navigation": {
+        "main": "Main Navigation",
+        "home": "Home",
+        "chats": "Chats",
+        "create": "Create",
+        "profile": "Creator Space",
+        "settings": "Settings",
+        "notifications": "Notifications",
+        "subscription": "Subscription",
+        "pricing": "Pricing",
+        "bonus": "Bonus"
+    }
+}

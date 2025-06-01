@@ -119,17 +119,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue';
+import { computed, reactive, ref } from 'vue';
+import type { UserRole } from '~/composables/useApi';
 
-const props = defineProps({
-  role: {
-    type: Object,
-    default: null
-  }
-});
+const props = defineProps<{
+  role?: UserRole | null
+}>();
 
-const emit = defineEmits(['save', 'close']);
-const avatarInput = ref(null);
+const emit = defineEmits<{
+  save: [role: any]
+  close: []
+}>();
+
+const { t } = useI18n();
+const avatarInput = ref<HTMLInputElement | null>(null);
 const errorMessage = ref('');
 
 const isEditing = computed(() => !!props.role);
@@ -137,35 +140,38 @@ const isEditing = computed(() => !!props.role);
 const roleForm = reactive({
   id: props.role?.id || '',
   name: props.role?.name || '',
-  age: props.role?.age || '',
+  age: props.role?.age || null,
   bio: props.role?.bio || '',
   avatar: props.role?.avatar || '',
   isDefault: props.role?.isDefault || false
 });
 
 function selectAvatar() {
-  avatarInput.value.click();
+  avatarInput.value?.click();
 }
 
-function handleAvatarUpload(event) {
-  const file = event.target.files[0];
+function handleAvatarUpload(event: Event) {
+  const input = event.target as HTMLInputElement;
+  const file = input.files?.[0];
   if (!file) return;
   
   if (file.size > 5 * 1024 * 1024) {
-    errorMessage.value = 'Image must be less than 5MB';
+    errorMessage.value = t('settings.fileSizeLimit');
     return;
   }
   
   const reader = new FileReader();
   reader.onload = (e) => {
-    roleForm.avatar = e.target.result;
+    if (e.target?.result) {
+      roleForm.avatar = e.target.result as string;
+    }
   };
   reader.readAsDataURL(file);
 }
 
 function saveRole() {
   if (!roleForm.name.trim()) {
-    errorMessage.value = 'Role name is required';
+    errorMessage.value = t('settings.roleNameRequired');
     return;
   }
   

@@ -1,0 +1,22 @@
+{
+    "auth": {
+        "login": "Login",
+        "register": "Register",
+        "logout": "Logout",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password?",
+        "resetPassword": "Reset Password",
+        "sendResetLink": "Send Reset Link",
+        "backToLogin": "Back to Login",
+        "createAccount": "Create Account",
+        "noAccount": "Don't have an account?",
+        "alreadyHaveAccount": "Already have an account?",
+        "username": "Username",
+        "agreeToTerms": "I agree to the Terms of Service and Privacy Policy",
+        "loginRequired": "Login Required",
+        "loginToAccess": "Please login to access"
+    }
+}

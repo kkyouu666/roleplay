@@ -1,0 +1,22 @@
+{
+    "auth": {
+        "login": "ログイン",
+        "register": "登録",
+        "logout": "ログアウト",
+        "email": "メールアドレス",
+        "password": "パスワード",
+        "confirmPassword": "パスワード確認",
+        "rememberMe": "ログイン状態を保存",
+        "forgotPassword": "パスワードをお忘れですか？",
+        "resetPassword": "パスワードリセット",
+        "sendResetLink": "リセットリンクを送信",
+        "backToLogin": "ログインに戻る",
+        "createAccount": "アカウント作成",
+        "noAccount": "アカウントをお持ちでないですか？",
+        "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+        "username": "ユーザー名",
+        "agreeToTerms": "利用規約とプライバシーポリシーに同意します",
+        "loginRequired": "ログインが必要です",
+        "loginToAccess": "ログインしてください"
+    }
+}

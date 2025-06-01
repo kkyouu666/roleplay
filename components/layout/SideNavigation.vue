@@ -85,19 +85,19 @@
             :class="[chatLayoutStore.showSidebar ? 'gap-2' : '', !chatLayoutStore.showSidebar && themeStore.theme === 'system' ? 'justify-center' : '']">
             <button class="p-2 rounded-lg transition-colors duration-150 flex items-center justify-center" :class="[
               themeStore.theme === 'light' ? 'bg-indigo-50 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400' : 'text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-indigo-900 hover:text-indigo-600 dark:hover:text-indigo-400'
-            ]" @click="themeStore.setTheme('light')" :title="$t('profile.themeLight')"
+            ]" @click="themeStore.setTheme('light')" :title="$t('common.themeLight')"
               v-show="chatLayoutStore.showSidebar || (!chatLayoutStore.showSidebar && (themeStore.theme === 'dark' || (themeStore.theme === 'system' && isDarkMode)))">
               <Icon name="heroicons:sun" class="w-5 h-5" />
             </button>
             <button class="p-2 rounded-lg transition-colors duration-150 flex items-center justify-center" :class="[
               themeStore.theme === 'dark' ? 'bg-indigo-50 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400' : 'text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-indigo-900 hover:text-indigo-600 dark:hover:text-indigo-400'
-            ]" @click="themeStore.setTheme('dark')" :title="$t('profile.themeDark')"
+            ]" @click="themeStore.setTheme('dark')" :title="$t('common.themeDark')"
               v-show="chatLayoutStore.showSidebar || (!chatLayoutStore.showSidebar && (themeStore.theme === 'light' || (themeStore.theme === 'system' && !isDarkMode)))">
               <Icon name="heroicons:moon" class="w-5 h-5" />
             </button>
             <button class="p-2 rounded-lg transition-colors duration-150 flex items-center justify-center" :class="[
               themeStore.theme === 'system' ? 'bg-indigo-50 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400' : 'text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-indigo-900 hover:text-indigo-600 dark:hover:text-indigo-400'
-            ]" @click="themeStore.setTheme('system')" :title="$t('profile.themeSystem')"
+            ]" @click="themeStore.setTheme('system')" :title="$t('common.themeSystem')"
               v-show="chatLayoutStore.showSidebar">
               <Icon name="heroicons:computer-desktop" class="w-5 h-5" />
             </button>
@@ -108,7 +108,7 @@
         <div class="border-t border-gray-200 dark:border-gray-700" :class="chatLayoutStore.showSidebar ? 'p-4' : 'p-3'">
           <div v-if="authStore?.isAuthenticated">
             <div class="flex items-center">
-              <img :src="authStore?.user?.profileImage || '/images/avatars/default.jpg'" :class="[
+              <img :src="authStore?.user?.avatar || '/images/avatars/default.jpg'" :class="[
                 'rounded-full object-cover flex-shrink-0',
                 chatLayoutStore.showSidebar ? 'w-10 h-10' : 'w-8 h-8'
               ]" alt="Profile" />

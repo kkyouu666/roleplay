@@ -1,25 +1,10 @@
 import { defineStore } from 'pinia';
+import { useApi, type AuthUser } from '~/composables/useApi';
 import { useRoleplayStore } from '~/stores/roleplay';
-
-interface User {
-  id: string;
-  username: string;
-  email: string;
-  profileImage?: string;
-  createdAt: string;
-  role: string;
-  subscription: 'free' | 'standard' | 'premium';
-  bio?: string;
-  stats?: {
-    followers: number;
-    following: number;
-  };
-  points?: number;
-}
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    user: null as User | null,
+    user: null as AuthUser | null,
     token: null as string | null,
     showAuthModal: false,
     authModalMode: 'login' as 'login' | 'register' | 'forgotPassword',
@@ -56,24 +41,12 @@ export const useAuthStore = defineStore('auth', {
       this.error = null;
 
       try {
-        // Mock login functionality for now
-        if (email === 'test@example.com' && password === 'Test123456') {
-          this.user = {
-            id: '1',
-            username: 'TestUser',
-            email: 'test@example.com',
-            profileImage: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
-            createdAt: new Date().toISOString(),
-            role: 'user',
-            subscription: 'free',
-            bio: 'This is a test user account.',
-            stats: {
-              followers: 120,
-              following: 85
-            },
-            points: 1500
-          };
-          this.token = 'mock-jwt-token';
+        const api = useApi();
+        const response = await api.login({ email, password });
+
+        if (response.success) {
+          this.user = response.user;
+          this.token = response.token;
           this.showAuthModal = false;
 
           // Store in localStorage
@@ -82,10 +55,10 @@ export const useAuthStore = defineStore('auth', {
 
           return true;
         } else {
-          throw new Error('Invalid email or password');
+          throw new Error('Login failed');
         }
       } catch (error: any) {
-        this.error = error.message;
+        this.error = error.data?.statusMessage || error.message || 'Login failed';
         return false;
       } finally {
         this.loading = false;
@@ -97,32 +70,24 @@ export const useAuthStore = defineStore('auth', {
       this.error = null;
 
       try {
-        // Mock registration
-        this.user = {
-          id: Date.now().toString(),
-          profileImage: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
-          username,
-          email,
-          createdAt: new Date().toISOString(),
-          role: 'user',
-          subscription: 'free',
-          bio: '',
-          stats: {
-            followers: 0,
-            following: 0
-          },
-          points: 200 // Starting points for new users
-        };
-        this.token = 'mock-jwt-token';
-        this.showAuthModal = false;
+        const api = useApi();
+        const response = await api.register({ username, email, password });
 
-        // Store in localStorage
-        localStorage.setItem('auth_token', this.token);
-        localStorage.setItem('auth_user', JSON.stringify(this.user));
+        if (response.success) {
+          this.user = response.user;
+          this.token = response.token;
+          this.showAuthModal = false;
 
-        return true;
+          // Store in localStorage
+          localStorage.setItem('auth_token', this.token);
+          localStorage.setItem('auth_user', JSON.stringify(this.user));
+
+          return true;
+        } else {
+          throw new Error('Registration failed');
+        }
       } catch (error: any) {
-        this.error = error.message;
+        this.error = error.data?.statusMessage || error.message || 'Registration failed';
         return false;
       } finally {
         this.loading = false;
@@ -144,17 +109,64 @@ export const useAuthStore = defineStore('auth', {
       }
     },
 
-    checkAuth() {
+    async checkAuth() {
       const token = localStorage.getItem('auth_token');
-      const user = localStorage.getItem('auth_user');
+      const userStr = localStorage.getItem('auth_user');
 
-      if (token && user) {
+      if (token && userStr) {
         try {
-          this.token = token;
-          this.user = JSON.parse(user);
+          const user = JSON.parse(userStr) as AuthUser;
+
+          // 验证token是否仍然有效
+          const api = useApi();
+          const response = await api.getCurrentUser(user.id, token);
+
+          if (response.success) {
+            this.token = token;
+            this.user = response.user;
+          } else {
+            this.logout();
+          }
         } catch (e) {
+          console.error('Auth check failed:', e);
           this.logout();
         }
+      }
+    },
+
+    async updateProfile(profileData: { username?: string; avatar?: string; bio?: string; settings?: any }) {
+      if (!this.user || !this.token) {
+        throw new Error('User not authenticated');
+      }
+
+      this.loading = true;
+      this.error = null;
+
+      try {
+        const api = useApi();
+        const response = await api.updateProfile(
+          {
+            userId: this.user.id,
+            ...profileData
+          },
+          this.token
+        );
+
+        if (response.success) {
+          this.user = response.user;
+
+          // Update localStorage
+          localStorage.setItem('auth_user', JSON.stringify(this.user));
+
+          return true;
+        } else {
+          throw new Error('Profile update failed');
+        }
+      } catch (error: any) {
+        this.error = error.data?.statusMessage || error.message || 'Profile update failed';
+        return false;
+      } finally {
+        this.loading = false;
       }
     }
   }

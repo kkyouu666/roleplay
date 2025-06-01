@@ -33,8 +33,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { format } from 'date-fns';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { useApi } from '~/composables/useApi';
 import type { CharacterCard } from '~/types';
 
 // Define props
@@ -66,22 +67,12 @@ const emit = defineEmits<{
 // State for following creators
 const followedCreators = ref<string[]>([]);
 
+// Characters data loaded from API
+const allCharacters = ref<CharacterCard[]>([]);
+
 // Mock popular characters for each creator
 const creatorCharacters = computed(() => {
     const mockCharacters: Record<string, CharacterCard[]> = {};
-
-    // Import characters from mock data
-    const allCharacters = ref<CharacterCard[]>([]);
-
-    // Simulate fetching characters
-    onMounted(async () => {
-        try {
-            const response = await import('~/mock/characters.json');
-            allCharacters.value = response.default;
-        } catch (error) {
-            console.error('Failed to load characters', error);
-        }
-    });
 
     // Group characters by creator
     props.creators.forEach(creator => {
@@ -160,6 +151,17 @@ const creatorCharacters = computed(() => {
     return mockCharacters;
 });
 
+// Load characters data from API
+async function loadCharactersData() {
+    try {
+        const api = useApi();
+        const response = await api.getCharacters({ pageSize: 100 }); // Get more characters for better creator mapping
+        allCharacters.value = response.characters;
+    } catch (error) {
+        console.error('Failed to load characters', error);
+    }
+}
+
 // Get popular characters for a creator
 function getPopularCharacters(creatorId: string): CharacterCard[] {
     return creatorCharacters.value[creatorId] || [];
@@ -195,6 +197,9 @@ function formatDate(dateString: string) {
 
 // Set up intersection observer
 onMounted(() => {
+    // Load characters data when component mounts
+    loadCharactersData();
+
     if (!loadMoreTrigger.value) return;
 
     const observer = new IntersectionObserver((entries) => {
