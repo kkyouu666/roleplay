@@ -423,7 +423,7 @@ export interface ChatSession {
   id: string
   character: Character
   lastMessage: string
-  lastMessageSender: 'user' | 'character'
+  lastMessageSender: 'user' | 'character' | 'system'
   timestamp: string
   unreadCount: number
   messageCount: number
@@ -739,7 +739,7 @@ export const useApi = () => {
     })
   }
 
-  // 角色相关API方法
+  // 用户虚拟人设相关API方法
   const getUserRoles = async (userId: string): Promise<UserRolesResponse> => {
     return await $fetch(`/api/user/roles?userId=${userId}`)
   }
@@ -792,25 +792,8 @@ export const useApi = () => {
     return await $fetch(`/api/chats/${chatId}/messages?${params.toString()}`)
   }
 
-  const sendMessage = async (chatId: string, data: SendMessageRequest): Promise<SendMessageResponse> => {
-    return await $fetch(`/api/chats/${chatId}/messages`, {
-      method: 'POST',
-      body: data
-    })
-  }
-
-  const sendMessageStream = (chatId: string, data: SendMessageRequest): EventSource => {
-    // 创建SSE连接
-    const eventSource = new EventSource(`/api/chats/${chatId}/stream`, {
-      // 注意：EventSource的第二个参数在某些浏览器中可能不支持POST
-      // 我们需要使用fetch API来实现SSE
-    })
-
-    return eventSource
-  }
-
   // 使用fetch实现SSE流式发送
-  const sendMessageStreamFetch = async (
+  const sendMessageStream = async (
     chatId: string,
     data: SendMessageRequest,
     onEvent: (event: StreamMessageEvent) => void,
@@ -899,10 +882,12 @@ export const useApi = () => {
     getUserFollowers,
     getUserFollowing,
     getUserMemories,
+    // 鉴权相关方法
     login,
     register,
     getCurrentUser,
     updateProfile,
+    // 设置相关方法
     getUserSettings,
     updatePersonalInfo,
     updatePrivacySettings,
@@ -919,8 +904,7 @@ export const useApi = () => {
     getUserChats,
     createChat,
     getChatMessages,
-    sendMessage,
-    sendMessageStreamFetch,
+    sendMessageStream,
     deleteChat
   }
 } 

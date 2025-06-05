@@ -371,7 +371,7 @@ export const useRoleplayStore = defineStore('roleplay', {
         const api = useApi();
 
         // 使用流式API发送消息
-        await api.sendMessageStreamFetch(
+        await api.sendMessageStream(
           this.activeChat.id,
           {
             userId: authStore.user.id,
